@@ -1,0 +1,7 @@
+# Capture and study image dumps (heavy binary files)
+screenshots/
+reference_study/
+
+# OS metadata
+.DS_Store
+Thumbs.db
