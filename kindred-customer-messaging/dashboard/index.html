@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="refresh" content="0; url=/#/dashboard">
+  <title>Redirecting to Kindred Workspace...</title>
+  <script>
+    // Preserve any sub-paths or query params
+    const sub = window.location.pathname.replace(/^\/dashboard\/?/, "");
+    const target = sub ? "/#/dashboard/" + sub : "/#/dashboard";
+    window.location.replace(target);
+  </script>
+</head>
+
+<body
+  style="background:#0a0a0c; color:#888; font-family:sans-serif; display:flex; align-items:center; justify-content:center; height:100vh; margin:0;">
+  <p>Loading Kindred Workspace...</p>
+</body>
+
+</html>

@@ -1,0 +1,238 @@
+/* ==========================================================================
+   Kindred — Multi-Page Views & Auth Styles (pages.css)
+   Full-page view router containers, login, signup, features, security & 404
+   ========================================================================== */
+
+/* Page View Containers */
+.page-container {
+  display: none;
+  animation: pageFadeIn 0.25s ease-in-out;
+  min-height: 100vh;
+}
+
+.page-container.active {
+  display: block;
+}
+
+@keyframes pageFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(6px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ==========================================================================
+   Authentication Pages (Login & Signup)
+   ========================================================================== */
+
+.auth-page-wrapper {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  background-color: var(--paper);
+  background-image:
+    linear-gradient(to right, rgba(32, 35, 31, 0.04) 1px, transparent 1px),
+    linear-gradient(to bottom, rgba(32, 35, 31, 0.04) 1px, transparent 1px);
+  background-size: 40px 40px;
+}
+
+.auth-header {
+  height: 80px;
+  padding: 0 5%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--paper);
+}
+
+.auth-card-container {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 40px 20px;
+}
+
+.auth-card {
+  width: 100%;
+  max-width: 440px;
+  background-color: #ffffff;
+  border: 1px solid var(--line-strong);
+  padding: 36px 32px;
+  box-shadow: var(--shadow-lg);
+  position: relative;
+}
+
+.auth-card-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  letter-spacing: 0.14em;
+  color: var(--lime-dark);
+  margin-bottom: 8px;
+}
+
+.auth-card-title {
+  font-size: 1.5rem;
+  letter-spacing: -0.04em;
+  margin-bottom: 6px;
+}
+
+.auth-card-subtitle {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  margin-bottom: 24px;
+}
+
+.demo-account-box {
+  background-color: var(--paper-warm);
+  border: 1px dashed var(--line-strong);
+  padding: 12px 14px;
+  margin-bottom: 24px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.demo-account-box-text {
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.demo-account-box-text strong {
+  display: block;
+  color: var(--ink);
+  font-size: 0.8125rem;
+}
+
+.password-input-wrap {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.password-input-wrap input {
+  padding-right: 50px;
+}
+
+.btn-toggle-password {
+  position: absolute;
+  right: 10px;
+  background: none;
+  border: none;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  cursor: pointer;
+  padding: 4px;
+}
+
+.btn-toggle-password:hover {
+  color: var(--ink);
+}
+
+/* ==========================================================================
+   Dedicated Features & Security Pages
+   ========================================================================== */
+
+.page-hero-header {
+  padding: 90px 5% 60px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--paper-warm);
+  position: relative;
+}
+
+.page-hero-header h1 {
+  font-size: clamp(2.6rem, 4.5vw, 4rem);
+  letter-spacing: -0.05em;
+  margin: 16px 0;
+  max-width: 780px;
+}
+
+.page-hero-header p {
+  font-size: 1.15rem;
+  color: var(--ink-secondary);
+  max-width: 620px;
+  line-height: 1.7;
+}
+
+.deep-dive-section {
+  padding: 80px 5%;
+  border-bottom: 1px solid var(--line);
+}
+
+.deep-dive-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 48px;
+  align-items: center;
+}
+
+.deep-dive-art {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 32px;
+  box-shadow: var(--shadow-md);
+}
+
+/* Blueprint Architecture Card */
+.blueprint-card {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  background-color: var(--paper-dark);
+  color: #d6ded0;
+  padding: 24px;
+  border-radius: 2px;
+  line-height: 1.8;
+}
+
+.blueprint-line {
+  display: flex;
+  justify-content: space-between;
+  border-bottom: 1px dashed #3a4437;
+  padding: 4px 0;
+}
+
+.blueprint-line:last-child {
+  border-bottom: none;
+}
+
+/* ==========================================================================
+   404 Route Not Found Page
+   ========================================================================== */
+
+.page-404-wrap {
+  min-height: 80vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 60px 20px;
+}
+
+.code-404 {
+  font-family: var(--font-display);
+  font-size: 6rem;
+  font-weight: 800;
+  letter-spacing: -0.06em;
+  line-height: 1;
+  color: var(--line-strong);
+  margin-bottom: 10px;
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 800px) {
+  .deep-dive-grid {
+    grid-template-columns: 1fr;
+    gap: 30px;
+  }
+}

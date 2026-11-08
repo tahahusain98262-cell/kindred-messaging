@@ -1,0 +1,154 @@
+/* ==========================================================================
+   Kindred — Settings & Audit Log Styles (settings.css)
+   Provider cards, policy toggles, form fields, and audit log stream
+   ========================================================================== */
+
+.settings-section-card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 24px;
+  margin-bottom: 24px;
+}
+
+.settings-card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 18px;
+  border-bottom: 1px solid var(--line);
+  padding-bottom: 14px;
+}
+
+.provider-status-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-bottom: 16px;
+}
+
+.provider-box {
+  background-color: var(--paper-warm);
+  border: 1px solid var(--line);
+  padding: 18px;
+}
+
+.provider-box-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+.provider-box h4 {
+  font-size: 0.875rem;
+  margin: 0;
+}
+
+.provider-meta-row {
+  display: flex;
+  justify-content: space-between;
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+  margin-bottom: 4px;
+}
+
+/* Policy Toggle Row */
+.policy-toggle-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 14px 0;
+  border-bottom: 1px solid #eeeee6;
+}
+
+.policy-toggle-info h5 {
+  font-size: 0.8125rem;
+  margin: 0 0 2px;
+}
+
+.policy-toggle-info p {
+  font-size: 0.75rem;
+  color: var(--muted);
+  margin: 0;
+}
+
+/* Custom Toggle Switch */
+.toggle-switch {
+  position: relative;
+  display: inline-block;
+  width: 38px;
+  height: 20px;
+}
+
+.toggle-switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.toggle-slider {
+  position: absolute;
+  cursor: pointer;
+  inset: 0;
+  background-color: #cbd2c0;
+  border-radius: 20px;
+  transition: .3s;
+}
+
+.toggle-slider:before {
+  position: absolute;
+  content: "";
+  height: 14px;
+  width: 14px;
+  left: 3px;
+  bottom: 3px;
+  background-color: white;
+  border-radius: 50%;
+  transition: .3s;
+}
+
+input:checked + .toggle-slider {
+  background-color: var(--lime-dark);
+}
+
+input:checked + .toggle-slider:before {
+  transform: translateX(18px);
+}
+
+/* Audit Log Table */
+.audit-table-wrap {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+}
+
+.audit-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.audit-table th {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 12px 14px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--paper-card-alt);
+}
+
+.audit-table td {
+  padding: 12px 14px;
+  font-size: 0.75rem;
+  border-bottom: 1px solid #eeeee6;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .provider-status-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

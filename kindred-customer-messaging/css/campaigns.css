@@ -1,0 +1,93 @@
+/* ==========================================================================
+   Kindred — Campaign Management Styles (campaigns.css)
+   Grid cards, status badges, action toolbars & performance breakdown
+   ========================================================================== */
+
+.campaigns-toolbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.campaigns-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+}
+
+.campaign-card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 22px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 230px;
+  position: relative;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+
+.campaign-card:hover {
+  border-color: var(--lime-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.campaign-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: 14px;
+}
+
+.campaign-card-title {
+  font-size: 1.05rem;
+  font-weight: 700;
+  margin: 0 0 4px;
+  color: var(--ink);
+}
+
+.campaign-card-meta {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.campaign-card-snippet {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.5;
+  margin-bottom: 18px;
+  background-color: var(--paper-warm);
+  border: 1px solid var(--line);
+  padding: 10px 12px;
+  font-style: italic;
+}
+
+.campaign-card-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  margin-top: auto;
+}
+
+.campaign-card-actions {
+  display: flex;
+  gap: 8px;
+}
+
+@media (max-width: 1024px) {
+  .campaigns-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 700px) {
+  .campaigns-grid {
+    grid-template-columns: 1fr;
+  }
+}

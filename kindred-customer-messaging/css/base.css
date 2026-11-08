@@ -1,0 +1,416 @@
+/* ==========================================================================
+   Kindred — Base Styles & Reusable Design Primitives
+   Color variables, typography, spacing, buttons, cards, forms & responsive layout
+   ========================================================================== */
+
+:root {
+  /* Kindred Signature Color System */
+  --paper: #f4f3ee;             /* Warm cream / off-white main background */
+  --paper-warm: #f8f7f2;        /* Subtle warm card background */
+  --paper-card: #fafaf6;        /* Clean card surface */
+  --paper-card-alt: #f0f1e9;    /* Muted element surface */
+  --paper-dark: #222720;        /* Deep charcoal / forest dark surface */
+  --paper-dark-active: #2f362c; /* Active state for dark surfaces */
+
+  /* Ink & Typography */
+  --ink: #20231f;               /* Primary charcoal body text */
+  --ink-secondary: #55594f;     /* Secondary charcoal text */
+  --ink-tertiary: #686d62;      /* Muted readable text */
+  --muted: #777b70;             /* Metadata and placeholder text */
+  --muted-light: #8a907f;       /* Hairline secondary labels */
+  --line: #d9d9cf;              /* Delicate hairline dividers */
+  --line-strong: #bdc1b4;       /* Emphasized borders */
+  --line-dark: #384236;         /* Dividers on dark surfaces */
+
+  /* Muted Olive & Accent Tones */
+  --lime: #d6ed72;              /* Primary Kindred lime accent */
+  --lime-hover: #c5dc5f;        /* Lime hover state */
+  --lime-dark: #8fa74c;         /* Olive green accent */
+  --lime-subtle: #e5edcf;       /* Gentle lime tint */
+  --lime-soft: #f4f8e6;         /* Ultra-light lime background */
+
+  /* Status Indicators */
+  --orange: #d77a4e;            /* Warm status / draft / pending */
+  --orange-subtle: #faebe2;
+  --green: #4f8056;             /* Verified / active status */
+  --green-subtle: #e4eee1;
+  --red: #c04c36;               /* Suppressed / error status */
+  --red-subtle: #fbeae7;
+
+  /* Typography Scales */
+  --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
+  --font-display: "Manrope", sans-serif;
+  --font-mono: "DM Mono", ui-monospace, Menlo, Monaco, monospace;
+  --font-serif: Georgia, "Times New Roman", serif;
+
+  /* Spacing Scale */
+  --space-1: 4px;
+  --space-2: 8px;
+  --space-3: 12px;
+  --space-4: 16px;
+  --space-5: 20px;
+  --space-6: 24px;
+  --space-8: 32px;
+  --space-10: 40px;
+  --space-12: 48px;
+  --space-16: 64px;
+
+  /* Elevation Shadows */
+  --shadow-sm: 0 1px 3px rgba(32, 35, 31, 0.04);
+  --shadow-md: 0 4px 14px rgba(32, 35, 31, 0.07);
+  --shadow-lg: 0 16px 36px rgba(32, 35, 31, 0.10);
+
+  /* Transitions */
+  --ease-fast: 0.15s ease;
+  --ease-normal: 0.25s ease;
+}
+
+/* ==========================================================================
+   CSS Reset & Fundamentals
+   ========================================================================== */
+
+*, *::before, *::after {
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 16px;
+  scroll-behavior: smooth;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+body {
+  margin: 0;
+  background-color: var(--paper);
+  color: var(--ink);
+  font-family: var(--font-sans);
+  line-height: 1.6;
+}
+
+a {
+  color: inherit;
+  text-decoration: none;
+  transition: color var(--ease-fast);
+}
+
+img, svg {
+  display: block;
+  max-width: 100%;
+}
+
+button, input, textarea, select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+/* ==========================================================================
+   Typography Hierarchy
+   ========================================================================== */
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  letter-spacing: -0.04em;
+  margin: 0;
+  color: var(--ink);
+}
+
+h1 em, h2 em, h3 em {
+  font-family: var(--font-serif);
+  font-style: italic;
+  font-weight: 400;
+  letter-spacing: -0.02em;
+}
+
+.mono-kicker {
+  font-family: var(--font-mono);
+  font-size: 0.625rem; /* 10px */
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ==========================================================================
+   Reusable Buttons
+   ========================================================================== */
+
+.button-dark {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 13px 20px;
+  background-color: var(--paper-dark);
+  color: #ffffff;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem; /* 13px */
+  font-weight: 600;
+  border: 1px solid var(--paper-dark);
+  cursor: pointer;
+  transition: background-color var(--ease-fast), border-color var(--ease-fast);
+}
+
+.button-dark:hover {
+  background-color: #171b15;
+  border-color: #171b15;
+}
+
+.button-dark.small, .button-sm {
+  padding: 7px 12px;
+  font-size: 0.75rem; /* 12px */
+  gap: var(--space-2);
+}
+
+.button-light {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: var(--space-4);
+  padding: 13px 20px;
+  background-color: var(--lime);
+  color: var(--paper-dark);
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  font-weight: 600;
+  border: 1px solid var(--lime);
+  cursor: pointer;
+  transition: background-color var(--ease-fast);
+}
+
+.button-light:hover {
+  background-color: var(--lime-hover);
+}
+
+.button-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  padding: 8px 14px;
+  background-color: transparent;
+  color: var(--ink);
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px solid var(--line);
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.button-outline:hover {
+  border-color: var(--muted);
+  background-color: var(--paper-card);
+}
+
+.button-text {
+  background: none;
+  border: none;
+  padding: 0;
+  color: var(--ink-secondary);
+  font-size: 0.8125rem;
+  font-weight: 500;
+  border-bottom: 1px solid var(--line-strong);
+  padding-bottom: 2px;
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.button-text:hover {
+  color: var(--lime-dark);
+  border-color: var(--lime-dark);
+}
+
+/* ==========================================================================
+   Reusable Cards
+   ========================================================================== */
+
+.card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: var(--space-5);
+  position: relative;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+
+.card:hover {
+  border-color: var(--line-strong);
+}
+
+.card-interactive {
+  cursor: pointer;
+}
+
+.card-interactive:hover {
+  border-color: var(--lime-dark);
+  box-shadow: var(--shadow-sm);
+}
+
+.card-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: var(--space-4);
+}
+
+.card-title {
+  font-size: 0.9375rem; /* 15px */
+  font-weight: 600;
+  margin: var(--space-1) 0 0;
+  letter-spacing: -0.03em;
+}
+
+.card-body {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+}
+
+/* ==========================================================================
+   Form Controls & Inputs
+   ========================================================================== */
+
+.form-group {
+  margin-bottom: var(--space-4);
+}
+
+.form-label {
+  display: block;
+  font-size: 0.6875rem; /* 11px */
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--ink-secondary);
+  margin-bottom: var(--space-2);
+}
+
+.form-input, .form-textarea, .form-select {
+  width: 100%;
+  border: 1px solid var(--line);
+  background-color: #fffefa;
+  padding: 10px 12px;
+  font-family: var(--font-sans);
+  font-size: 0.8125rem;
+  color: var(--ink);
+  outline: none;
+  transition: border-color var(--ease-fast), box-shadow var(--ease-fast);
+}
+
+.form-input:focus, .form-textarea:focus, .form-select:focus {
+  border-color: var(--lime-dark);
+  box-shadow: 0 0 0 2px rgba(214, 237, 114, 0.35);
+}
+
+.form-input::placeholder, .form-textarea::placeholder {
+  color: var(--muted);
+}
+
+.form-textarea {
+  resize: vertical;
+  min-height: 90px;
+  line-height: 1.5;
+}
+
+.form-hint {
+  font-size: 0.6875rem;
+  color: var(--muted);
+  margin-top: var(--space-1);
+}
+
+/* ==========================================================================
+   Pills & Status Indicators
+   ========================================================================== */
+
+.status-dot {
+  display: inline-block;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background-color: var(--lime-dark);
+}
+
+.status-dot.active { background-color: var(--green); }
+.status-dot.warning { background-color: var(--orange); }
+.status-dot.danger { background-color: var(--red); }
+
+.tag-pill {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  padding: 4px 8px;
+  background-color: var(--paper-card-alt);
+  color: var(--muted);
+  border: 1px solid var(--line);
+  letter-spacing: 0.05em;
+  display: inline-flex;
+  align-items: center;
+  gap: 5px;
+}
+
+/* ==========================================================================
+   Layout Containers & Grid Utilities
+   ========================================================================== */
+
+.container {
+  width: 100%;
+  max-width: 1240px;
+  margin: 0 auto;
+  padding-left: var(--space-6);
+  padding-right: var(--space-6);
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-3 {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--space-6);
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--space-4);
+}
+
+.flex-between {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.flex-center {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+/* ==========================================================================
+   Responsive Adaptations
+   ========================================================================== */
+
+@media (max-width: 900px) {
+  .grid-4 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 650px) {
+  .container {
+    padding-left: var(--space-4);
+    padding-right: var(--space-4);
+  }
+  .grid-2, .grid-4 {
+    grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+  .button-dark, .button-light {
+    padding: 11px 16px;
+    font-size: 0.75rem;
+  }
+}

@@ -1,0 +1,126 @@
+/* ==========================================================================
+   Kindred — Analytics Module Styles (analytics.css)
+   Delivery metrics, SVG bar charts, channel distribution & engagement cards
+   ========================================================================== */
+
+.analytics-grid {
+  display: grid;
+  grid-template-columns: 2fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.chart-card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 24px;
+}
+
+.chart-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.chart-legend {
+  display: flex;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.chart-legend-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.legend-color-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+}
+
+.svg-chart-container {
+  width: 100%;
+  height: 220px;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 16px;
+  padding: 20px 10px 10px;
+  border-bottom: 1px solid var(--line);
+}
+
+.chart-bar-group {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  height: 100%;
+  justify-content: flex-end;
+}
+
+.chart-bars-wrap {
+  display: flex;
+  align-items: flex-end;
+  gap: 4px;
+  width: 100%;
+  max-width: 44px;
+  height: 160px;
+  justify-content: center;
+}
+
+.chart-bar {
+  flex: 1;
+  border-radius: 2px 2px 0 0;
+  transition: height 0.5s ease;
+}
+
+.chart-bar.sent {
+  background-color: #2b3229;
+}
+
+.chart-bar.delivered {
+  background-color: var(--lime);
+}
+
+.chart-bar-label {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+/* Channel Distribution Donut/Bar */
+.channel-stat-row {
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  margin-top: 16px;
+}
+
+.channel-progress-track {
+  height: 8px;
+  background-color: var(--paper-warm);
+  border: 1px solid var(--line);
+  border-radius: 4px;
+  overflow: hidden;
+  display: flex;
+}
+
+.channel-progress-fill.sms {
+  background-color: var(--paper-dark);
+}
+
+.channel-progress-fill.wa {
+  background-color: var(--lime-dark);
+}
+
+@media (max-width: 900px) {
+  .analytics-grid {
+    grid-template-columns: 1fr;
+  }
+}
+

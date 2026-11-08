@@ -1,0 +1,275 @@
+/* ==========================================================================
+   Kindred — Two-Way Inbox Styles (inbox.css)
+   Split conversation list, message timeline, AI smart reply cards & STOP suppression
+   ========================================================================== */
+
+.inbox-split-layout {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  min-height: 640px;
+}
+
+/* Conversation List Pane */
+.inbox-thread-list {
+  border-right: 1px solid var(--line);
+  display: flex;
+  flex-direction: column;
+  background-color: var(--paper-warm);
+}
+
+.inbox-thread-header {
+  padding: 16px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.inbox-threads-container {
+  overflow-y: auto;
+  flex: 1;
+}
+
+.inbox-thread-item {
+  padding: 16px;
+  border-bottom: 1px solid #eeeee6;
+  cursor: pointer;
+  transition: background-color var(--ease-fast);
+}
+
+.inbox-thread-item:hover {
+  background-color: #f3f5eb;
+}
+
+.inbox-thread-item.active {
+  background-color: #eaf1da;
+  border-left: 3px solid var(--lime-dark);
+}
+
+.thread-item-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 4px;
+}
+
+.thread-name {
+  font-weight: 600;
+  font-size: 0.8125rem;
+}
+
+.thread-time {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+
+.thread-snippet {
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  margin-bottom: 8px;
+}
+
+.thread-tags {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* Conversation Detail Pane */
+.inbox-detail-pane {
+  display: flex;
+  flex-direction: column;
+  background-color: #ffffff;
+}
+
+.inbox-detail-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--line);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: var(--paper-card);
+}
+
+.inbox-detail-contact-info h4 {
+  font-size: 0.9375rem;
+  margin: 0 0 2px;
+}
+
+.inbox-detail-contact-info span {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.inbox-simulation-bar {
+  background-color: #f2f5e8;
+  border-bottom: 1px solid var(--line);
+  padding: 8px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+/* Message Timeline */
+.inbox-messages-timeline {
+  flex: 1;
+  padding: 24px 20px;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+  background-color: #fbfbfa;
+}
+
+.msg-row {
+  display: flex;
+  flex-direction: column;
+  max-width: 78%;
+}
+
+.msg-row.outbound {
+  align-self: flex-end;
+  align-items: flex-end;
+}
+
+.msg-row.inbound {
+  align-self: flex-start;
+  align-items: flex-start;
+}
+
+.msg-bubble {
+  padding: 12px 16px;
+  font-size: 0.8125rem;
+  line-height: 1.5;
+  border-radius: 12px;
+}
+
+.msg-row.outbound .msg-bubble {
+  background-color: var(--paper-dark);
+  color: #ffffff;
+  border-bottom-right-radius: 2px;
+}
+
+.msg-row.inbound .msg-bubble {
+  background-color: var(--paper-card);
+  color: var(--ink);
+  border: 1px solid var(--line);
+  border-bottom-left-radius: 2px;
+}
+
+.msg-meta {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+  margin-top: 4px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+/* AI Smart Reply Card */
+.ai-smart-reply-card {
+  background-color: #f6f8ef;
+  border-top: 1px solid #d5dec4;
+  border-bottom: 1px solid #d5dec4;
+  padding: 16px 20px;
+}
+
+.ai-card-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.ai-intent-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  padding: 2px 8px;
+  background-color: var(--lime);
+  color: var(--paper-dark);
+  font-weight: 700;
+  border-radius: 2px;
+}
+
+.ai-confidence {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--lime-dark);
+}
+
+.ai-suggested-text {
+  font-size: 0.8125rem;
+  color: var(--ink);
+  line-height: 1.5;
+  margin-bottom: 8px;
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+}
+
+.ai-citation {
+  font-size: 0.6875rem;
+  color: var(--muted);
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+/* Reply Composer Area */
+.inbox-composer-area {
+  padding: 16px 20px;
+  border-top: 1px solid var(--line);
+  background-color: var(--paper-card);
+}
+
+.inbox-input-group {
+  display: flex;
+  gap: 12px;
+}
+
+.inbox-text-input {
+  flex: 1;
+  border: 1px solid var(--line);
+  padding: 10px 14px;
+  font-size: 0.8125rem;
+  outline: none;
+  background-color: #ffffff;
+}
+
+.inbox-text-input:focus {
+  border-color: var(--lime-dark);
+}
+
+/* Suppression Banner */
+.suppression-alert-banner {
+  background-color: var(--red-subtle);
+  border: 1px solid #f0bebe;
+  color: var(--red);
+  padding: 12px 16px;
+  font-size: 0.75rem;
+  display: none;
+  align-items: center;
+  gap: 10px;
+}
+
+.suppression-alert-banner.active {
+  display: flex;
+}
+
+@media (max-width: 900px) {
+  .inbox-split-layout {
+    grid-template-columns: 1fr;
+  }
+}
+

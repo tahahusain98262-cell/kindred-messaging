@@ -1,0 +1,118 @@
+/* ==========================================================================
+   Kindred — Knowledge Base & Mortgage Rates Styles (knowledge.css)
+   Rates table, verification badges, compliance notice & FAQ accordion
+   ========================================================================== */
+
+.demo-data-notice-bar {
+  background-color: #faf5ea;
+  border: 1px solid #ebd9b5;
+  color: #8c6721;
+  padding: 12px 18px;
+  font-size: 0.75rem;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 24px;
+}
+
+.rates-table-wrap {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  overflow-x: auto;
+  margin-bottom: 32px;
+}
+
+.rates-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+}
+
+.rates-table th {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  letter-spacing: 0.12em;
+  color: var(--muted);
+  text-transform: uppercase;
+  padding: 14px 16px;
+  border-bottom: 1px solid var(--line);
+  background-color: var(--paper-card-alt);
+}
+
+.rates-table td {
+  padding: 14px 16px;
+  font-size: 0.8125rem;
+  border-bottom: 1px solid #eeeee6;
+  white-space: nowrap;
+}
+
+.rate-val-bold {
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.rate-trend-down {
+  color: var(--green);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+.rate-trend-up {
+  color: var(--orange);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+}
+
+/* FAQ Accordion */
+.faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.faq-card {
+  background-color: var(--paper-card);
+  border: 1px solid var(--line);
+  padding: 16px 20px;
+  cursor: pointer;
+  transition: all var(--ease-fast);
+}
+
+.faq-card:hover {
+  border-color: var(--lime-dark);
+}
+
+.faq-question {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 0.875rem;
+  font-weight: 600;
+}
+
+.faq-answer {
+  display: none;
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  margin-top: 10px;
+  padding-top: 10px;
+  border-top: 1px dashed var(--line);
+}
+
+.faq-card.open .faq-answer {
+  display: block;
+}
+
+.faq-card.open .faq-icon {
+  transform: rotate(45deg);
+}
+
+.faq-icon {
+  transition: transform var(--ease-fast);
+  color: var(--lime-dark);
+  font-size: 1rem;
+}
+
