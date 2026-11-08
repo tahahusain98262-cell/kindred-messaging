@@ -624,30 +624,422 @@
   color: var(--ink-secondary);
 }
 
-/* Problem vs Solution Comparison Cards */
-.comparison-grid {
+/* ==========================================================================
+   Section 02: The Ledger Styles (Itemised Cost-of-Time)
+   ========================================================================== */
+
+.ledger-section {
+  background-color: var(--ivory);
+  padding: 100px 5% 120px;
+}
+
+.ledger-card {
+  background-color: var(--paper-panel);
+  border: 1px solid var(--line-strong);
+  box-shadow: var(--shadow-md);
+  margin-top: 32px;
+  position: relative;
+  overflow: hidden;
+}
+
+.ledger-header {
   display: grid;
-  grid-template-columns: 1fr 1fr;
-  border: 1px solid var(--line);
-  background-color: var(--paper-warm);
+  grid-template-columns: 140px 1fr 180px 140px;
+  gap: 20px;
+  padding: 16px 24px;
+  border-bottom: 1px solid var(--line-strong);
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+  letter-spacing: var(--tracking-mono);
+  background-color: rgba(30, 35, 32, 0.03);
 }
 
-.comparison-box {
-  padding: 40px;
+.ledger-row {
+  display: grid;
+  grid-template-columns: 140px 1fr 180px 140px;
+  gap: 20px;
+  align-items: center;
+  padding: 20px 24px;
+  border-bottom: 1px dashed var(--line);
+  transition: background-color 0.15s ease;
 }
 
-.comparison-box:first-child {
-  border-right: 1px solid var(--line);
-  background-color: #f1f0e8;
+.ledger-row:hover {
+  background-color: rgba(217, 238, 111, 0.08);
 }
 
-.comparison-box h3 {
+.ledger-id {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  color: var(--muted);
+}
+
+.ledger-task strong {
+  display: block;
+  font-size: 0.9375rem;
+  color: var(--charcoal);
+  font-weight: 600;
+  margin-bottom: 3px;
+}
+
+.ledger-subtext {
+  font-size: 0.75rem;
+  color: var(--ink-secondary);
+}
+
+.ledger-risk {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 500;
+}
+
+.ledger-time {
+  font-family: var(--font-mono);
+  font-size: 0.875rem;
+  color: var(--charcoal);
+  font-weight: 600;
+  text-align: right;
+}
+
+/* Ledger Total Row */
+.ledger-total-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 24px 28px;
+  background-color: var(--paper-panel);
+  border-bottom: 1px solid var(--line-strong);
+  position: relative;
+}
+
+.ledger-total-label {
+  display: flex;
+  align-items: baseline;
+  gap: 16px;
+  font-family: var(--font-mono);
+  font-size: 0.8125rem;
+  font-weight: 700;
+  color: var(--charcoal);
+  letter-spacing: 0.08em;
+}
+
+.ledger-total-calc {
   font-size: 1.25rem;
+  color: var(--red);
+  position: relative;
+  display: inline-block;
+}
+
+.ledger-strike-box {
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.ledger-strike-line {
+  position: absolute;
+  top: 50%;
+  left: -220px;
+  right: 0;
+  height: 3px;
+  background-color: var(--lime);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.6s var(--ease-expo);
+  box-shadow: 0 0 10px rgba(217, 238, 111, 0.9);
+}
+
+.ledger-section.in-view .ledger-strike-line,
+.ledger-card.in-view .ledger-strike-line {
+  transform: scaleX(1);
+}
+
+.ledger-strikethrough-badge {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  font-weight: 700;
+  background-color: var(--charcoal);
+  color: var(--lime);
+  padding: 4px 8px;
+  letter-spacing: 0.1em;
+  border-radius: 2px;
+}
+
+/* Ledger Resolution Banner */
+.ledger-resolution-banner {
+  padding: 24px 28px;
+  background-color: #ffffff;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  border-top: 2px solid var(--lime);
+}
+
+.resolution-tag {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+  color: var(--muted-olive);
+  letter-spacing: 0.08em;
+}
+
+.resolution-signal-tick {
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  background: var(--lime);
+  color: var(--charcoal);
+  display: grid;
+  place-items: center;
+  font-size: 0.6875rem;
+  font-weight: 800;
+}
+
+.resolution-heading {
+  font-size: 1.15rem;
+  color: var(--charcoal);
+}
+
+.resolution-heading strong {
+  color: var(--muted-olive);
+  font-weight: 700;
+}
+
+.resolution-sub {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+}
+
+/* ==========================================================================
+   Section 03: The Journey of One Message (Timeline & Stations)
+   ========================================================================== */
+
+.journey-section {
+  background-color: var(--paper-panel);
+  padding: 100px 5% 120px;
+  border-bottom: 1px solid var(--line);
+  position: relative;
+  overflow: hidden;
+}
+
+.journey-header {
+  max-width: 680px;
+  margin-bottom: 60px;
+}
+
+.journey-header h2 {
+  font-size: var(--font-size-h2);
+  line-height: 1.02;
+  letter-spacing: var(--tracking-display);
   margin: 12px 0 16px;
 }
 
-.comparison-box ul {
-  padding-left: 20px;
+.journey-subtitle {
+  font-size: 1.05rem;
+  color: var(--ink-secondary);
+  line-height: 1.7;
+}
+
+.journey-track {
+  position: relative;
+  width: 100%;
+}
+
+.journey-thread-svg {
+  width: 100%;
+  height: 6px;
+  margin-bottom: 32px;
+  display: block;
+}
+
+.journey-stations-grid {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  gap: 20px;
+}
+
+.journey-station {
+  background-color: #ffffff;
+  border: 1px solid var(--line);
+  padding: 24px 20px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 310px;
+  box-shadow: var(--shadow-sm);
+  transition: transform 0.25s var(--ease-expo), border-color 0.25s ease, box-shadow 0.25s ease;
+  position: relative;
+}
+
+.journey-station:hover {
+  transform: translateY(-4px);
+  border-color: var(--muted-olive);
+  box-shadow: var(--shadow-md);
+}
+
+.station-top {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 14px;
+}
+
+.station-num {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+  letter-spacing: 0.08em;
+}
+
+.station-tag {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  font-weight: 700;
+  color: var(--muted-olive);
+  background-color: var(--paper-panel);
+  padding: 3px 6px;
+  border-radius: 2px;
+}
+
+.station-title {
+  font-size: 1.15rem;
+  letter-spacing: -0.03em;
+  line-height: 1.15;
+  margin: 0 0 10px;
+  color: var(--charcoal);
+}
+
+.station-detail {
+  font-size: 0.8125rem;
+  color: var(--ink-secondary);
+  line-height: 1.6;
+  margin: 0 0 20px;
+  flex-grow: 1;
+}
+
+/* Station Micro-Visualizations */
+.station-micro-vis {
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.micro-badge-verified, .micro-badge-shield, .micro-dial-wrap, .micro-chars-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--charcoal);
+}
+
+.vis-check {
+  color: var(--green);
+  font-weight: 800;
+}
+
+.vis-shield {
+  color: var(--muted-olive);
+}
+
+.micro-meta-mono {
+  font-family: var(--font-mono);
+  font-size: 0.625rem;
+  color: var(--muted);
+}
+
+.dial-time-safe {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+
+.dial-status-pill, .segments-pill {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  background-color: var(--lime-subtle);
+  color: var(--charcoal);
+  padding: 2px 6px;
+  border-radius: 2px;
+}
+
+.chars-pill {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 700;
+}
+
+/* Soft Clay Approval Stamp */
+.micro-approval-stamp {
+  border: 1.5px dashed var(--soft-clay);
+  background-color: var(--soft-clay-subtle);
+  padding: 8px 10px;
+  border-radius: 2px;
+}
+
+.stamp-inner {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  font-weight: 800;
+  color: var(--soft-clay);
+  letter-spacing: 0.06em;
+}
+
+.stamp-star {
+  font-size: 0.8125rem;
+}
+
+.stamp-sub {
+  font-family: var(--font-mono);
+  font-size: 0.5625rem;
+  color: #8c5035;
+  margin-top: 2px;
+}
+
+.micro-reply-bubble {
+  background-color: var(--paper-panel);
+  border-left: 2px solid var(--lime);
+  padding: 6px 8px;
+  font-size: 0.6875rem;
+  line-height: 1.4;
+  color: var(--charcoal);
+}
+
+.reply-sender {
+  font-weight: 700;
+  color: var(--muted-olive);
+}
+
+@media (max-width: 1024px) {
+  .journey-stations-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .ledger-header {
+    display: none;
+  }
+  .ledger-row {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+  .ledger-time {
+    text-align: left;
+  }
+  .journey-stations-grid {
+    grid-template-columns: 1fr;
+  }
+}
   color: var(--ink-secondary);
   font-size: 0.875rem;
   line-height: 2;

@@ -183,11 +183,57 @@ window.KINDRED_LANDING = (() => {
   }
 
   /**
+   * Initialize The Ledger cost-of-time strike-through animation
+   */
+  function initLedgerAnimation() {
+    const ledger = $("#section-ledger");
+    if (!ledger) return;
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            ledger.classList.add("in-view");
+            const strikeLine = $("#ledger-strike-line");
+            if (strikeLine) strikeLine.style.transform = "scaleX(1)";
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.3 });
+      observer.observe(ledger);
+    }
+  }
+
+  /**
+   * Initialize The Journey of One Message SVG thread drawing
+   */
+  function initJourneyTimeline() {
+    const journey = $("#section-message-journey");
+    const activeLine = $("#journey-active-line");
+    if (!journey || !activeLine) return;
+
+    if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+      ScrollTrigger.create({
+        trigger: "#section-message-journey",
+        start: "top 75%",
+        end: "bottom 60%",
+        scrub: 0.5,
+        onUpdate: (self) => {
+          const p = self.progress;
+          activeLine.setAttribute("x2", String(p * 1200));
+        }
+      });
+    }
+  }
+
+  /**
    * Initialize landing page interactions and motion observers
    */
   function init() {
     initSmoothScroll();
     initHeroInteractions();
+    initLedgerAnimation();
+    initJourneyTimeline();
 
     // 1. Mobile navigation drawer toggle
     const menuToggle = $(".nav-toggle-btn");

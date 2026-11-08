@@ -181,44 +181,247 @@
         </div>
       </section>
 
-      <!-- Problem & Solution Section -->
-      <section class="section-editorial">
-        <div class="section-kicker">02 / THE ARCHITECTURAL SHIFT</div>
+      <!-- ==========================================================================
+           SECTION 02: THE LEDGER (What a relationship costs when done by hand)
+           ========================================================================== -->
+      <section class="section-editorial ledger-section" id="section-ledger">
+        <div class="section-kicker">02 / THE COST OF MANUAL EFFORT</div>
 
-        <div class="editorial-split">
-          <h2>Customer messaging is fractured.<br><em>Kindred brings it together.</em></h2>
+        <div class="editorial-split" style="margin-bottom: 40px;">
           <div>
-            <p>
-              Traditional customer communication relies on disconnected marketing blasts, untracked spreadsheets, and aggressive automated chatbots. The result is lost customer trust, compliance penalties, and impersonal communication.
-            </p>
-            <p>
-              Kindred provides a unified, relationship-focused infrastructure. From your first 10 test contacts to thousands of borrowers, every greeting, mortgage update, and customer conversation is verified, consent-tracked, and audited.
+            <span class="mono-kicker" style="color: var(--soft-clay);">[ ILLUSTRATIVE ESTIMATE // BASED ON 100 BORROWER RELATIONSHIPS ]</span>
+            <h2 style="margin-top: 10px;">What a relationship costs<br><em>when it's done by hand.</em></h2>
+          </div>
+          <div>
+            <p style="color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.7;">
+              Customer retention fails not from lack of care, but from the friction of manual bookkeeping. When loan officers and relationship managers juggle spreadsheets, carrier rules, and holiday calendars by hand, hours vanish and compliance breaks.
             </p>
           </div>
         </div>
 
-        <div class="comparison-grid">
-          <div class="comparison-box">
-            <span class="mono-kicker" style="color: var(--orange);">THE STATUS QUO</span>
-            <h3>Fragmented & High-Risk</h3>
-            <ul>
-              <li>Mass blasting without documented channel consent</li>
-              <li>Stale or hallucinated mortgage rates quoted to clients</li>
-              <li>Black-box chatbots guessing answers without sources</li>
-              <li>Lack of time-zone awareness and quiet-hours violations</li>
-              <li>Disjointed SMS and WhatsApp setups with no audit trail</li>
-            </ul>
+        <!-- Architectural Itemised Ledger Card -->
+        <div class="ledger-card" id="ledger-card-table">
+          <div class="ledger-header">
+            <span class="ledger-col-id">CODE</span>
+            <span class="ledger-col-task">MANUAL RELATIONSHIP WORKFLOW</span>
+            <span class="ledger-col-impact">OPERATIONAL RISK</span>
+            <span class="ledger-col-time">HOURS / WEEK</span>
           </div>
-          <div class="comparison-box">
-            <span class="mono-kicker" style="color: var(--lime-dark);">THE KINDRED STANDARD</span>
-            <h3>Considered & Compliant</h3>
-            <ul>
-              <li>Documented consent timestamp & source stored per contact</li>
-              <li>Rates bound to compliance-approved weekly snapshots</li>
-              <li>Constrained AI suggestions citing verified internal sources</li>
-              <li>Automatic quiet-hours and holiday calendar enforcement</li>
-              <li>Unified two-way inbox with instant STOP opt-out suppression</li>
-            </ul>
+
+          <div class="ledger-row" data-hours="3.5">
+            <span class="ledger-id">001 // RECALL</span>
+            <div class="ledger-task">
+              <strong>Remembering every festival, birthday & loan anniversary</strong>
+              <div class="ledger-subtext">Tracking 100 borrower loan dates and cultural holidays in spreadsheets</div>
+            </div>
+            <span class="ledger-risk" style="color: var(--orange);">Missed touchpoints</span>
+            <span class="ledger-time"><b class="ledger-num">3.5</b> hrs/wk</span>
+          </div>
+
+          <div class="ledger-row" data-hours="4.0">
+            <span class="ledger-id">002 // CONSENT</span>
+            <div class="ledger-task">
+              <strong>Checking carrier opt-out lists and STOP replies across silos</strong>
+              <div class="ledger-subtext">Cross-referencing suppression requests with CRM lead records</div>
+            </div>
+            <span class="ledger-risk" style="color: var(--red);">TCPA regulatory fines</span>
+            <span class="ledger-time"><b class="ledger-num">4.0</b> hrs/wk</span>
+          </div>
+
+          <div class="ledger-row" data-hours="2.5">
+            <span class="ledger-id">003 // ROUTING</span>
+            <div class="ledger-task">
+              <strong>Matching recipient to verified channel (SMS Carrier vs WhatsApp Meta)</strong>
+              <div class="ledger-subtext">Verifying consent evidence, country codes, and E.164 formats</div>
+            </div>
+            <span class="ledger-risk" style="color: var(--orange);">Delivery rejection</span>
+            <span class="ledger-time"><b class="ledger-num">2.5</b> hrs/wk</span>
+          </div>
+
+          <div class="ledger-row" data-hours="5.0">
+            <span class="ledger-id">004 // COMPLIANCE</span>
+            <div class="ledger-task">
+              <strong>Verifying secondary mortgage benchmark rates before quoting</strong>
+              <div class="ledger-subtext">Checking compliance bulletins, points, APR disclosures, and broker sign-offs</div>
+            </div>
+            <span class="ledger-risk" style="color: var(--red);">Audit failure & penalties</span>
+            <span class="ledger-time"><b class="ledger-num">5.0</b> hrs/wk</span>
+          </div>
+
+          <div class="ledger-row" data-hours="6.5">
+            <span class="ledger-id">005 // REPLIES</span>
+            <div class="ledger-task">
+              <strong>Following up on replies without hallucinating personalized credit advice</strong>
+              <div class="ledger-subtext">Drafting individually tailored responses while adhering to licensing boundaries</div>
+            </div>
+            <span class="ledger-risk" style="color: var(--muted-olive);">Unlicensed advice risk</span>
+            <span class="ledger-time"><b class="ledger-num">6.5</b> hrs/wk</span>
+          </div>
+
+          <!-- Total Hours Row with Strike-Through -->
+          <div class="ledger-total-row">
+            <div class="ledger-total-label">
+              <span>SUM TOTAL MANUAL EFFORT:</span>
+              <span class="ledger-total-calc" id="ledger-total-calc">21.5 HRS / WEEK</span>
+            </div>
+            <div class="ledger-strike-box">
+              <span class="ledger-strike-line" id="ledger-strike-line"></span>
+              <span class="ledger-strikethrough-badge" id="ledger-strikethrough-badge">ELIMINATED</span>
+            </div>
+          </div>
+
+          <!-- Resolution Banner -->
+          <div class="ledger-resolution-banner" id="ledger-resolution-banner">
+            <div class="resolution-tag">
+              <span class="resolution-signal-tick">✓</span>
+              <span>KINDRED RELATIONSHIP LAYER</span>
+            </div>
+            <div class="resolution-heading">
+              Automated, with a human in the loop: <strong>0.5 hrs / week</strong>
+            </div>
+            <div class="resolution-sub">
+              Pre-approved templates, instant STOP opt-out suppression, and weekly verified mortgage snapshots do the rest.
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 03: PRODUCT / HOW IT WORKS — "THE JOURNEY OF ONE MESSAGE"
+           ========================================================================== -->
+      <section class="journey-section" id="section-message-journey">
+        <div class="journey-header">
+          <div class="section-kicker">03 / HOW IT WORKS</div>
+          <h2>The Journey of One Message.</h2>
+          <p class="journey-subtitle">
+            Follow the Diwali pilot greeting as it traverses Kindred’s six verification stations — from documented consent to compliant delivery.
+          </p>
+        </div>
+
+        <!-- Pinned Horizontal / Stacked Timeline Track -->
+        <div class="journey-track" id="journey-track">
+          <!-- Scroll-Drawn Glowing Lime Thread (SVG) -->
+          <svg class="journey-thread-svg" viewBox="0 0 1200 4" fill="none" preserveAspectRatio="none">
+            <line x1="0" y1="2" x2="1200" y2="2" stroke="rgba(110, 123, 63, 0.25)" stroke-width="2" />
+            <line id="journey-active-line" x1="0" y1="2" x2="0" y2="2" stroke="var(--lime)" stroke-width="3" stroke-linecap="round" />
+          </svg>
+
+          <!-- 6 Verification Stations -->
+          <div class="journey-stations-grid">
+            <!-- Station 001 -->
+            <div class="journey-station" data-station="1">
+              <div class="station-top">
+                <span class="station-num">STATION 001</span>
+                <span class="station-tag">OPT-IN AUDIT</span>
+              </div>
+              <h3 class="station-title">Consent Verified</h3>
+              <p class="station-detail">TCPA § 227 documented express consent record verified from initial consultation agreement.</p>
+              
+              <!-- Micro-Visualization 1 -->
+              <div class="station-micro-vis">
+                <div class="micro-badge-verified">
+                  <span class="vis-check">✓</span>
+                  <span>Consent: Signed Client Agreement</span>
+                </div>
+                <div class="micro-meta-mono">E.164: +1 (555) 234-0101 · Aarav S.</div>
+              </div>
+            </div>
+
+            <!-- Station 002 -->
+            <div class="journey-station" data-station="2">
+              <div class="station-top">
+                <span class="station-num">STATION 002</span>
+                <span class="station-tag">REGISTRY CHECK</span>
+              </div>
+              <h3 class="station-title">Suppression Checked</h3>
+              <p class="station-detail">Global tenant suppression list queried immediately prior to dispatch queueing.</p>
+
+              <!-- Micro-Visualization 2 -->
+              <div class="station-micro-vis">
+                <div class="micro-badge-shield">
+                  <span class="vis-shield">⚿</span>
+                  <span>Suppression Status: Clear (0 STOPs)</span>
+                </div>
+                <div class="micro-meta-mono">Carrier Callback Window: Armed</div>
+              </div>
+            </div>
+
+            <!-- Station 003 -->
+            <div class="journey-station" data-station="3">
+              <div class="station-top">
+                <span class="station-num">STATION 003</span>
+                <span class="station-tag">TIMEZONE LOCK</span>
+              </div>
+              <h3 class="station-title">Quiet Hours Respected</h3>
+              <p class="station-detail">Recipient timezone checked. Dispatch prohibited between 8:00 PM and 9:00 AM local time.</p>
+
+              <!-- Micro-Visualization 3 -->
+              <div class="station-micro-vis">
+                <div class="micro-dial-wrap">
+                  <span class="dial-time-safe">09:30 AM EST</span>
+                  <span class="dial-status-pill">Safe Window</span>
+                </div>
+                <div class="micro-meta-mono">Recipient: America/New_York (EST)</div>
+              </div>
+            </div>
+
+            <!-- Station 004 -->
+            <div class="journey-station" data-station="4">
+              <div class="station-top">
+                <span class="station-num">STATION 004</span>
+                <span class="station-tag">GSM-7 SEGMENTS</span>
+              </div>
+              <h3 class="station-title">Message Composed</h3>
+              <p class="station-detail">Diwali greeting drafted with GSM-7 character encoding and mandatory STOP opt-out suffix.</p>
+
+              <!-- Micro-Visualization 4 -->
+              <div class="station-micro-vis">
+                <div class="micro-chars-wrap">
+                  <span class="chars-pill">147 Chars</span>
+                  <span class="segments-pill">1 SMS Segment</span>
+                </div>
+                <div class="micro-meta-mono">Zero character truncation risk</div>
+              </div>
+            </div>
+
+            <!-- Station 005 -->
+            <div class="journey-station" data-station="5">
+              <div class="station-top">
+                <span class="station-num">STATION 005</span>
+                <span class="station-tag" style="color: var(--soft-clay);">HUMAN SIGN-OFF</span>
+              </div>
+              <h3 class="station-title">Human Approval</h3>
+              <p class="station-detail">Compliance officer dual sign-off verifies festival greeting contains no speculative rate promises.</p>
+
+              <!-- Micro-Visualization 5: Soft Clay Seal -->
+              <div class="station-micro-vis">
+                <div class="micro-approval-stamp">
+                  <div class="stamp-inner">
+                    <span class="stamp-star">✳</span>
+                    <span>APPROVED // RACHEL ADAMS</span>
+                  </div>
+                  <div class="stamp-sub">Compliance Officer · Immutably Locked</div>
+                </div>
+              </div>
+            </div>
+
+            <!-- Station 006 -->
+            <div class="journey-station" data-station="6">
+              <div class="station-top">
+                <span class="station-num">STATION 006</span>
+                <span class="station-tag">2-WAY INBOX</span>
+              </div>
+              <h3 class="station-title">Delivered & Replied</h3>
+              <p class="station-detail">Telnyx webhook reports 200 OK delivery. Borrower reply routes to two-way inbox with AI recommendation.</p>
+
+              <!-- Micro-Visualization 6 -->
+              <div class="station-micro-vis">
+                <div class="micro-reply-bubble">
+                  <span class="reply-sender">Aarav Sharma:</span> "Thank you! What are conforming rates right now?"
+                </div>
+                <div class="micro-meta-mono">AI Suggestion: Ready citing Nov 6 sheet</div>
+              </div>
+            </div>
           </div>
         </div>
       </section>
