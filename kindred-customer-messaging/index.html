@@ -60,86 +60,116 @@
     </header>
 
     <main>
-      <!-- Hero Section -->
-      <section class="hero-section">
-        <div class="hero-content">
-          <div class="hero-eyebrow">
-            <span>01 / THE CONVERSATION LAYER</span>
-            <span class="hero-eyebrow-divider"></span>
-            <span>BUILT FOR RELATIONSHIPS</span>
+      <!-- Hero Section with Scroll-Dive Container -->
+      <section class="hero-scroll-container" id="hero-scroll-track">
+        <div class="hero-section is-loaded" id="hero-pinned-stage">
+          <div class="hero-content">
+            <div class="hero-eyebrow" id="hero-eyebrow-line">
+              <span class="mono-kicker" id="hero-typewriter-kicker">01 // THE CONVERSATION LAYER</span>
+              <span class="hero-eyebrow-divider"></span>
+              <span class="mono-kicker" style="color: var(--muted-olive);">BUILT FOR RELATIONSHIPS</span>
+            </div>
+
+            <h1 class="hero-title">
+              <span class="mask-line"><span class="line-inner">Every customer</span></span>
+              <span class="mask-line"><span class="line-inner"><em class="text-reveal-emphasis">conversation,</em></span></span>
+              <span class="mask-line"><span class="line-inner">thoughtfully connected.</span></span>
+            </h1>
+
+            <p class="hero-description">
+              One intelligent platform to manage customer relationships, automate meaningful communication and build lasting connections through SMS and WhatsApp.
+            </p>
+
+            <div class="hero-actions">
+              <a class="button-dark btn-magnetic" href="#/dashboard" data-route="/dashboard">
+                <span>Explore the platform</span> <span class="arrow-diag">↗</span>
+              </a>
+              <a class="button-light btn-magnetic" href="#/signup" data-route="/signup">
+                <span>Get started</span> <span class="plus-icon">＋</span>
+              </a>
+            </div>
+
+            <div class="hero-footnote">
+              <span class="hero-footnote-signal">✳</span>
+              <span>FROM 10 TEST CONTACTS TO 5,000 CUSTOMER RELATIONSHIPS</span>
+            </div>
           </div>
 
-          <h1 class="hero-title">
-            Every customer<br><em>conversation,</em><br>thoughtfully connected.
-          </h1>
+          <!-- Hero Visual Art / Living Composition -->
+          <div class="hero-visual" id="hero-visual-stage">
+            <div class="hero-visual-topline">
+              <span>RELATIONSHIP ARCHITECTURE / 001</span>
+              <span class="live-pulse-indicator"><span class="signal-dot"></span> LIVE CONCEPT</span>
+            </div>
 
-          <p class="hero-description">
-            One intelligent platform to manage customer relationships, automate meaningful communication and build lasting connections through SMS and WhatsApp.
-          </p>
+            <div class="hero-orbit-one"></div>
+            <div class="hero-orbit-two"></div>
+            <div class="hero-sun"></div>
 
-          <div class="hero-actions">
-            <a class="button-dark" href="#/dashboard" data-route="/dashboard">
-              Explore the platform <span>↗</span>
-            </a>
-            <a class="button-light" href="#/signup" data-route="/signup">
-              Get started <span>＋</span>
-            </a>
-          </div>
+            <!-- Dark Mortgage Benchmark Card (Back Parallax) -->
+            <div class="hero-card-back" id="hero-parallax-back">
+              <span class="mono-kicker" style="color: #c7d89b;">MORTGAGE BENCHMARK</span>
+              <div>
+                <div class="stat-number-bold">6.125%</div>
+                <div class="stat-sub-label">30-Yr Fixed Conforming</div>
+              </div>
+              <div class="benchmark-footer-mark">
+                <span>VERIFIED SNAPSHOT</span>
+                <span style="font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; color: var(--lime);">k.</span>
+              </div>
+            </div>
 
-          <div class="hero-footnote">
-            <span style="color: var(--lime-dark); font-size: 1rem;">✳</span>
-            FROM 10 TEST CONTACTS TO 5,000 CUSTOMER RELATIONSHIPS
+            <!-- Ivory Kindred Advisory Card (Front / Scroll-Dive Target) -->
+            <div class="hero-card-front" id="hero-dive-card">
+              <div class="dive-card-header">
+                <span class="dive-card-avatar">K</span>
+                <div class="dive-card-meta">
+                  <span class="dive-card-sender">Kindred Advisory</span>
+                  <span class="dive-card-channel">SMS Verified Channel</span>
+                </div>
+                <span class="live-dot-green">●</span>
+              </div>
+
+              <div class="dive-card-body">
+                <div class="dive-card-greeting">
+                  A season of<br><em>light & new</em><br>beginnings.
+                </div>
+                <div class="dive-card-preview-text">
+                  "Wishing you and your family a very happy Diwali! May the festival bring light, happiness and prosperity."
+                </div>
+              </div>
+
+              <div class="dive-card-footer">
+                <span class="dive-card-tag">DIWALI PILOT</span>
+                <span class="dive-card-counter"><b id="hero-sent-count-num">10</b> / 10 SENT</span>
+              </div>
+            </div>
+
+            <!-- Floating Orbital Badges -->
+            <div class="hero-floating-badge badge-a orbit-chip-1" id="hero-orbit-chip-1">
+              <span class="badge-icon-arrow">↗</span>
+              <div>
+                <b>Right time, right person</b>
+                <div class="badge-sub-text">Quiet hours enforced</div>
+              </div>
+            </div>
+
+            <div class="hero-floating-badge badge-b orbit-chip-2" id="hero-orbit-chip-2">
+              <span class="badge-icon-star">✳</span>
+              <div>
+                <b>Human-in-the-loop</b>
+                <div class="badge-sub-text">Constrained smart replies</div>
+              </div>
+            </div>
           </div>
         </div>
 
-        <!-- Hero Visual Art -->
-        <div class="hero-visual">
-          <div class="hero-visual-topline">
-            <span>RELATIONSHIP ARCHITECTURE / 001</span>
-            <span>LIVE CONCEPT</span>
-          </div>
-          <div class="hero-orbit-one"></div>
-          <div class="hero-orbit-two"></div>
-          <div class="hero-sun"></div>
-
-          <div class="hero-card-back">
-            <span class="mono-kicker" style="color: #c7d89b;">MORTGAGE BENCHMARK</span>
-            <div>
-              <div style="font-family: var(--font-display); font-size: 1.5rem; font-weight: 700; color: #fff;">6.125%</div>
-              <div style="font-size: 0.6875rem; color: #a5ad9d;">30-Yr Fixed Conforming</div>
-            </div>
-            <span style="font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; color: var(--lime);">K.</span>
-          </div>
-
-          <div class="hero-card-front">
-            <div style="display: flex; align-items: center; gap: 8px;">
-              <span style="width: 22px; height: 22px; border-radius: 50%; background: var(--lime); display: grid; place-items: center; font-size: 0.6875rem; font-weight: 700;">K</span>
-              <span style="font-size: 0.75rem; font-weight: 600;">Kindred Advisory</span>
-              <span style="margin-left: auto; color: var(--green); font-size: 0.625rem;">●</span>
-            </div>
-            <div style="font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; line-height: 1.15; color: var(--ink);">
-              A season of<br>light & new<br>beginnings.
-            </div>
-            <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.625rem; color: var(--muted);">
-              <span>DIWALI PILOT</span>
-              <span>10 / 10 SENT</span>
-            </div>
-          </div>
-
-          <div class="hero-floating-badge badge-a">
-            <span style="color: var(--lime-dark); font-weight: 700;">↗</span>
-            <div>
-              <b>Right time, right person</b>
-              <div style="font-size: 0.6875rem; color: var(--muted);">Quiet hours enforced</div>
-            </div>
-          </div>
-
-          <div class="hero-floating-badge badge-b">
-            <span style="color: var(--lime-dark); font-weight: 700;">✳</span>
-            <div>
-              <b>Human-in-the-loop</b>
-              <div style="font-size: 0.6875rem; color: var(--muted);">Constrained smart replies</div>
-            </div>
+        <!-- Scroll-to-dive Cue at bottom of Hero -->
+        <div class="scroll-dive-cue" id="scroll-dive-cue">
+          <span class="mono-kicker">[ SCROLL TO DIVE IN ]</span>
+          <div class="dive-cue-anim">
+            <span class="dive-cue-line"></span>
+            <span class="dive-cue-arrow">↓</span>
           </div>
         </div>
       </section>
@@ -1801,6 +1831,11 @@
       </form>
     </div>
   </div>
+
+  <!-- Motion & Animation Vendor Libraries -->
+  <script src="js/vendor/lenis.min.js"></script>
+  <script src="js/vendor/gsap.min.js"></script>
+  <script src="js/vendor/ScrollTrigger.min.js"></script>
 
   <!-- JavaScript Modules in Dependency Order -->
   <script src="js/mock-data.js"></script>

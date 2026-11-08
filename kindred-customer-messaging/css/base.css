@@ -4,44 +4,63 @@
    ========================================================================== */
 
 :root {
-  /* Kindred Signature Color System */
-  --paper: #f4f3ee;             /* Warm cream / off-white main background */
-  --paper-warm: #f8f7f2;        /* Subtle warm card background */
-  --paper-card: #fafaf6;        /* Clean card surface */
-  --paper-card-alt: #f0f1e9;    /* Muted element surface */
-  --paper-dark: #222720;        /* Deep charcoal / forest dark surface */
-  --paper-dark-active: #2f362c; /* Active state for dark surfaces */
+  /* Kindred Flagship Color System (Refined Editorial Tokens) */
+  --ivory: #F6F4EC;             /* Signature Ivory main page background */
+  --paper-panel: #EFEDE1;       /* Warm paper panels, inset cards & proof sheets */
+  --charcoal: #1E2320;          /* Primary charcoal typography & inverted chapter base */
+  --olive-black: #232A22;       /* Deep olive-black (dashboard family & audit chapter) */
+  --paper-card: #FFFFFF;        /* Crisp card surface */
+  --paper-card-alt: #F0EEE4;    /* Muted element surface */
 
-  /* Ink & Typography */
-  --ink: #20231f;               /* Primary charcoal body text */
-  --ink-secondary: #55594f;     /* Secondary charcoal text */
-  --ink-tertiary: #686d62;      /* Muted readable text */
-  --muted: #777b70;             /* Metadata and placeholder text */
-  --muted-light: #8a907f;       /* Hairline secondary labels */
-  --line: #d9d9cf;              /* Delicate hairline dividers */
-  --line-strong: #bdc1b4;       /* Emphasized borders */
-  --line-dark: #384236;         /* Dividers on dark surfaces */
+  /* Aliases for backwards compatibility */
+  --paper: var(--ivory);
+  --paper-warm: var(--paper-panel);
+  --paper-dark: var(--olive-black);
+  --paper-dark-active: #2F362C;
 
-  /* Muted Olive & Accent Tones */
-  --lime: #d6ed72;              /* Primary Kindred lime accent */
-  --lime-hover: #c5dc5f;        /* Lime hover state */
-  --lime-dark: #8fa74c;         /* Olive green accent */
-  --lime-subtle: #e5edcf;       /* Gentle lime tint */
-  --lime-soft: #f4f8e6;         /* Ultra-light lime background */
+  /* Ink & Typography Hierarchy */
+  --ink: var(--charcoal);
+  --ink-secondary: #4E544A;     /* Secondary charcoal text */
+  --ink-tertiary: #686D62;      /* Muted readable text */
+  --muted: #7E8476;             /* Metadata and placeholder text */
+  --muted-light: #9DA393;       /* Hairline secondary labels */
+  --line: #DBD8CB;              /* Delicate hairline dividers */
+  --line-strong: #BCB8A8;       /* Emphasized borders & crop marks */
+  --line-dark: #374135;         /* Dividers on dark surfaces */
+
+  /* Accents & Signals */
+  --lime: #D9EE6F;              /* Signal lime: live status, hover ticks, logo slash */
+  --lime-hover: #C6DC58;
+  --lime-dark: #8FA74C;
+  --lime-subtle: #E8F0CF;
+  --muted-olive: #6E7B3F;       /* Secondary data marks & regulatory badges */
+  --soft-clay: #C8744F;         /* Warm accent for human approval moments */
+  --soft-clay-subtle: #F6EAE4;
 
   /* Status Indicators */
-  --orange: #d77a4e;            /* Warm status / draft / pending */
-  --orange-subtle: #faebe2;
-  --green: #4f8056;             /* Verified / active status */
-  --green-subtle: #e4eee1;
-  --red: #c04c36;               /* Suppressed / error status */
-  --red-subtle: #fbeae7;
+  --orange: #D77A4E;
+  --orange-subtle: #FAECE4;
+  --green: #487A50;
+  --green-subtle: #E2ECE0;
+  --red: #C04C36;
+  --red-subtle: #FBEAE7;
 
   /* Typography Scales */
   --font-sans: "DM Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
   --font-display: "Manrope", sans-serif;
   --font-mono: "DM Mono", ui-monospace, Menlo, Monaco, monospace;
-  --font-serif: Georgia, "Times New Roman", serif;
+  --font-serif: Georgia, "Playfair Display", "Times New Roman", serif;
+
+  /* Fluid Display Headline Scale */
+  --font-size-hero: clamp(3.2rem, 11vw, 8.5rem);
+  --font-size-h2: clamp(2.2rem, 5.5vw, 4.2rem);
+  --font-size-h3: clamp(1.5rem, 3.2vw, 2.4rem);
+
+  /* Precise Editorial Tracking */
+  --tracking-display: -0.045em;
+  --tracking-tight: -0.03em;
+  --tracking-normal: -0.01em;
+  --tracking-mono: 0.12em;
 
   /* Spacing Scale */
   --space-1: 4px;
@@ -54,15 +73,19 @@
   --space-10: 40px;
   --space-12: 48px;
   --space-16: 64px;
+  --space-20: 80px;
+  --space-24: 96px;
 
   /* Elevation Shadows */
-  --shadow-sm: 0 1px 3px rgba(32, 35, 31, 0.04);
-  --shadow-md: 0 4px 14px rgba(32, 35, 31, 0.07);
-  --shadow-lg: 0 16px 36px rgba(32, 35, 31, 0.10);
+  --shadow-sm: 0 1px 3px rgba(30, 35, 32, 0.04);
+  --shadow-md: 0 4px 16px rgba(30, 35, 32, 0.06);
+  --shadow-lg: 0 20px 48px rgba(30, 35, 32, 0.09);
 
-  /* Transitions */
-  --ease-fast: 0.15s ease;
-  --ease-normal: 0.25s ease;
+  /* Precision Motion Curves */
+  --ease-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-smooth: cubic-bezier(0.4, 0, 0.2, 1);
+  --ease-fast: 0.15s var(--ease-smooth);
+  --ease-normal: 0.25s var(--ease-expo);
 }
 
 /* ==========================================================================

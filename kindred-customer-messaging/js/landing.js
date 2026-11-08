@@ -43,10 +43,152 @@ window.KINDRED_LANDING = (() => {
     }, 30);
   }
 
+  let lenisInstance = null;
+
+  /**
+   * Initialize Lenis smooth scroll and connect with GSAP ScrollTrigger
+   */
+  function initSmoothScroll() {
+    if (typeof Lenis === "undefined") return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    try {
+      lenisInstance = new Lenis({
+        duration: 1.15,
+        easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
+        orientation: "vertical",
+        gestureOrientation: "vertical",
+        smoothWheel: true,
+        wheelMultiplier: 0.9,
+        touchMultiplier: 1.5
+      });
+
+      function raf(time) {
+        if (lenisInstance) lenisInstance.raf(time);
+        requestAnimationFrame(raf);
+      }
+      requestAnimationFrame(raf);
+
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+        lenisInstance.on("scroll", ScrollTrigger.update);
+        gsap.ticker.add((time) => {
+          if (lenisInstance) lenisInstance.raf(time * 1000);
+        });
+        gsap.ticker.lagSmoothing(0);
+      }
+      document.documentElement.classList.add("lenis");
+    } catch (e) {
+      console.warn("Lenis initialization skipped:", e);
+    }
+  }
+
+  /**
+   * Initialize Hero living composition, typewriter, counter & mouse parallax
+   */
+  function initHeroInteractions() {
+    const heroStage = $("#hero-pinned-stage");
+    if (heroStage) {
+      setTimeout(() => heroStage.classList.add("is-loaded"), 80);
+    }
+
+    // Typewriter effect on hero kicker
+    const kicker = $("#hero-typewriter-kicker");
+    if (kicker) {
+      const fullText = "01 // THE CONVERSATION LAYER";
+      kicker.textContent = "";
+      let idx = 0;
+      const typeTimer = setInterval(() => {
+        if (idx < fullText.length) {
+          kicker.textContent += fullText[idx];
+          idx++;
+        } else {
+          clearInterval(typeTimer);
+        }
+      }, 35);
+    }
+
+    // Animated Ticking Counter (0 -> 10)
+    const counterEl = $("#hero-sent-count-num");
+    if (counterEl) {
+      let count = 0;
+      const tickTimer = setInterval(() => {
+        count++;
+        counterEl.textContent = count;
+        if (count >= 10) clearInterval(tickTimer);
+      }, 85);
+    }
+
+    // Gentle Parallax on Mouse Move
+    const visual = $("#hero-visual-stage");
+    const cardBack = $("#hero-parallax-back");
+    const cardFront = $("#hero-dive-card");
+    if (visual && cardBack && cardFront && window.innerWidth > 900) {
+      on(visual, "mousemove", (e) => {
+        const rect = visual.getBoundingClientRect();
+        const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+        const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+        cardBack.style.transform = `rotate(-10deg) translate(${x * -6}px, ${y * -6}px)`;
+        cardFront.style.transform = `rotate(6deg) translate(${x * 8}px, ${y * 8}px)`;
+      });
+      on(visual, "mouseleave", () => {
+        cardBack.style.transform = "rotate(-10deg) translate(0px, 0px)";
+        cardFront.style.transform = "rotate(6deg) translate(0px, 0px)";
+      });
+    }
+
+    // Hero-to-Demo Scroll-Dive Interaction
+    initHeroScrollDive();
+  }
+
+  /**
+   * Hero Scroll-Dive Transition via GSAP ScrollTrigger & Lenis
+   */
+  function initHeroScrollDive() {
+    if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || window.innerWidth <= 900) return;
+    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+
+    ScrollTrigger.create({
+      trigger: "#hero-scroll-track",
+      start: "top top",
+      end: "bottom bottom",
+      scrub: 0.6,
+      onUpdate: (self) => {
+        const p = self.progress;
+        const heroContent = $(".hero-content");
+        const cardBack = $("#hero-parallax-back");
+        const heroSun = $(".hero-sun");
+        const orbit1 = $(".hero-orbit-one");
+        const orbit2 = $(".hero-orbit-two");
+        const chips = $$(".hero-floating-badge");
+        const diveCard = $("#hero-dive-card");
+        const cue = $("#scroll-dive-cue");
+
+        if (heroContent) heroContent.style.opacity = Math.max(0, 1 - p * 2.2);
+        if (cardBack) cardBack.style.opacity = Math.max(0, 1 - p * 2.5);
+        if (heroSun) heroSun.style.opacity = Math.max(0, 1 - p * 3);
+        if (orbit1) orbit1.style.opacity = Math.max(0, 1 - p * 3);
+        if (orbit2) orbit2.style.opacity = Math.max(0, 1 - p * 3);
+        chips.forEach(c => c.style.opacity = Math.max(0, 1 - p * 3));
+        if (cue) cue.style.opacity = Math.max(0, 1 - p * 4);
+
+        if (diveCard) {
+          const scale = 1 + p * 1.35;
+          const rot = 6 * (1 - p);
+          const transY = p * 40;
+          diveCard.style.transform = `rotate(${rot}deg) scale(${scale}) translateY(${transY}px)`;
+        }
+      }
+    });
+  }
+
   /**
    * Initialize landing page interactions and motion observers
    */
   function init() {
+    initSmoothScroll();
+    initHeroInteractions();
+
     // 1. Mobile navigation drawer toggle
     const menuToggle = $(".nav-toggle-btn");
     const mainNav = $(".main-nav");
