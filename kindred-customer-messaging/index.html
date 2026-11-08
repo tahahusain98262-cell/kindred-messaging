@@ -426,63 +426,295 @@
         </div>
       </section>
 
-      <!-- Core Features Grid -->
-      <section class="section-editorial">
-        <div class="section-kicker">03 / PLATFORM CAPABILITIES</div>
-        <div style="max-width: 680px; margin-bottom: 48px;">
-          <h2>Engineered for trust.<br><em>Designed for relationships.</em></h2>
-          <p style="color: var(--ink-secondary); margin-top: 16px;">
-            Eight foundational modules purpose-built for relationship-driven businesses, mortgage lenders, and financial advisory teams.
-          </p>
-        </div>
-
-        <div class="features-grid">
-          <div class="feature-box">
-            <div class="feature-box-icon">✎</div>
-            <h4>Smart SMS Messaging</h4>
-            <p>Send compliant carrier text messages with live GSM-7 character/segment estimation and delivery receipts.</p>
+      <!-- ==========================================================================
+           SECTION 04: THE FEATURES INDEX (Editorial Numbered Rows & Live Preview)
+           ========================================================================== -->
+      <section class="section-editorial index-section" id="section-features-index">
+        <div class="index-section-header">
+          <div>
+            <div class="section-kicker">04 / THE SYSTEM INDEX</div>
+            <h2>Tooling for trust.<br><em>Built for precision.</em></h2>
           </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">◎</div>
-            <h4>WhatsApp Business</h4>
-            <p>Official Meta template integration for verified outbound greetings and high-touch customer conversations.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">▦</div>
-            <h4>Customer Directory</h4>
-            <p>E.164 phone normalization, timezone awareness, and multi-channel consent records stored with evidence source.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">⌁</div>
-            <h4>Automated Follow-ups</h4>
-            <p>Schedule seasonal festival greetings, loan purchase anniversaries, and client milestone messages with ease.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">✳</div>
-            <h4>AI-Assisted Replies</h4>
-            <p>Classify inbound inquiries, suggest verified answers citing internal documents, and escalate sensitive topics.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">↗</div>
-            <h4>Campaign Studio</h4>
-            <p>Pre-send checklist, recipient snapshot locking, immutable approval states, and safe dry-run sending simulations.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">⌑</div>
-            <h4>Mortgage Knowledge Base</h4>
-            <p>Verified weekly benchmark rates approved by compliance. AI never invents rates or autonomous financial advice.</p>
-          </div>
-          <div class="feature-box">
-            <div class="feature-box-icon">⚿</div>
-            <h4>Compliance Controls</h4>
-            <p>Immediate STOP opt-out suppression, quiet-hours locking, and complete immutable audit trail for every action.</p>
+          <div class="index-header-meta">
+            <span class="mono-kicker" style="color: var(--muted-olive);">[ 006 CORE CAPABILITIES ]</span>
+            <div class="kbd-shortcut-hint">
+              <span>Quick jump:</span>
+              <kbd class="kbd-key">Ctrl</kbd>+<kbd class="kbd-key">K</kbd>
+            </div>
           </div>
         </div>
 
-        <div style="margin-top: 32px; text-align: center;">
-          <a href="#/features" class="button-dark" data-route="/features">
-            Explore All Features in Detail <span>↗</span>
-          </a>
+        <!-- 12-Column Editorial Index with Sticky Interactive Artifact -->
+        <div class="features-index-container">
+          <!-- Left: Numbered Editorial Rows (7 Cols) -->
+          <div class="features-rows-list" id="features-rows-list">
+            <!-- Row 001 -->
+            <div class="feature-row active" data-feature="inbox">
+              <div class="feature-row-top">
+                <span class="feature-row-num">001</span>
+                <span class="feature-row-tag">TWO-WAY MESSAGING</span>
+              </div>
+              <h3 class="feature-row-title">Two-Way Relationship Inbox</h3>
+              <p class="feature-row-desc">
+                Unified relationship conversations across SMS and WhatsApp. Inbound inquiries appear in real-time with verified rate citations and one-click staff handoff.
+              </p>
+            </div>
+
+            <!-- Row 002 -->
+            <div class="feature-row" data-feature="compliance">
+              <div class="feature-row-top">
+                <span class="feature-row-num">002</span>
+                <span class="feature-row-tag">CONSENT PROTOCOL</span>
+              </div>
+              <h3 class="feature-row-title">Compliance by Default</h3>
+              <p class="feature-row-desc">
+                Documented consent timestamps and proof sources stored per borrower. Immediate STOP opt-out suppression prevents accidental TCPA violations.
+              </p>
+            </div>
+
+            <!-- Row 003 -->
+            <div class="feature-row" data-feature="sms">
+              <div class="feature-row-top">
+                <span class="feature-row-num">003</span>
+                <span class="feature-row-tag">CARRIER DELIVERY</span>
+              </div>
+              <h3 class="feature-row-title">Smart SMS with GSM-7 Estimation</h3>
+              <p class="feature-row-desc">
+                Real-time segment breakdown (147 chars · 1 segment) prevents costly double-billing and broken emoji encodings before dispatch.
+              </p>
+            </div>
+
+            <!-- Row 004 -->
+            <div class="feature-row" data-feature="whatsapp">
+              <div class="feature-row-top">
+                <span class="feature-row-num">004</span>
+                <span class="feature-row-tag">META APPROVED</span>
+              </div>
+              <h3 class="feature-row-title">Official WhatsApp Business API</h3>
+              <p class="feature-row-desc">
+                Pre-approved Meta holiday and rate snapshot templates. Zero deviation, cryptographic authentication, and high-trust verified green marks.
+              </p>
+            </div>
+
+            <!-- Row 005 -->
+            <div class="feature-row" data-feature="rates">
+              <div class="feature-row-top">
+                <span class="feature-row-num">005</span>
+                <span class="feature-row-tag">RATE BENCHMARKS</span>
+              </div>
+              <h3 class="feature-row-title">Mortgage Knowledge Guardrails</h3>
+              <p class="feature-row-desc">
+                Weekly conforming benchmarks (6.125% 30-yr fixed) signed off by compliance officers. AI suggestions strictly cite internal tables and never hallucinate credit advice.
+              </p>
+            </div>
+
+            <!-- Row 006 -->
+            <div class="feature-row" data-feature="audit">
+              <div class="feature-row-top">
+                <span class="feature-row-num">006</span>
+                <span class="feature-row-tag">7-YEAR LOGGING</span>
+              </div>
+              <h3 class="feature-row-title">Cryptographic Action Trail</h3>
+              <p class="feature-row-desc">
+                Every preview, template approval, delivery status webhook, and opt-out request is recorded chronologically without exposing raw borrower PII.
+              </p>
+            </div>
+          </div>
+
+          <!-- Right: Sticky Morphing Live Mini-Demo Artifact (5 Cols) -->
+          <div class="features-preview-stage">
+            <div class="features-preview-box" id="features-preview-box">
+              <div class="preview-box-header">
+                <span class="mono-kicker" id="preview-box-kicker">// LIVE SYSTEM PREVIEW</span>
+                <span class="live-dot-green">● ARTIFACT</span>
+              </div>
+
+              <!-- Preview State 1: Inbox -->
+              <div class="preview-state-content" data-content="inbox">
+                <div class="mini-inbox-preview">
+                  <div class="mini-inbox-header">
+                    <strong>Aarav Sharma</strong> · <span>Conventional Loan</span>
+                  </div>
+                  <div class="mini-chat-stream">
+                    <div class="mini-msg inbound">"Wishing you a Happy Diwali! Are 30-year conforming rates dropping?"</div>
+                    <div class="mini-msg outbound ai-suggested">
+                      <span class="ai-badge">AI VERIFIED SUGGESTION</span>
+                      "Wishing you a joyous Diwali! Today's conforming 30-yr benchmark is 6.125% (effective Nov 6). Dual officer approval required for scenario quotes."
+                    </div>
+                  </div>
+                  <div class="mini-inbox-actions">
+                    <a href="#/dashboard/inbox" class="button-dark small" data-route="/dashboard/inbox" style="padding: 6px 12px; font-size: 0.6875rem;">Open Full Inbox ↗</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preview State 2: Compliance -->
+              <div class="preview-state-content" data-content="compliance" style="display: none;">
+                <div class="mini-compliance-card">
+                  <div class="mini-record-row">
+                    <span>E.164 Recipient:</span> <b>+1 (555) 234-0101</b>
+                  </div>
+                  <div class="mini-record-row">
+                    <span>Consent Evidence:</span> <b>Signed Client Agreement</b>
+                  </div>
+                  <div class="mini-record-row">
+                    <span>Suppression Check:</span> <b style="color: var(--green);">0 STOPs · Cleared</b>
+                  </div>
+                  <div class="mini-record-row">
+                    <span>Quiet Hours:</span> <b>08:00–21:00 EST Locked</b>
+                  </div>
+                  <div style="margin-top: 14px;">
+                    <a href="#/dashboard/contacts" class="button-dark small" data-route="/dashboard/contacts" style="padding: 6px 12px; font-size: 0.6875rem;">Inspect Directory ↗</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preview State 3: SMS -->
+              <div class="preview-state-content" data-content="sms" style="display: none;">
+                <div class="mini-sms-calculator">
+                  <div class="mini-calc-metric">
+                    <div class="calc-val">147 / 160</div>
+                    <div class="calc-sub">Characters Used</div>
+                  </div>
+                  <div class="mini-calc-metric">
+                    <div class="calc-val" style="color: var(--green);">1 Segment</div>
+                    <div class="calc-sub">GSM-7 Standard Rate</div>
+                  </div>
+                  <div class="calc-encoding-note">// ENCODING: GSM 03.38 7-BIT · ZERO CONCAT SURCHARGES</div>
+                  <div style="margin-top: 14px;">
+                    <a href="#/dashboard/composer" class="button-dark small" data-route="/dashboard/composer" style="padding: 6px 12px; font-size: 0.6875rem;">Launch Composer ↗</a>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Preview State 4: WhatsApp -->
+              <div class="preview-state-content" data-content="whatsapp" style="display: none;">
+                <div class="mini-whatsapp-card">
+                  <div class="wa-template-name">TEMPLATE: diwali_greeting_v1</div>
+                  <div class="wa-template-status">✓ META OFFICIAL PRE-APPROVED</div>
+                  <div class="wa-msg-body">
+                    "Wishing you and your family a joyful Diwali! May the season bring brightness and prosperity. — Kindred Mortgage Partners"
+                  </div>
+                  <div class="wa-meta-optout">Reply STOP to unsubscribe</div>
+                </div>
+              </div>
+
+              <!-- Preview State 5: Rates -->
+              <div class="preview-state-content" data-content="rates" style="display: none;">
+                <div class="mini-rates-card">
+                  <div class="mini-rate-item">
+                    <span>30-Yr Fixed Conforming:</span>
+                    <strong>6.125%</strong>
+                  </div>
+                  <div class="mini-rate-item">
+                    <span>15-Yr Fixed Conforming:</span>
+                    <strong>5.450%</strong>
+                  </div>
+                  <div class="mini-rate-item">
+                    <span>FHA 30-Year Fixed:</span>
+                    <strong>5.750%</strong>
+                  </div>
+                  <div class="rate-source-stamp">// APPROVED BY RACHEL ADAMS (COMPLIANCE)</div>
+                </div>
+              </div>
+
+              <!-- Preview State 6: Audit -->
+              <div class="preview-state-content" data-content="audit" style="display: none;">
+                <div class="mini-audit-card">
+                  <div class="audit-entry"><span>14:22 EST</span> · USER_LOGIN · Rachel Adams</div>
+                  <div class="audit-entry"><span>14:25 EST</span> · RATE_VERIFIED · Snapshot #2026-W45</div>
+                  <div class="audit-entry"><span>14:30 EST</span> · CAMPAIGN_SIMULATED · 10/10 Sent</div>
+                  <div class="audit-entry" style="color: var(--green);"><span>14:32 EST</span> · WEBHOOK_PING_VERIFIED · 200 OK</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ==========================================================================
+           SECTION 05: THE RECEIPT (The INVERTED Chapter — Deep Olive-Black)
+           ========================================================================== -->
+      <section class="inverted-receipt-section" id="section-receipt-audit">
+        <div class="receipt-container">
+          <!-- Receipt Header / Barcode -->
+          <div class="receipt-paper">
+            <div class="receipt-zigzag-top"></div>
+            
+            <div class="receipt-inner">
+              <div class="receipt-topline">
+                <div class="receipt-brand">
+                  <span class="brand-circle-dark">k.</span>
+                  <span>kindred<span class="brand-slash">/</span></span>
+                </div>
+                <div class="receipt-no">
+                  <span>AUDIT RECEIPT NO:</span>
+                  <strong>#KND-2026-PILOT-01</strong>
+                </div>
+              </div>
+
+              <div class="receipt-meta-grid">
+                <div><span>ORGANIZATION:</span> Kindred Lending Partners</div>
+                <div><span>ENVIRONMENT:</span> Verified Pilot Sandbox</div>
+                <div><span>RECIPIENTS:</span> 10 Verified Borrowers</div>
+                <div><span>TIMESTAMP:</span> 2026-11-08 14:00 EST</div>
+              </div>
+
+              <div class="receipt-dashed-line"></div>
+
+              <!-- Ticking Line-by-Line Checklist -->
+              <div class="receipt-checklist" id="receipt-checklist">
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">TCPA 47 U.S.C. § 227:</span>
+                  <span class="receipt-status">DOCUMENTED EXPRESS CONSENT ENFORCED</span>
+                </div>
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">CTIA SHORT CODE RULES:</span>
+                  <span class="receipt-status">MANDATORY HELP / STOP KEYWORDS ARMED</span>
+                </div>
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">QUIET HOURS PROTOCOL:</span>
+                  <span class="receipt-status">8:00 PM – 9:00 AM LOCAL WINDOW LOCKED</span>
+                </div>
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">CARRIER SUPPRESSION:</span>
+                  <span class="receipt-status">INBOUND STOP AUTO-REGISTRY ACTIVE</span>
+                </div>
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">FINANCIAL ADVICE GUARDRAIL:</span>
+                  <span class="receipt-status">SPECULATIVE QUOTING PROHIBITED</span>
+                </div>
+                <div class="receipt-item in-view">
+                  <span class="receipt-tick">✓</span>
+                  <span class="receipt-rule">IMMUTABLE LOGGING:</span>
+                  <span class="receipt-status">7-YEAR CRYPTOGRAPHIC AUDIT PERSISTENCE</span>
+                </div>
+              </div>
+
+              <div class="receipt-dashed-line"></div>
+
+              <!-- Final Permission Stamp -->
+              <div class="receipt-footer-stamp">
+                <div class="receipt-barcode">
+                  <span class="barcode-bars">||| | |||| | ||||| || | |||| ||| | |||||</span>
+                  <span class="barcode-digits">4 7 0 0 2 2 7 9 0 1 0 1</span>
+                </div>
+                
+                <div class="permission-stamp-box">
+                  <span class="stamp-pill">STATUS CERTIFIED</span>
+                  <h4 class="stamp-seal-text">SENT WITH PERMISSION</h4>
+                  <div class="stamp-auth">Signed by Rachel Adams · Compliance Officer</div>
+                </div>
+              </div>
+            </div>
+
+            <div class="receipt-zigzag-bottom"></div>
+          </div>
         </div>
       </section>
 

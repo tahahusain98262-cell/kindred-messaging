@@ -227,6 +227,76 @@ window.KINDRED_LANDING = (() => {
   }
 
   /**
+   * Initialize Features Index row hover & artifact switcher
+   */
+  function initFeaturesIndexHover() {
+    const rows = $$(".feature-row");
+    const previewBox = $("#features-preview-box");
+    const kicker = $("#preview-box-kicker");
+    if (!rows.length || !previewBox) return;
+
+    const titles = {
+      compose: "LIVE PREVIEW · 01 COMPOSE",
+      inbox: "LIVE PREVIEW · 02 TWO-WAY INBOX",
+      quiet: "LIVE PREVIEW · 03 QUIET HOURS GUARD",
+      suppress: "LIVE PREVIEW · 04 SUPPRESSION ENGINE",
+      channels: "LIVE PREVIEW · 05 MULTI-CHANNEL SWITCH",
+      audit: "LIVE PREVIEW · 06 AUDIT & COMPLIANCE"
+    };
+
+    rows.forEach(row => {
+      const activate = () => {
+        const target = row.dataset.target;
+        if (!target) return;
+
+        rows.forEach(r => r.classList.remove("active"));
+        row.classList.add("active");
+
+        const contents = $$(".preview-state-content");
+        contents.forEach(c => {
+          if (c.dataset.content === target) {
+            c.classList.add("active");
+          } else {
+            c.classList.remove("active");
+          }
+        });
+
+        if (kicker && titles[target]) {
+          kicker.textContent = titles[target];
+        }
+      };
+
+      on(row, "mouseenter", activate);
+      on(row, "click", activate);
+    });
+  }
+
+  /**
+   * Initialize Receipt Section stamp bounce and audit checklist reveal
+   */
+  function initReceiptSection() {
+    const receipt = $("#section-receipt-audit");
+    if (!receipt) return;
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            receipt.classList.add("in-view");
+            const stamp = $("#receipt-stamp-box");
+            if (stamp) {
+              stamp.style.transform = "rotate(-8deg) scale(1)";
+              stamp.style.opacity = "1";
+            }
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.25 });
+      observer.observe(receipt);
+    }
+  }
+
+  /**
    * Initialize landing page interactions and motion observers
    */
   function init() {
@@ -234,6 +304,8 @@ window.KINDRED_LANDING = (() => {
     initHeroInteractions();
     initLedgerAnimation();
     initJourneyTimeline();
+    initFeaturesIndexHover();
+    initReceiptSection();
 
     // 1. Mobile navigation drawer toggle
     const menuToggle = $(".nav-toggle-btn");
