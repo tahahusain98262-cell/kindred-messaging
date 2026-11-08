@@ -46,40 +46,102 @@ window.KINDRED_LANDING = (() => {
   let lenisInstance = null;
 
   /**
+   * Safe Fallback: Destroy Lenis, remove pins, restore native scrolling
+   */
+  function fallbackToNativeScroll(reason) {
+    console.warn("Falling back to native scroll:", reason);
+    if (lenisInstance) {
+      try {
+        lenisInstance.destroy();
+      } catch (e) {}
+      lenisInstance = null;
+    }
+    if (typeof ScrollTrigger !== "undefined") {
+      try {
+        ScrollTrigger.getAll().forEach(t => t.kill());
+      } catch (e) {}
+    }
+    document.documentElement.classList.remove("lenis", "lenis-stopped", "lenis-smooth");
+  }
+
+  /**
    * Initialize Lenis smooth scroll and connect with GSAP ScrollTrigger
    */
   function initSmoothScroll() {
-    if (typeof Lenis === "undefined") return;
-    if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
+    // 1. Check prefers-reduced-motion and small mobile screens (< 768px)
+    const isMobile = window.innerWidth < 768;
+    const prefersReduced = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isMobile || prefersReduced || typeof Lenis === "undefined") {
+      fallbackToNativeScroll("Mobile view or reduced-motion enabled");
+      return;
+    }
 
     try {
+      // 2. Register ScrollTrigger plugin upfront before using
+      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
+        gsap.registerPlugin(ScrollTrigger);
+      }
+
+      // 3. Destroy any previous instance to avoid duplicate listeners
+      if (lenisInstance) {
+        try { lenisInstance.destroy(); } catch (e) {}
+        lenisInstance = null;
+      }
+
+      // 4. Create Lenis instance
       lenisInstance = new Lenis({
         duration: 1.15,
         easing: (t) => Math.min(1, 1.001 - Math.pow(2, -10 * t)),
         orientation: "vertical",
         gestureOrientation: "vertical",
         smoothWheel: true,
-        wheelMultiplier: 0.9,
-        touchMultiplier: 1.5
+        wheelMultiplier: 1.0,
+        touchMultiplier: 1.5,
+        autoResize: true
       });
 
-      function raf(time) {
-        if (lenisInstance) lenisInstance.raf(time);
-        requestAnimationFrame(raf);
-      }
-      requestAnimationFrame(raf);
+      // Expose for inspection and testing
+      window.__lenis = lenisInstance;
 
-      if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-        gsap.registerPlugin(ScrollTrigger);
-        lenisInstance.on("scroll", ScrollTrigger.update);
+      // 5. Connect Lenis scroll events to ScrollTrigger.update
+      if (typeof ScrollTrigger !== "undefined") {
+        lenisInstance.on("scroll", () => {
+          ScrollTrigger.update();
+        });
+      }
+
+      // 6. Drive Lenis with ONE single ticker (either GSAP ticker or RAF, never both)
+      if (typeof gsap !== "undefined") {
         gsap.ticker.add((time) => {
-          if (lenisInstance) lenisInstance.raf(time * 1000);
+          if (lenisInstance) {
+            lenisInstance.raf(time * 1000);
+          }
         });
         gsap.ticker.lagSmoothing(0);
+      } else {
+        function raf(time) {
+          if (lenisInstance) {
+            lenisInstance.raf(time);
+            requestAnimationFrame(raf);
+          }
+        }
+        requestAnimationFrame(raf);
       }
-      document.documentElement.classList.add("lenis");
-    } catch (e) {
-      console.warn("Lenis initialization skipped:", e);
+
+      // 7. Refresh ScrollTrigger & Lenis after fonts & images load
+      if (document.fonts && document.fonts.ready) {
+        document.fonts.ready.then(() => {
+          if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+          if (lenisInstance) lenisInstance.resize();
+        });
+      }
+      window.addEventListener("load", () => {
+        if (typeof ScrollTrigger !== "undefined") ScrollTrigger.refresh();
+        if (lenisInstance) lenisInstance.resize();
+      });
+
+    } catch (err) {
+      fallbackToNativeScroll(err);
     }
   }
 
@@ -148,38 +210,46 @@ window.KINDRED_LANDING = (() => {
     if (typeof gsap === "undefined" || typeof ScrollTrigger === "undefined" || window.innerWidth <= 900) return;
     if (window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches) return;
 
-    ScrollTrigger.create({
-      trigger: "#hero-scroll-track",
-      start: "top top",
-      end: "bottom bottom",
-      scrub: 0.6,
-      onUpdate: (self) => {
-        const p = self.progress;
-        const heroContent = $(".hero-content");
-        const cardBack = $("#hero-parallax-back");
-        const heroSun = $(".hero-sun");
-        const orbit1 = $(".hero-orbit-one");
-        const orbit2 = $(".hero-orbit-two");
-        const chips = $$(".hero-floating-badge");
-        const diveCard = $("#hero-dive-card");
-        const cue = $("#scroll-dive-cue");
+    try {
+      ScrollTrigger.create({
+        trigger: "#hero-scroll-track",
+        start: "top top",
+        end: "bottom bottom",
+        scrub: 0.6,
+        onUpdate: (self) => {
+          try {
+            const p = self.progress;
+            const heroContent = $(".hero-content");
+            const cardBack = $("#hero-parallax-back");
+            const heroSun = $(".hero-sun");
+            const orbit1 = $(".hero-orbit-one");
+            const orbit2 = $(".hero-orbit-two");
+            const chips = $$(".hero-floating-badge");
+            const diveCard = $("#hero-dive-card");
+            const cue = $("#scroll-dive-cue");
 
-        if (heroContent) heroContent.style.opacity = Math.max(0, 1 - p * 2.2);
-        if (cardBack) cardBack.style.opacity = Math.max(0, 1 - p * 2.5);
-        if (heroSun) heroSun.style.opacity = Math.max(0, 1 - p * 3);
-        if (orbit1) orbit1.style.opacity = Math.max(0, 1 - p * 3);
-        if (orbit2) orbit2.style.opacity = Math.max(0, 1 - p * 3);
-        chips.forEach(c => c.style.opacity = Math.max(0, 1 - p * 3));
-        if (cue) cue.style.opacity = Math.max(0, 1 - p * 4);
+            if (heroContent) heroContent.style.opacity = Math.max(0, 1 - p * 2.2);
+            if (cardBack) cardBack.style.opacity = Math.max(0, 1 - p * 2.5);
+            if (heroSun) heroSun.style.opacity = Math.max(0, 1 - p * 3);
+            if (orbit1) orbit1.style.opacity = Math.max(0, 1 - p * 3);
+            if (orbit2) orbit2.style.opacity = Math.max(0, 1 - p * 3);
+            chips.forEach(c => c.style.opacity = Math.max(0, 1 - p * 3));
+            if (cue) cue.style.opacity = Math.max(0, 1 - p * 4);
 
-        if (diveCard) {
-          const scale = 1 + p * 1.35;
-          const rot = 6 * (1 - p);
-          const transY = p * 40;
-          diveCard.style.transform = `rotate(${rot}deg) scale(${scale}) translateY(${transY}px)`;
+            if (diveCard) {
+              const scale = 1 + p * 1.35;
+              const rot = 6 * (1 - p);
+              const transY = p * 40;
+              diveCard.style.transform = `rotate(${rot}deg) scale(${scale}) translateY(${transY}px)`;
+            }
+          } catch (e) {
+            console.warn("Hero scroll dive update error:", e);
+          }
         }
-      }
-    });
+      });
+    } catch (err) {
+      console.warn("Hero scroll dive init error:", err);
+    }
   }
 
   /**
@@ -213,16 +283,22 @@ window.KINDRED_LANDING = (() => {
     if (!journey || !activeLine) return;
 
     if (typeof gsap !== "undefined" && typeof ScrollTrigger !== "undefined") {
-      ScrollTrigger.create({
-        trigger: "#section-message-journey",
-        start: "top 75%",
-        end: "bottom 60%",
-        scrub: 0.5,
-        onUpdate: (self) => {
-          const p = self.progress;
-          activeLine.setAttribute("x2", String(p * 1200));
-        }
-      });
+      try {
+        ScrollTrigger.create({
+          trigger: "#section-message-journey",
+          start: "top 75%",
+          end: "bottom 60%",
+          scrub: 0.5,
+          onUpdate: (self) => {
+            try {
+              const p = self.progress;
+              activeLine.setAttribute("x2", String(p * 1200));
+            } catch (e) {}
+          }
+        });
+      } catch (err) {
+        console.warn("Journey timeline init error:", err);
+      }
     }
   }
 

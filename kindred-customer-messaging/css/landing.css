@@ -114,7 +114,7 @@
     gap: 48px;
     align-items: center;
     box-sizing: border-box;
-    overflow: hidden;
+    overflow: visible;
   }
 }
 
@@ -2013,7 +2013,7 @@
   height: 14px;
   background-color: var(--lime);
   border-radius: 50%;
-  pointer-events: none;
+  pointer-events: none !important;
   z-index: 9999;
   transform: translate(-50%, -50%);
   transition: width 0.22s var(--ease-expo), height 0.22s var(--ease-expo), background-color 0.2s ease, border-radius 0.22s ease, border 0.2s ease;
@@ -2021,6 +2021,10 @@
   display: none;
   align-items: center;
   justify-content: center;
+}
+
+.custom-cursor * {
+  pointer-events: none !important;
 }
 
 body.cursor-active .custom-cursor {
