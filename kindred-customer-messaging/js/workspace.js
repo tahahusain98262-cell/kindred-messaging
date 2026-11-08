@@ -280,8 +280,88 @@ window.KINDRED_WORKSPACE = (() => {
       });
     }
 
+    // Initialize interactive tour hotspots
+    initTourHotspots();
+
     // Initialize with overview tab
     switchTab("overview");
+  }
+
+  /**
+   * Initialize interactive tour hotspots
+   */
+  function initTourHotspots() {
+    const toggleBtn = $("#btn-toggle-hotspots");
+    const countEl = $("#hotspots-active-count");
+    const hotspots = $$(".hotspot-wrapper");
+
+    const updateCount = () => {
+      const activePins = $$(".hotspot-wrapper:not(.dismissed)");
+      if (countEl) countEl.textContent = String(activePins.length);
+    };
+
+    hotspots.forEach(spot => {
+      const trigger = spot.querySelector(".hotspot-trigger");
+      const dismissBtn = spot.querySelector(".btn-hotspot-dismiss");
+      const actionBtn = spot.querySelector(".btn-hotspot-action");
+
+      if (trigger) {
+        on(trigger, "click", (e) => {
+          e.stopPropagation();
+          const isOpen = spot.classList.contains("open");
+          hotspots.forEach(s => s.classList.remove("open"));
+          if (!isOpen) spot.classList.add("open");
+        });
+      }
+
+      if (dismissBtn) {
+        on(dismissBtn, "click", (e) => {
+          e.stopPropagation();
+          spot.classList.remove("open");
+          spot.classList.add("dismissed");
+          updateCount();
+          showToast("Hotspot dismissed.");
+        });
+      }
+
+      if (actionBtn) {
+        on(actionBtn, "click", (e) => {
+          e.stopPropagation();
+          const targetTab = actionBtn.dataset.tab;
+          if (targetTab) {
+            spot.classList.remove("open");
+            switchTab(targetTab);
+          }
+        });
+      }
+    });
+
+    // Close on click outside
+    document.addEventListener("click", (e) => {
+      if (!e.target.closest(".hotspot-wrapper")) {
+        hotspots.forEach(s => s.classList.remove("open"));
+      }
+    });
+
+    // Global toggle / restore hotspots
+    if (toggleBtn) {
+      on(toggleBtn, "click", () => {
+        const anyDismissed = $$(".hotspot-wrapper.dismissed").length > 0;
+        if (anyDismissed) {
+          hotspots.forEach(s => s.classList.remove("dismissed", "open"));
+          updateCount();
+          showToast("All tour hotspots restored.");
+        } else {
+          const allHidden = hotspots.every(s => s.style.display === "none");
+          hotspots.forEach(s => {
+            s.style.display = allHidden ? "" : "none";
+          });
+          showToast(allHidden ? "Tour hotspots visible." : "Tour hotspots hidden.");
+        }
+      });
+    }
+
+    updateCount();
   }
 
   return {

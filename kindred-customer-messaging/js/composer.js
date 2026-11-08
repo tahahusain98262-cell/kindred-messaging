@@ -73,11 +73,14 @@ window.KINDRED_COMPOSER = (() => {
       phoneHeaderType.textContent = activeChannel === "sms" ? "SMS Carrier Message" : "WhatsApp Business Verified";
     }
 
-    // Toggle bubble style
+    // Toggle bubble style & mockup mode
+    const phoneMockup = $(".phone-mockup");
     if (activeChannel === "whatsapp") {
       previewBubble.classList.add("whatsapp-style");
+      if (phoneMockup) phoneMockup.classList.add("whatsapp-mode");
     } else {
       previewBubble.classList.remove("whatsapp-style");
+      if (phoneMockup) phoneMockup.classList.remove("whatsapp-mode");
     }
   }
 

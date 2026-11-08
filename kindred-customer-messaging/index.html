@@ -1215,7 +1215,34 @@
        PAGE 6: APPLICATION DASHBOARD (/#/dashboard)
        ========================================================================== -->
   <div class="page-container" id="page-dashboard">
-    <div class="workspace-container">
+    <div class="os-window-shell">
+      <!-- Architectural OS Window Title Bar -->
+      <div class="os-window-bar">
+        <div class="os-window-controls">
+          <span class="os-dot os-dot-close" title="Close Session"></span>
+          <span class="os-dot os-dot-min" title="Minimize Window"></span>
+          <span class="os-dot os-dot-max" title="Full View"></span>
+          <span class="os-window-app-name">k. / kindred-os v2.4</span>
+        </div>
+        <div class="os-window-center-tag">
+          <span class="os-terminal-prompt">$</span>
+          <span>tenant://lending-partners-main.sandbox</span>
+          <span class="os-divider">|</span>
+          <span class="os-mode-chip">PILOT INSTANCE</span>
+        </div>
+        <div class="os-window-right-meta">
+          <button type="button" class="btn-toggle-hotspots" id="btn-toggle-hotspots" title="Toggle Feature Tour Hotspots">
+            <span class="hotspot-glyph">◎</span>
+            <span>TOUR PINS (<span id="hotspots-active-count">3</span>)</span>
+          </button>
+          <div class="os-status-indicator">
+            <span class="status-pulse-dot"></span>
+            <span>SESSION: ACTIVE · LOCAL PILOT</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="workspace-container">
       
       <!-- Workspace Sidebar -->
       <aside class="workspace-sidebar">
@@ -1374,6 +1401,23 @@
         <div class="workspace-view active" id="view-overview">
           <!-- Metric KPI Row -->
           <div class="overview-metrics-grid">
+            <!-- Tour Hotspot 03: Compliance Guard -->
+            <div class="hotspot-wrapper hotspot-pos-compliance-metrics" data-spot="03">
+              <button type="button" class="hotspot-trigger" aria-label="Tour hotspot 03">
+                03
+                <span class="hotspot-beacon-ring"></span>
+              </button>
+              <div class="hotspot-card">
+                <div class="hotspot-card-kicker">[ TOUR HOTSPOT 03 ]</div>
+                <h5 class="hotspot-card-title">TCPA & 10DLC Compliance Guard</h5>
+                <p class="hotspot-card-desc">Automated consent audit verifying 10/10 pilot contacts. Quiet-hour scheduler blocks dispatches outside 8:00 AM – 9:00 PM local recipient time.</p>
+                <div class="hotspot-card-actions">
+                  <button type="button" class="btn-hotspot-dismiss">Dismiss Pin</button>
+                  <button type="button" class="btn-hotspot-action" data-tab="settings">Inspect Policy ↗</button>
+                </div>
+              </div>
+            </div>
+
             <div class="overview-metric-box">
               <span class="metric-kicker">TOTAL CONTACTS</span>
               <span class="metric-number" id="stat-contacts-count">10</span>
@@ -1398,6 +1442,23 @@
 
           <!-- Action Banner -->
           <div class="overview-action-banner">
+            <!-- Tour Hotspot 01: Intelligent Composer -->
+            <div class="hotspot-wrapper hotspot-pos-action-banner" data-spot="01">
+              <button type="button" class="hotspot-trigger" aria-label="Tour hotspot 01">
+                01
+                <span class="hotspot-beacon-ring"></span>
+              </button>
+              <div class="hotspot-card">
+                <div class="hotspot-card-kicker">[ TOUR HOTSPOT 01 ]</div>
+                <h5 class="hotspot-card-title">Intelligent Message Composer</h5>
+                <p class="hotspot-card-desc">Compose relationship messages with pre-approved templates, real-time GSM-7 segment accounting (160 chars), and recipient token injection.</p>
+                <div class="hotspot-card-actions">
+                  <button type="button" class="btn-hotspot-dismiss">Dismiss Pin</button>
+                  <button type="button" class="btn-hotspot-action" data-tab="composer">Open Composer ↗</button>
+                </div>
+              </div>
+            </div>
+
             <div class="overview-action-text">
               <h4>Diwali Greetings Pilot Draft is Ready</h4>
               <p>10 verified recipient snapshot configured. Review preview and run simulation.</p>
@@ -1610,6 +1671,23 @@
 
             <!-- Right: Smartphone Device Preview -->
             <div class="phone-wrapper">
+              <!-- Tour Hotspot 02: Real-time Device Preview -->
+              <div class="hotspot-wrapper hotspot-pos-device-preview" data-spot="02">
+                <button type="button" class="hotspot-trigger" aria-label="Tour hotspot 02">
+                  02
+                  <span class="hotspot-beacon-ring"></span>
+                </button>
+                <div class="hotspot-card">
+                  <div class="hotspot-card-kicker">[ TOUR HOTSPOT 02 ]</div>
+                  <h5 class="hotspot-card-title">Real-Time Smartphone Emulation</h5>
+                  <p class="hotspot-card-desc">Inspect exact customer rendering across SMS carrier messages and WhatsApp Business with live opt-out disclosures.</p>
+                  <div class="hotspot-card-actions">
+                    <button type="button" class="btn-hotspot-dismiss">Dismiss Pin</button>
+                    <button type="button" class="btn-hotspot-action" data-tab="inbox">View Two-Way Inbox ↗</button>
+                  </div>
+                </div>
+              </div>
+
               <div class="phone-mockup">
                 <div class="phone-notch"></div>
                 
@@ -1962,6 +2040,7 @@
         </div>
 
       </div>
+    </div>
     </div>
   </div>
 
