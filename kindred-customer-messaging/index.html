@@ -31,11 +31,41 @@
        PAGE 1: PUBLIC HOMEPAGE (/#/ or /)
        ========================================================================== -->
   <div class="page-container active" id="page-landing">
+    <!-- Left-Edge Section Index Rail -->
+    <nav class="scroll-index-track" aria-label="Page Sections Index">
+      <a href="#section-hero" class="scroll-index-item active" data-section="section-hero">
+        <span class="index-num">01</span>
+        <span class="index-label">HERO</span>
+      </a>
+      <a href="#section-ledger" class="scroll-index-item" data-section="section-ledger">
+        <span class="index-num">02</span>
+        <span class="index-label">LEDGER</span>
+      </a>
+      <a href="#section-message-journey" class="scroll-index-item" data-section="section-message-journey">
+        <span class="index-num">03</span>
+        <span class="index-label">JOURNEY</span>
+      </a>
+      <a href="#section-features-index" class="scroll-index-item" data-section="section-features-index">
+        <span class="index-num">04</span>
+        <span class="index-label">INDEX</span>
+      </a>
+      <a href="#section-receipt-audit" class="scroll-index-item" data-section="section-receipt-audit">
+        <span class="index-num">05</span>
+        <span class="index-label">RECEIPT</span>
+      </a>
+      <a href="#/dashboard" class="scroll-index-item" data-route="/dashboard">
+        <span class="index-num">06</span>
+        <span class="index-label">WORKSPACE</span>
+      </a>
+    </nav>
+
     <!-- Top Announcement Bar -->
     <div class="landing-announcement">
       <span class="pulse"></span>
       <span>CUSTOMER MESSAGING, THOUGHTFULLY ORCHESTRATED</span>
-      <span class="announcement-right">SANDBOX DEMO ENVIRONMENT · PILOT READY</span>
+      <span class="announcement-right announcement-ticker-wrap">
+        <span id="announcement-ticker-text">SANDBOX DEMO ENVIRONMENT · PILOT READY</span>
+      </span>
     </div>
 
     <!-- Main Site Header -->
@@ -855,14 +885,58 @@
       </section>
     </main>
 
-    <!-- Footer -->
-    <footer class="site-footer">
-      <div class="brand-wrap">
-        <span class="brand-circle">k.</span>
-        <span>kindred<span class="brand-slash">/</span></span>
+    <!-- Master Editorial Flagship Footer -->
+    <footer class="flagship-footer" id="site-footer">
+      <div class="footer-meta-top">
+        <div class="footer-col">
+          <span class="footer-mono-label">SYSTEM ARCHITECTURE</span>
+          <p class="footer-desc">Kindred Customer Messaging & Relationship Automation Platform. Designed for high-trust mortgage lenders and wealth advisors.</p>
+        </div>
+        <div class="footer-col">
+          <span class="footer-mono-label">CHANNELS & PROTOCOLS</span>
+          <ul class="footer-links-list">
+            <li><span>10DLC A2P SMS Carrier Route</span></li>
+            <li><span>WhatsApp Business Platform (Meta)</span></li>
+            <li><span>TCPA & Quiet Hours Enforcement</span></li>
+            <li><span>RFC-822 Synthetic Message Queue</span></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-mono-label">NAVIGATION</span>
+          <ul class="footer-nav-list">
+            <li><a href="#/" data-route="/">01 / Homepage</a></li>
+            <li><a href="#/features" data-route="/features">02 / Features Index</a></li>
+            <li><a href="#/security" data-route="/security">03 / Security & Compliance</a></li>
+            <li><a href="#/dashboard" data-route="/dashboard">04 / Pilot Workspace ↗</a></li>
+          </ul>
+        </div>
+        <div class="footer-col">
+          <span class="footer-mono-label">SYSTEM STATUS</span>
+          <div class="footer-status-pill">
+            <span class="status-pulse-dot"></span>
+            <span>ALL SYSTEMS OPERATIONAL</span>
+          </div>
+          <div class="footer-hash-label">VERIFIED BUILD · PILOT v2.4</div>
+        </div>
       </div>
-      <span>DEMO WORKSPACE · NOT CONNECTED TO LIVE TELECOM PROVIDERS</span>
-      <span>© 2026 KINDRED MESSAGING PLATFORM · LICENSED SANDBOX</span>
+
+      <!-- Giant Viewport-Width kindred/ Wordmark -->
+      <div class="footer-wordmark-container">
+        <div class="footer-wordmark-text">
+          kindred<span class="footer-wordmark-slash">/</span>
+        </div>
+      </div>
+
+      <div class="footer-meta-bottom">
+        <div class="footer-legal-left">
+          <span>© 2026 KINDRED MESSAGING PLATFORM INC.</span>
+          <span>DEMO WORKSPACE · NOT CONNECTED TO LIVE TELECOM PROVIDERS</span>
+        </div>
+        <div class="footer-legal-right">
+          <span>SAN FRANCISCO · NEW YORK · LONDON</span>
+          <a href="#section-hero" class="back-to-top-link" id="btn-back-to-top">BACK TO TOP ↑</a>
+        </div>
+      </div>
     </footer>
   </div>
 
@@ -2345,6 +2419,9 @@
       </form>
     </div>
   </div>
+
+  <!-- Desktop Custom Cursor -->
+  <div id="custom-cursor" class="custom-cursor"><span class="cursor-label" id="cursor-label">VIEW</span></div>
 
   <!-- Motion & Animation Vendor Libraries -->
   <script src="js/vendor/lenis.min.js"></script>

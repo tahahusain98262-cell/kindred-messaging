@@ -297,6 +297,127 @@ window.KINDRED_LANDING = (() => {
   }
 
   /**
+   * Cycle announcement ticker messages every 6 seconds
+   */
+  function initAnnouncementTicker() {
+    const textEl = $("#announcement-ticker-text");
+    if (!textEl) return;
+
+    const messages = [
+      "SANDBOX DEMO ENVIRONMENT · PILOT READY",
+      "QUIET HOURS ENFORCED · 8PM-9AM RECIPIENT TIME",
+      "1 CONTACT SUPPRESSED · TCPA OPT-OUT HONORED",
+      "VERIFIED TELNYX SANDBOX · 10/10 CONSENT AUDITED"
+    ];
+    let index = 0;
+
+    setInterval(() => {
+      textEl.classList.add("ticker-switching");
+      setTimeout(() => {
+        index = (index + 1) % messages.length;
+        textEl.textContent = messages[index];
+        textEl.classList.remove("ticker-switching");
+      }, 300);
+    }, 6000);
+  }
+
+  /**
+   * Initialize desktop-only custom cursor with contextual label expansion
+   */
+  function initCustomCursor() {
+    const cursor = $("#custom-cursor");
+    const label = $("#cursor-label");
+    if (!cursor || !label) return;
+
+    // Check touch / reduced motion
+    const isTouch = window.matchMedia("(pointer: coarse)").matches;
+    const isReduced = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+    if (isTouch || isReduced) return;
+
+    let mouseX = window.innerWidth / 2;
+    let mouseY = window.innerHeight / 2;
+    let cursorX = mouseX;
+    let cursorY = mouseY;
+    let isMoving = false;
+
+    window.addEventListener("pointermove", (e) => {
+      mouseX = e.clientX;
+      mouseY = e.clientY;
+      if (!isMoving) {
+        document.body.classList.add("cursor-active");
+        isMoving = true;
+      }
+    });
+
+    window.addEventListener("pointerleave", () => {
+      document.body.classList.remove("cursor-active");
+      isMoving = false;
+    });
+
+    // Smooth RAF cursor positioning
+    function renderCursor() {
+      cursorX += (mouseX - cursorX) * 0.22;
+      cursorY += (mouseY - cursorY) * 0.22;
+      cursor.style.transform = `translate3d(${cursorX}px, ${cursorY}px, 0) translate(-50%, -50%)`;
+      requestAnimationFrame(renderCursor);
+    }
+    renderCursor();
+
+    // Contextual hover states
+    const interactiveSelectors = [
+      { sel: ".button-dark, .button-light, .button-outline", text: "[OPEN]" },
+      { sel: ".feature-row", text: "[EXPLORE]" },
+      { sel: ".journey-station", text: "[AUDIT]" },
+      { sel: ".showcase-tab-btn", text: "[SWITCH]" },
+      { sel: ".footer-wordmark-text", text: "kindred/" },
+      { sel: ".hotspot-trigger", text: "[TOUR]" },
+      { sel: "a", text: "[LINK]" }
+    ];
+
+    document.addEventListener("pointerover", (e) => {
+      for (const item of interactiveSelectors) {
+        const target = e.target.closest(item.sel);
+        if (target) {
+          cursor.classList.add("expanded");
+          label.textContent = item.text;
+          return;
+        }
+      }
+      cursor.classList.remove("expanded");
+    });
+  }
+
+  /**
+   * Initialize thin left-edge mono scroll index tracking
+   */
+  function initScrollIndexRail() {
+    const items = $$(".scroll-index-item[data-section]");
+    if (!items.length) return;
+
+    const sectionIds = ["section-hero", "section-ledger", "section-message-journey", "section-features-index", "section-receipt-audit"];
+    const sections = sectionIds.map(id => document.getElementById(id)).filter(Boolean);
+
+    if ("IntersectionObserver" in window) {
+      const observer = new IntersectionObserver((entries) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            const id = entry.target.id;
+            items.forEach(item => {
+              if (item.dataset.section === id) {
+                item.classList.add("active");
+              } else {
+                item.classList.remove("active");
+              }
+            });
+          }
+        });
+      }, { threshold: 0.35 });
+
+      sections.forEach(s => observer.observe(s));
+    }
+  }
+
+  /**
    * Initialize landing page interactions and motion observers
    */
   function init() {
@@ -306,6 +427,22 @@ window.KINDRED_LANDING = (() => {
     initJourneyTimeline();
     initFeaturesIndexHover();
     initReceiptSection();
+    initAnnouncementTicker();
+    initCustomCursor();
+    initScrollIndexRail();
+
+    // Smooth back to top link
+    const btnBackToTop = $("#btn-back-to-top");
+    if (btnBackToTop) {
+      on(btnBackToTop, "click", (e) => {
+        e.preventDefault();
+        if (lenisInstance) {
+          lenisInstance.scrollTo(0, { duration: 1.2 });
+        } else {
+          window.scrollTo({ top: 0, behavior: "smooth" });
+        }
+      });
+    }
 
     // 1. Mobile navigation drawer toggle
     const menuToggle = $(".nav-toggle-btn");
