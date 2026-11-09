@@ -31,817 +31,320 @@
        PAGE 1: PUBLIC HOMEPAGE (/#/ or /)
        ========================================================================== -->
   <div class="page-container active" id="page-landing">
-    <!-- Left-Edge Section Index Rail -->
-    <nav class="scroll-index-track" aria-label="Page Sections Index">
-      <a href="#section-hero" class="scroll-index-item active" data-section="section-hero">
-        <span class="index-num">01</span>
-        <span class="index-label">HERO</span>
-      </a>
-      <a href="#section-ledger" class="scroll-index-item" data-section="section-ledger">
-        <span class="index-num">02</span>
-        <span class="index-label">LEDGER</span>
-      </a>
-      <a href="#section-message-journey" class="scroll-index-item" data-section="section-message-journey">
-        <span class="index-num">03</span>
-        <span class="index-label">JOURNEY</span>
-      </a>
-      <a href="#section-features-index" class="scroll-index-item" data-section="section-features-index">
-        <span class="index-num">04</span>
-        <span class="index-label">INDEX</span>
-      </a>
-      <a href="#section-receipt-audit" class="scroll-index-item" data-section="section-receipt-audit">
-        <span class="index-num">05</span>
-        <span class="index-label">RECEIPT</span>
-      </a>
-      <a href="#/dashboard" class="scroll-index-item" data-route="/dashboard">
-        <span class="index-num">06</span>
-        <span class="index-label">WORKSPACE</span>
-      </a>
-    </nav>
-
     <!-- Top Announcement Bar -->
-    <div class="landing-announcement">
-      <span class="pulse"></span>
-      <span>CUSTOMER MESSAGING, THOUGHTFULLY ORCHESTRATED</span>
-      <span class="announcement-right announcement-ticker-wrap">
-        <span id="announcement-ticker-text">SANDBOX DEMO ENVIRONMENT · PILOT READY</span>
-      </span>
+    <div class="top-announcement">
+      <span class="status-badge">SANDBOX DEMO ENVIRONMENT</span>
+      <span>PILOT v2.4 · TCPA & QUIET HOURS ENFORCED</span>
     </div>
 
     <!-- Main Site Header -->
     <header class="site-header">
-      <a class="brand-wrap" href="#/">
-        <span class="brand-circle">k.</span>
-        <span>kindred<span class="brand-slash">/</span></span>
-      </a>
+      <div class="header-inner">
+        <a class="brand-wrap" href="#/">
+          <span class="brand-circle">k.</span>
+          <span>kindred<span class="brand-slash">/</span></span>
+        </a>
 
-      <nav class="main-nav">
-        <a href="#/" data-route="/">Home</a>
-        <a href="#/features" data-route="/features">Features</a>
-        <a href="#/security" data-route="/security">Security & Trust</a>
-        <a href="#/dashboard" data-route="/dashboard">Workspace</a>
-      </nav>
+        <nav class="main-nav" id="main-nav-links">
+          <a href="#how-it-works">How It Works</a>
+          <a href="#features">Features</a>
+          <a href="#security">Security</a>
+          <a href="#/dashboard" data-route="/dashboard">Live Demo</a>
+        </nav>
 
-      <div class="header-actions">
-        <a href="#/login" class="button-outline" data-route="/login" style="padding: 7px 14px;">Sign In</a>
-        <a href="#/dashboard" class="button-dark small" data-route="/dashboard">Explore Platform <span>↗</span></a>
-        <button class="nav-toggle-btn" aria-label="Toggle navigation menu">☰</button>
+        <div class="header-actions">
+          <a href="#/login" class="button-outline small" data-route="/login">Sign In</a>
+          <a href="#/dashboard" class="button-dark small" data-route="/dashboard">Explore Platform <span>↗</span></a>
+          <button class="nav-toggle-btn" aria-label="Toggle navigation menu" id="nav-toggle-btn">☰</button>
+        </div>
       </div>
     </header>
 
-    <main>
-      <!-- Hero Section with Scroll-Dive Container -->
-      <section class="hero-scroll-container" id="hero-scroll-track">
-        <div class="hero-section is-loaded" id="hero-pinned-stage">
-          <div class="hero-content">
-            <div class="hero-eyebrow" id="hero-eyebrow-line">
-              <span class="mono-kicker" id="hero-typewriter-kicker">01 // THE CONVERSATION LAYER</span>
-              <span class="hero-eyebrow-divider"></span>
-              <span class="mono-kicker" style="color: var(--muted-olive);">BUILT FOR RELATIONSHIPS</span>
+    <main class="landing-wrap">
+      <!-- 1. Hero Section -->
+      <section class="hero-clean" id="hero">
+        <div class="site-container">
+          <div class="hero-grid">
+            <div class="hero-content fade-in-scroll">
+              <div class="mono-kicker">
+                <span class="kicker-dot"></span>
+                <span>KINDRED // RELATIONSHIP AUTOMATION</span>
+              </div>
+              <h1 class="hero-title">
+                Every customer <em class="hero-serif-word">conversation</em>, thoughtfully connected.
+              </h1>
+              <p class="hero-description">
+                One intelligent platform to manage customer relationships, automate timely compliance-checked communication, and build lasting connections through SMS and WhatsApp.
+              </p>
+              <div class="hero-actions">
+                <a class="button-dark" href="#/dashboard" data-route="/dashboard">
+                  <span>Explore the platform</span> <span>↗</span>
+                </a>
+                <a class="button-outline" href="#/signup" data-route="/signup">
+                  <span>Get started</span> <span>＋</span>
+                </a>
+              </div>
+              <div class="hero-footnote">
+                <span>●</span>
+                <span>FROM 10 TEST CONTACTS TO 5,000 BORROWER RELATIONSHIPS</span>
+              </div>
             </div>
 
-            <h1 class="hero-title">
-              <span class="mask-line"><span class="line-inner">Every customer</span></span>
-              <span class="mask-line"><span class="line-inner"><em class="text-reveal-emphasis">conversation,</em></span></span>
-              <span class="mask-line"><span class="line-inner">thoughtfully connected.</span></span>
-            </h1>
-
-            <p class="hero-description">
-              One intelligent platform to manage customer relationships, automate meaningful communication and build lasting connections through SMS and WhatsApp.
-            </p>
-
-            <div class="hero-actions">
-              <a class="button-dark btn-magnetic" href="#/dashboard" data-route="/dashboard">
-                <span>Explore the platform</span> <span class="arrow-diag">↗</span>
-              </a>
-              <a class="button-light btn-magnetic" href="#/signup" data-route="/signup">
-                <span>Get started</span> <span class="plus-icon">＋</span>
-              </a>
-            </div>
-
-            <div class="hero-footnote">
-              <span class="hero-footnote-signal">✳</span>
-              <span>FROM 10 TEST CONTACTS TO 5,000 CUSTOMER RELATIONSHIPS</span>
+            <!-- Single Clean Product Visual -->
+            <div class="hero-visual-card fade-in-scroll">
+              <div class="visual-card-header">
+                <div class="sender-info">
+                  <div class="sender-avatar">K</div>
+                  <div>
+                    <div class="sender-name">Kindred Advisory</div>
+                    <div class="sender-sub">SMS Verified Channel</div>
+                  </div>
+                </div>
+                <span class="channel-pill">● LIVE CHANNEL</span>
+              </div>
+              <div class="visual-card-body">
+                <div class="message-eyebrow">DIWALI PILOT CAMPAIGN</div>
+                <div class="message-text">
+                  "Wishing you and your family a very happy Diwali! May the festival bring light, happiness and prosperity. — The Kindred Team"
+                </div>
+                <div class="message-optout">Reply STOP to opt out</div>
+              </div>
+              <div class="visual-card-footer">
+                <div class="stat-item">
+                  <div class="val">147 Chars</div>
+                  <div class="lbl">1 GSM Segment</div>
+                </div>
+                <div class="stat-item">
+                  <div class="val">Enforced</div>
+                  <div class="lbl">Quiet Hours</div>
+                </div>
+                <div class="stat-item">
+                  <div class="val">10 / 10</div>
+                  <div class="lbl">Delivered</div>
+                </div>
+              </div>
             </div>
           </div>
+        </div>
+      </section>
 
-          <!-- Hero Visual Art / Living Composition -->
-          <div class="hero-visual" id="hero-visual-stage">
-            <div class="hero-visual-topline">
-              <span>RELATIONSHIP ARCHITECTURE / 001</span>
-              <span class="live-pulse-indicator"><span class="signal-dot"></span> LIVE CONCEPT</span>
+      <!-- 2. How It Works (3 Simple Steps) -->
+      <section class="section-clean" id="how-it-works">
+        <div class="site-container">
+          <div class="section-header fade-in-scroll">
+            <div class="mono-kicker">01 / HOW IT WORKS</div>
+            <h2>Three simple steps from intent to delivery.</h2>
+            <p>Automate borrower touchpoints without losing the human voice or violating compliance rules.</p>
+          </div>
+          <div class="steps-grid">
+            <div class="step-card fade-in-scroll">
+              <span class="step-num">STEP 01</span>
+              <h3>Milestone Detection</h3>
+              <p>Connect customer loan dates, rate locks, and cultural calendar moments automatically without spreadsheet chaos.</p>
             </div>
+            <div class="step-card fade-in-scroll">
+              <span class="step-num">STEP 02</span>
+              <h3>Autonomous Compliance</h3>
+              <p>Built-in TCPA consent verification, automatic quiet-hours scheduling (8 PM - 9 AM), and instant STOP opt-out suppression.</p>
+            </div>
+            <div class="step-card fade-in-scroll">
+              <span class="step-num">STEP 03</span>
+              <h3>Two-Way Relationship</h3>
+              <p>Incoming borrower replies route to a shared relationship inbox with verified mortgage rate citations and advisor handoff.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <div class="hero-orbit-one"></div>
-            <div class="hero-orbit-two"></div>
-            <div class="hero-sun"></div>
+      <!-- 3. Features (6 Compact Items, 2x3 Grid) -->
+      <section class="section-clean" id="features">
+        <div class="site-container">
+          <div class="section-header fade-in-scroll">
+            <div class="mono-kicker">02 / PLATFORM CAPABILITIES</div>
+            <h2>Built for high-trust financial relationships.</h2>
+            <p>Every tool designed specifically for mortgage professionals, relationship managers, and compliance officers.</p>
+          </div>
+          <div class="features-grid">
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">TWO-WAY MESSAGING</span>
+              <h3>Two-Way Relationship Inbox</h3>
+              <p>Unified borrower conversations across SMS and WhatsApp with team collision prevention, verified rate citations, and instant staff handoff.</p>
+            </div>
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">CONSENT PROTOCOL</span>
+              <h3>Compliance by Default</h3>
+              <p>Documented express consent timestamps and source agreements stored per borrower. Immediate STOP suppression protects against TCPA liability.</p>
+            </div>
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">CARRIER DELIVERY</span>
+              <h3>Smart SMS with GSM-7 Sizing</h3>
+              <p>Real-time segment breakdown (147 chars · 1 segment) prevents costly double-billing and broken emoji encodings before carrier dispatch.</p>
+            </div>
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">META APPROVED</span>
+              <h3>Official WhatsApp Business API</h3>
+              <p>Pre-approved Meta holiday and rate snapshot templates with cryptographic authentication and verified business identity.</p>
+            </div>
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">RATE BENCHMARKS</span>
+              <h3>Mortgage Knowledge Guardrails</h3>
+              <p>Weekly conforming benchmarks (6.125% 30-yr fixed) signed off by compliance officers. AI suggestions strictly cite internal tables.</p>
+            </div>
+            <div class="feature-item-card fade-in-scroll">
+              <span class="feat-tag">7-YEAR LOGGING</span>
+              <h3>Cryptographic Action Trail</h3>
+              <p>Every preview, template approval, delivery status webhook, and opt-out request is recorded chronologically without exposing raw borrower PII.</p>
+            </div>
+          </div>
+        </div>
+      </section>
 
-            <!-- Dark Mortgage Benchmark Card (Back Parallax) -->
-            <div class="hero-card-back" id="hero-parallax-back">
-              <span class="mono-kicker" style="color: #c7d89b;">MORTGAGE BENCHMARK</span>
+      <!-- 4. Security and Compliance Checklist -->
+      <section class="section-clean" id="security">
+        <div class="site-container">
+          <div class="section-header fade-in-scroll">
+            <div class="mono-kicker">03 / SECURITY & COMPLIANCE</div>
+            <h2>Trust engineered at every layer.</h2>
+            <p>Financial relationship messaging demands rigorous regulatory alignment. Kindred enforces compliance before carrier dispatch.</p>
+          </div>
+          <div class="checklist-grid">
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
               <div>
-                <div class="stat-number-bold">6.125%</div>
-                <div class="stat-sub-label">30-Yr Fixed Conforming</div>
-              </div>
-              <div class="benchmark-footer-mark">
-                <span>VERIFIED SNAPSHOT</span>
-                <span style="font-family: var(--font-serif); font-style: italic; font-size: 1.5rem; color: var(--lime);">k.</span>
+                <strong>TCPA 47 U.S.C. § 227 Compliance</strong>
+                <p>Prior express written consent verified for every recipient before message queueing.</p>
               </div>
             </div>
-
-            <!-- Ivory Kindred Advisory Card (Front / Scroll-Dive Target) -->
-            <div class="hero-card-front" id="hero-dive-card">
-              <div class="dive-card-header">
-                <span class="dive-card-avatar">K</span>
-                <div class="dive-card-meta">
-                  <span class="dive-card-sender">Kindred Advisory</span>
-                  <span class="dive-card-channel">SMS Verified Channel</span>
-                </div>
-                <span class="live-dot-green">●</span>
-              </div>
-
-              <div class="dive-card-body">
-                <div class="dive-card-greeting">
-                  A season of<br><em>light & new</em><br>beginnings.
-                </div>
-                <div class="dive-card-preview-text">
-                  "Wishing you and your family a very happy Diwali! May the festival bring light, happiness and prosperity."
-                </div>
-              </div>
-
-              <div class="dive-card-footer">
-                <span class="dive-card-tag">DIWALI PILOT</span>
-                <span class="dive-card-counter"><b id="hero-sent-count-num">10</b> / 10 SENT</span>
-              </div>
-            </div>
-
-            <!-- Floating Orbital Badges -->
-            <div class="hero-floating-badge badge-a orbit-chip-1" id="hero-orbit-chip-1">
-              <span class="badge-icon-arrow">↗</span>
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
               <div>
-                <b>Right time, right person</b>
-                <div class="badge-sub-text">Quiet hours enforced</div>
+                <strong>Quiet Hours Protection</strong>
+                <p>Automated restriction preventing outbound dispatch between 8:00 PM and 9:00 AM recipient local time.</p>
               </div>
             </div>
-
-            <div class="hero-floating-badge badge-b orbit-chip-2" id="hero-orbit-chip-2">
-              <span class="badge-icon-star">✳</span>
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
               <div>
-                <b>Human-in-the-loop</b>
-                <div class="badge-sub-text">Constrained smart replies</div>
+                <strong>Immediate Opt-Out Suppression</strong>
+                <p>Inbound STOP, UNSUBSCRIBE, or QUIT keywords automatically suppress contacts across all tenant campaigns.</p>
               </div>
             </div>
-          </div>
-        </div>
-
-        <!-- Scroll-to-dive Cue at bottom of Hero -->
-        <div class="scroll-dive-cue" id="scroll-dive-cue">
-          <span class="mono-kicker">[ SCROLL TO DIVE IN ]</span>
-          <div class="dive-cue-anim">
-            <span class="dive-cue-line"></span>
-            <span class="dive-cue-arrow">↓</span>
-          </div>
-        </div>
-      </section>
-
-      <!-- Editorial Running Ticker -->
-      <section class="editorial-ticker">
-        <div class="ticker-content">
-          LESS BLASTING ✳ MORE BELONGING ✳ EVERY MESSAGE HAS A MOMENT ✳ CONSENT-FIRST ARCHITECTURE ✳ VERIFIED MORTGAGE BENCHMARKS ✳ LESS BLASTING ✳ MORE BELONGING ✳ EVERY MESSAGE HAS A MOMENT ✳
-        </div>
-      </section>
-
-      <!-- ==========================================================================
-           SECTION 02: THE LEDGER (What a relationship costs when done by hand)
-           ========================================================================== -->
-      <section class="section-editorial ledger-section" id="section-ledger">
-        <div class="section-kicker">02 / THE COST OF MANUAL EFFORT</div>
-
-        <div class="editorial-split" style="margin-bottom: 40px;">
-          <div>
-            <span class="mono-kicker" style="color: var(--soft-clay);">[ ILLUSTRATIVE ESTIMATE // BASED ON 100 BORROWER RELATIONSHIPS ]</span>
-            <h2 style="margin-top: 10px;">What a relationship costs<br><em>when it's done by hand.</em></h2>
-          </div>
-          <div>
-            <p style="color: var(--ink-secondary); font-size: 1.05rem; line-height: 1.7;">
-              Customer retention fails not from lack of care, but from the friction of manual bookkeeping. When loan officers and relationship managers juggle spreadsheets, carrier rules, and holiday calendars by hand, hours vanish and compliance breaks.
-            </p>
-          </div>
-        </div>
-
-        <!-- Architectural Itemised Ledger Card -->
-        <div class="ledger-card" id="ledger-card-table">
-          <div class="ledger-header">
-            <span class="ledger-col-id">CODE</span>
-            <span class="ledger-col-task">MANUAL RELATIONSHIP WORKFLOW</span>
-            <span class="ledger-col-impact">OPERATIONAL RISK</span>
-            <span class="ledger-col-time">HOURS / WEEK</span>
-          </div>
-
-          <div class="ledger-row" data-hours="3.5">
-            <span class="ledger-id">001 // RECALL</span>
-            <div class="ledger-task">
-              <strong>Remembering every festival, birthday & loan anniversary</strong>
-              <div class="ledger-subtext">Tracking 100 borrower loan dates and cultural holidays in spreadsheets</div>
-            </div>
-            <span class="ledger-risk" style="color: var(--orange);">Missed touchpoints</span>
-            <span class="ledger-time"><b class="ledger-num">3.5</b> hrs/wk</span>
-          </div>
-
-          <div class="ledger-row" data-hours="4.0">
-            <span class="ledger-id">002 // CONSENT</span>
-            <div class="ledger-task">
-              <strong>Checking carrier opt-out lists and STOP replies across silos</strong>
-              <div class="ledger-subtext">Cross-referencing suppression requests with CRM lead records</div>
-            </div>
-            <span class="ledger-risk" style="color: var(--red);">TCPA regulatory fines</span>
-            <span class="ledger-time"><b class="ledger-num">4.0</b> hrs/wk</span>
-          </div>
-
-          <div class="ledger-row" data-hours="2.5">
-            <span class="ledger-id">003 // ROUTING</span>
-            <div class="ledger-task">
-              <strong>Matching recipient to verified channel (SMS Carrier vs WhatsApp Meta)</strong>
-              <div class="ledger-subtext">Verifying consent evidence, country codes, and E.164 formats</div>
-            </div>
-            <span class="ledger-risk" style="color: var(--orange);">Delivery rejection</span>
-            <span class="ledger-time"><b class="ledger-num">2.5</b> hrs/wk</span>
-          </div>
-
-          <div class="ledger-row" data-hours="5.0">
-            <span class="ledger-id">004 // COMPLIANCE</span>
-            <div class="ledger-task">
-              <strong>Verifying secondary mortgage benchmark rates before quoting</strong>
-              <div class="ledger-subtext">Checking compliance bulletins, points, APR disclosures, and broker sign-offs</div>
-            </div>
-            <span class="ledger-risk" style="color: var(--red);">Audit failure & penalties</span>
-            <span class="ledger-time"><b class="ledger-num">5.0</b> hrs/wk</span>
-          </div>
-
-          <div class="ledger-row" data-hours="6.5">
-            <span class="ledger-id">005 // REPLIES</span>
-            <div class="ledger-task">
-              <strong>Following up on replies without hallucinating personalized credit advice</strong>
-              <div class="ledger-subtext">Drafting individually tailored responses while adhering to licensing boundaries</div>
-            </div>
-            <span class="ledger-risk" style="color: var(--muted-olive);">Unlicensed advice risk</span>
-            <span class="ledger-time"><b class="ledger-num">6.5</b> hrs/wk</span>
-          </div>
-
-          <!-- Total Hours Row with Strike-Through -->
-          <div class="ledger-total-row">
-            <div class="ledger-total-label">
-              <span>SUM TOTAL MANUAL EFFORT:</span>
-              <span class="ledger-total-calc" id="ledger-total-calc">21.5 HRS / WEEK</span>
-            </div>
-            <div class="ledger-strike-box">
-              <span class="ledger-strike-line" id="ledger-strike-line"></span>
-              <span class="ledger-strikethrough-badge" id="ledger-strikethrough-badge">ELIMINATED</span>
-            </div>
-          </div>
-
-          <!-- Resolution Banner -->
-          <div class="ledger-resolution-banner" id="ledger-resolution-banner">
-            <div class="resolution-tag">
-              <span class="resolution-signal-tick">✓</span>
-              <span>KINDRED RELATIONSHIP LAYER</span>
-            </div>
-            <div class="resolution-heading">
-              Automated, with a human in the loop: <strong>0.5 hrs / week</strong>
-            </div>
-            <div class="resolution-sub">
-              Pre-approved templates, instant STOP opt-out suppression, and weekly verified mortgage snapshots do the rest.
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================================================
-           SECTION 03: PRODUCT / HOW IT WORKS — "THE JOURNEY OF ONE MESSAGE"
-           ========================================================================== -->
-      <section class="journey-section" id="section-message-journey">
-        <div class="journey-header">
-          <div class="section-kicker">03 / HOW IT WORKS</div>
-          <h2>The Journey of One Message.</h2>
-          <p class="journey-subtitle">
-            Follow the Diwali pilot greeting as it traverses Kindred’s six verification stations — from documented consent to compliant delivery.
-          </p>
-        </div>
-
-        <!-- Pinned Horizontal / Stacked Timeline Track -->
-        <div class="journey-track" id="journey-track">
-          <!-- Scroll-Drawn Glowing Lime Thread (SVG) -->
-          <svg class="journey-thread-svg" viewBox="0 0 1200 4" fill="none" preserveAspectRatio="none">
-            <line x1="0" y1="2" x2="1200" y2="2" stroke="rgba(110, 123, 63, 0.25)" stroke-width="2" />
-            <line id="journey-active-line" x1="0" y1="2" x2="0" y2="2" stroke="var(--lime)" stroke-width="3" stroke-linecap="round" />
-          </svg>
-
-          <!-- 6 Verification Stations -->
-          <div class="journey-stations-grid">
-            <!-- Station 001 -->
-            <div class="journey-station" data-station="1">
-              <div class="station-top">
-                <span class="station-num">STATION 001</span>
-                <span class="station-tag">OPT-IN AUDIT</span>
-              </div>
-              <h3 class="station-title">Consent Verified</h3>
-              <p class="station-detail">TCPA § 227 documented express consent record verified from initial consultation agreement.</p>
-              
-              <!-- Micro-Visualization 1 -->
-              <div class="station-micro-vis">
-                <div class="micro-badge-verified">
-                  <span class="vis-check">✓</span>
-                  <span>Consent: Signed Client Agreement</span>
-                </div>
-                <div class="micro-meta-mono">E.164: +1 (555) 234-0101 · Aarav S.</div>
-              </div>
-            </div>
-
-            <!-- Station 002 -->
-            <div class="journey-station" data-station="2">
-              <div class="station-top">
-                <span class="station-num">STATION 002</span>
-                <span class="station-tag">REGISTRY CHECK</span>
-              </div>
-              <h3 class="station-title">Suppression Checked</h3>
-              <p class="station-detail">Global tenant suppression list queried immediately prior to dispatch queueing.</p>
-
-              <!-- Micro-Visualization 2 -->
-              <div class="station-micro-vis">
-                <div class="micro-badge-shield">
-                  <span class="vis-shield">⚿</span>
-                  <span>Suppression Status: Clear (0 STOPs)</span>
-                </div>
-                <div class="micro-meta-mono">Carrier Callback Window: Armed</div>
-              </div>
-            </div>
-
-            <!-- Station 003 -->
-            <div class="journey-station" data-station="3">
-              <div class="station-top">
-                <span class="station-num">STATION 003</span>
-                <span class="station-tag">TIMEZONE LOCK</span>
-              </div>
-              <h3 class="station-title">Quiet Hours Respected</h3>
-              <p class="station-detail">Recipient timezone checked. Dispatch prohibited between 8:00 PM and 9:00 AM local time.</p>
-
-              <!-- Micro-Visualization 3 -->
-              <div class="station-micro-vis">
-                <div class="micro-dial-wrap">
-                  <span class="dial-time-safe">09:30 AM EST</span>
-                  <span class="dial-status-pill">Safe Window</span>
-                </div>
-                <div class="micro-meta-mono">Recipient: America/New_York (EST)</div>
-              </div>
-            </div>
-
-            <!-- Station 004 -->
-            <div class="journey-station" data-station="4">
-              <div class="station-top">
-                <span class="station-num">STATION 004</span>
-                <span class="station-tag">GSM-7 SEGMENTS</span>
-              </div>
-              <h3 class="station-title">Message Composed</h3>
-              <p class="station-detail">Diwali greeting drafted with GSM-7 character encoding and mandatory STOP opt-out suffix.</p>
-
-              <!-- Micro-Visualization 4 -->
-              <div class="station-micro-vis">
-                <div class="micro-chars-wrap">
-                  <span class="chars-pill">147 Chars</span>
-                  <span class="segments-pill">1 SMS Segment</span>
-                </div>
-                <div class="micro-meta-mono">Zero character truncation risk</div>
-              </div>
-            </div>
-
-            <!-- Station 005 -->
-            <div class="journey-station" data-station="5">
-              <div class="station-top">
-                <span class="station-num">STATION 005</span>
-                <span class="station-tag" style="color: var(--soft-clay);">HUMAN SIGN-OFF</span>
-              </div>
-              <h3 class="station-title">Human Approval</h3>
-              <p class="station-detail">Compliance officer dual sign-off verifies festival greeting contains no speculative rate promises.</p>
-
-              <!-- Micro-Visualization 5: Soft Clay Seal -->
-              <div class="station-micro-vis">
-                <div class="micro-approval-stamp">
-                  <div class="stamp-inner">
-                    <span class="stamp-star">✳</span>
-                    <span>APPROVED // RACHEL ADAMS</span>
-                  </div>
-                  <div class="stamp-sub">Compliance Officer · Immutably Locked</div>
-                </div>
-              </div>
-            </div>
-
-            <!-- Station 006 -->
-            <div class="journey-station" data-station="6">
-              <div class="station-top">
-                <span class="station-num">STATION 006</span>
-                <span class="station-tag">2-WAY INBOX</span>
-              </div>
-              <h3 class="station-title">Delivered & Replied</h3>
-              <p class="station-detail">Telnyx webhook reports 200 OK delivery. Borrower reply routes to two-way inbox with AI recommendation.</p>
-
-              <!-- Micro-Visualization 6 -->
-              <div class="station-micro-vis">
-                <div class="micro-reply-bubble">
-                  <span class="reply-sender">Aarav Sharma:</span> "Thank you! What are conforming rates right now?"
-                </div>
-                <div class="micro-meta-mono">AI Suggestion: Ready citing Nov 6 sheet</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================================================
-           SECTION 04: THE FEATURES INDEX (Editorial Numbered Rows & Live Preview)
-           ========================================================================== -->
-      <section class="section-editorial index-section" id="section-features-index">
-        <div class="index-section-header">
-          <div>
-            <div class="section-kicker">04 / THE SYSTEM INDEX</div>
-            <h2>Tooling for trust.<br><em>Built for precision.</em></h2>
-          </div>
-          <div class="index-header-meta">
-            <span class="mono-kicker" style="color: var(--muted-olive);">[ 006 CORE CAPABILITIES ]</span>
-            <div class="kbd-shortcut-hint">
-              <span>Quick jump:</span>
-              <kbd class="kbd-key">Ctrl</kbd>+<kbd class="kbd-key">K</kbd>
-            </div>
-          </div>
-        </div>
-
-        <!-- 12-Column Editorial Index with Sticky Interactive Artifact -->
-        <div class="features-index-container">
-          <!-- Left: Numbered Editorial Rows (7 Cols) -->
-          <div class="features-rows-list" id="features-rows-list">
-            <!-- Row 001 -->
-            <div class="feature-row active" data-feature="inbox">
-              <div class="feature-row-top">
-                <span class="feature-row-num">001</span>
-                <span class="feature-row-tag">TWO-WAY MESSAGING</span>
-              </div>
-              <h3 class="feature-row-title">Two-Way Relationship Inbox</h3>
-              <p class="feature-row-desc">
-                Unified relationship conversations across SMS and WhatsApp. Inbound inquiries appear in real-time with verified rate citations and one-click staff handoff.
-              </p>
-            </div>
-
-            <!-- Row 002 -->
-            <div class="feature-row" data-feature="compliance">
-              <div class="feature-row-top">
-                <span class="feature-row-num">002</span>
-                <span class="feature-row-tag">CONSENT PROTOCOL</span>
-              </div>
-              <h3 class="feature-row-title">Compliance by Default</h3>
-              <p class="feature-row-desc">
-                Documented consent timestamps and proof sources stored per borrower. Immediate STOP opt-out suppression prevents accidental TCPA violations.
-              </p>
-            </div>
-
-            <!-- Row 003 -->
-            <div class="feature-row" data-feature="sms">
-              <div class="feature-row-top">
-                <span class="feature-row-num">003</span>
-                <span class="feature-row-tag">CARRIER DELIVERY</span>
-              </div>
-              <h3 class="feature-row-title">Smart SMS with GSM-7 Estimation</h3>
-              <p class="feature-row-desc">
-                Real-time segment breakdown (147 chars · 1 segment) prevents costly double-billing and broken emoji encodings before dispatch.
-              </p>
-            </div>
-
-            <!-- Row 004 -->
-            <div class="feature-row" data-feature="whatsapp">
-              <div class="feature-row-top">
-                <span class="feature-row-num">004</span>
-                <span class="feature-row-tag">META APPROVED</span>
-              </div>
-              <h3 class="feature-row-title">Official WhatsApp Business API</h3>
-              <p class="feature-row-desc">
-                Pre-approved Meta holiday and rate snapshot templates. Zero deviation, cryptographic authentication, and high-trust verified green marks.
-              </p>
-            </div>
-
-            <!-- Row 005 -->
-            <div class="feature-row" data-feature="rates">
-              <div class="feature-row-top">
-                <span class="feature-row-num">005</span>
-                <span class="feature-row-tag">RATE BENCHMARKS</span>
-              </div>
-              <h3 class="feature-row-title">Mortgage Knowledge Guardrails</h3>
-              <p class="feature-row-desc">
-                Weekly conforming benchmarks (6.125% 30-yr fixed) signed off by compliance officers. AI suggestions strictly cite internal tables and never hallucinate credit advice.
-              </p>
-            </div>
-
-            <!-- Row 006 -->
-            <div class="feature-row" data-feature="audit">
-              <div class="feature-row-top">
-                <span class="feature-row-num">006</span>
-                <span class="feature-row-tag">7-YEAR LOGGING</span>
-              </div>
-              <h3 class="feature-row-title">Cryptographic Action Trail</h3>
-              <p class="feature-row-desc">
-                Every preview, template approval, delivery status webhook, and opt-out request is recorded chronologically without exposing raw borrower PII.
-              </p>
-            </div>
-          </div>
-
-          <!-- Right: Sticky Morphing Live Mini-Demo Artifact (5 Cols) -->
-          <div class="features-preview-stage">
-            <div class="features-preview-box" id="features-preview-box">
-              <div class="preview-box-header">
-                <span class="mono-kicker" id="preview-box-kicker">// LIVE SYSTEM PREVIEW</span>
-                <span class="live-dot-green">● ARTIFACT</span>
-              </div>
-
-              <!-- Preview State 1: Inbox -->
-              <div class="preview-state-content" data-content="inbox">
-                <div class="mini-inbox-preview">
-                  <div class="mini-inbox-header">
-                    <strong>Aarav Sharma</strong> · <span>Conventional Loan</span>
-                  </div>
-                  <div class="mini-chat-stream">
-                    <div class="mini-msg inbound">"Wishing you a Happy Diwali! Are 30-year conforming rates dropping?"</div>
-                    <div class="mini-msg outbound ai-suggested">
-                      <span class="ai-badge">AI VERIFIED SUGGESTION</span>
-                      "Wishing you a joyous Diwali! Today's conforming 30-yr benchmark is 6.125% (effective Nov 6). Dual officer approval required for scenario quotes."
-                    </div>
-                  </div>
-                  <div class="mini-inbox-actions">
-                    <a href="#/dashboard/inbox" class="button-dark small" data-route="/dashboard/inbox" style="padding: 6px 12px; font-size: 0.6875rem;">Open Full Inbox ↗</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Preview State 2: Compliance -->
-              <div class="preview-state-content" data-content="compliance" style="display: none;">
-                <div class="mini-compliance-card">
-                  <div class="mini-record-row">
-                    <span>E.164 Recipient:</span> <b>+1 (555) 234-0101</b>
-                  </div>
-                  <div class="mini-record-row">
-                    <span>Consent Evidence:</span> <b>Signed Client Agreement</b>
-                  </div>
-                  <div class="mini-record-row">
-                    <span>Suppression Check:</span> <b style="color: var(--green);">0 STOPs · Cleared</b>
-                  </div>
-                  <div class="mini-record-row">
-                    <span>Quiet Hours:</span> <b>08:00–21:00 EST Locked</b>
-                  </div>
-                  <div style="margin-top: 14px;">
-                    <a href="#/dashboard/contacts" class="button-dark small" data-route="/dashboard/contacts" style="padding: 6px 12px; font-size: 0.6875rem;">Inspect Directory ↗</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Preview State 3: SMS -->
-              <div class="preview-state-content" data-content="sms" style="display: none;">
-                <div class="mini-sms-calculator">
-                  <div class="mini-calc-metric">
-                    <div class="calc-val">147 / 160</div>
-                    <div class="calc-sub">Characters Used</div>
-                  </div>
-                  <div class="mini-calc-metric">
-                    <div class="calc-val" style="color: var(--green);">1 Segment</div>
-                    <div class="calc-sub">GSM-7 Standard Rate</div>
-                  </div>
-                  <div class="calc-encoding-note">// ENCODING: GSM 03.38 7-BIT · ZERO CONCAT SURCHARGES</div>
-                  <div style="margin-top: 14px;">
-                    <a href="#/dashboard/composer" class="button-dark small" data-route="/dashboard/composer" style="padding: 6px 12px; font-size: 0.6875rem;">Launch Composer ↗</a>
-                  </div>
-                </div>
-              </div>
-
-              <!-- Preview State 4: WhatsApp -->
-              <div class="preview-state-content" data-content="whatsapp" style="display: none;">
-                <div class="mini-whatsapp-card">
-                  <div class="wa-template-name">TEMPLATE: diwali_greeting_v1</div>
-                  <div class="wa-template-status">✓ META OFFICIAL PRE-APPROVED</div>
-                  <div class="wa-msg-body">
-                    "Wishing you and your family a joyful Diwali! May the season bring brightness and prosperity. — Kindred Mortgage Partners"
-                  </div>
-                  <div class="wa-meta-optout">Reply STOP to unsubscribe</div>
-                </div>
-              </div>
-
-              <!-- Preview State 5: Rates -->
-              <div class="preview-state-content" data-content="rates" style="display: none;">
-                <div class="mini-rates-card">
-                  <div class="mini-rate-item">
-                    <span>30-Yr Fixed Conforming:</span>
-                    <strong>6.125%</strong>
-                  </div>
-                  <div class="mini-rate-item">
-                    <span>15-Yr Fixed Conforming:</span>
-                    <strong>5.450%</strong>
-                  </div>
-                  <div class="mini-rate-item">
-                    <span>FHA 30-Year Fixed:</span>
-                    <strong>5.750%</strong>
-                  </div>
-                  <div class="rate-source-stamp">// APPROVED BY RACHEL ADAMS (COMPLIANCE)</div>
-                </div>
-              </div>
-
-              <!-- Preview State 6: Audit -->
-              <div class="preview-state-content" data-content="audit" style="display: none;">
-                <div class="mini-audit-card">
-                  <div class="audit-entry"><span>14:22 EST</span> · USER_LOGIN · Rachel Adams</div>
-                  <div class="audit-entry"><span>14:25 EST</span> · RATE_VERIFIED · Snapshot #2026-W45</div>
-                  <div class="audit-entry"><span>14:30 EST</span> · CAMPAIGN_SIMULATED · 10/10 Sent</div>
-                  <div class="audit-entry" style="color: var(--green);"><span>14:32 EST</span> · WEBHOOK_PING_VERIFIED · 200 OK</div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      <!-- ==========================================================================
-           SECTION 05: THE RECEIPT (The INVERTED Chapter — Deep Olive-Black)
-           ========================================================================== -->
-      <section class="inverted-receipt-section" id="section-receipt-audit">
-        <div class="receipt-container">
-          <!-- Receipt Header / Barcode -->
-          <div class="receipt-paper">
-            <div class="receipt-zigzag-top"></div>
-            
-            <div class="receipt-inner">
-              <div class="receipt-topline">
-                <div class="receipt-brand">
-                  <span class="brand-circle-dark">k.</span>
-                  <span>kindred<span class="brand-slash">/</span></span>
-                </div>
-                <div class="receipt-no">
-                  <span>AUDIT RECEIPT NO:</span>
-                  <strong>#KND-2026-PILOT-01</strong>
-                </div>
-              </div>
-
-              <div class="receipt-meta-grid">
-                <div><span>ORGANIZATION:</span> Kindred Lending Partners</div>
-                <div><span>ENVIRONMENT:</span> Verified Pilot Sandbox</div>
-                <div><span>RECIPIENTS:</span> 10 Verified Borrowers</div>
-                <div><span>TIMESTAMP:</span> 2026-11-08 14:00 EST</div>
-              </div>
-
-              <div class="receipt-dashed-line"></div>
-
-              <!-- Ticking Line-by-Line Checklist -->
-              <div class="receipt-checklist" id="receipt-checklist">
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">TCPA 47 U.S.C. § 227:</span>
-                  <span class="receipt-status">DOCUMENTED EXPRESS CONSENT ENFORCED</span>
-                </div>
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">CTIA SHORT CODE RULES:</span>
-                  <span class="receipt-status">MANDATORY HELP / STOP KEYWORDS ARMED</span>
-                </div>
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">QUIET HOURS PROTOCOL:</span>
-                  <span class="receipt-status">8:00 PM – 9:00 AM LOCAL WINDOW LOCKED</span>
-                </div>
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">CARRIER SUPPRESSION:</span>
-                  <span class="receipt-status">INBOUND STOP AUTO-REGISTRY ACTIVE</span>
-                </div>
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">FINANCIAL ADVICE GUARDRAIL:</span>
-                  <span class="receipt-status">SPECULATIVE QUOTING PROHIBITED</span>
-                </div>
-                <div class="receipt-item in-view">
-                  <span class="receipt-tick">✓</span>
-                  <span class="receipt-rule">IMMUTABLE LOGGING:</span>
-                  <span class="receipt-status">7-YEAR CRYPTOGRAPHIC AUDIT PERSISTENCE</span>
-                </div>
-              </div>
-
-              <div class="receipt-dashed-line"></div>
-
-              <!-- Final Permission Stamp -->
-              <div class="receipt-footer-stamp">
-                <div class="receipt-barcode">
-                  <span class="barcode-bars">||| | |||| | ||||| || | |||| ||| | |||||</span>
-                  <span class="barcode-digits">4 7 0 0 2 2 7 9 0 1 0 1</span>
-                </div>
-                
-                <div class="permission-stamp-box">
-                  <span class="stamp-pill">STATUS CERTIFIED</span>
-                  <h4 class="stamp-seal-text">SENT WITH PERMISSION</h4>
-                  <div class="stamp-auth">Signed by Rachel Adams · Compliance Officer</div>
-                </div>
-              </div>
-            </div>
-
-            <div class="receipt-zigzag-bottom"></div>
-          </div>
-        </div>
-      </section>
-
-      <!-- Product Showcase -->
-      <section class="showcase-section">
-        <div class="showcase-header">
-          <div>
-            <div class="section-kicker">04 / INTERACTIVE SHOWCASE</div>
-            <h2>A calmer way to operate.</h2>
-          </div>
-          <div class="showcase-tabs">
-            <button class="showcase-tab-btn active" data-showcase="composer">Campaign Composer</button>
-            <button class="showcase-tab-btn" data-showcase="inbox">Two-Way Inbox</button>
-            <button class="showcase-tab-btn" data-showcase="rates">Mortgage Benchmarks</button>
-          </div>
-        </div>
-
-        <!-- Composer Slide -->
-        <div class="showcase-slide" data-slide="composer">
-          <div class="card" style="padding: 32px; background: #fff;">
-            <div class="grid-2" style="align-items: center;">
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
               <div>
-                <span class="mono-kicker" style="color: var(--lime-dark);">01 / PRE-SEND ORCHESTRATION</span>
-                <h3 style="font-size: 1.5rem; margin: 10px 0;">Preview before you send.</h3>
-                <p style="color: var(--ink-secondary); font-size: 0.875rem; line-height: 1.7;">
+                <strong>Carrier-Grade A2P 10DLC</strong>
+                <p>Verified campaign registration with major telecom carriers prevents spam filtering and delivery drops.</p>
+              </div>
+            </div>
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>SOC 2 Type II Architecture</strong>
+                <p>Encrypted in transit (TLS 1.3) and at rest (AES-256) with role-based access controls and immutable event trails.</p>
+              </div>
+            </div>
+            <div class="checklist-item fade-in-scroll">
+              <div class="check-icon">✓</div>
+              <div>
+                <strong>Zero AI Hallucination Policy</strong>
+                <p>Smart suggestions strictly cite signed rate sheets; speculative or unlicensed advice is prohibited by policy.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- 5. Platform Demo (Interactive Preview) -->
+      <section class="section-clean" id="platform-demo">
+        <div class="site-container">
+          <div class="section-header fade-in-scroll">
+            <div class="mono-kicker">04 / INTERACTIVE PLATFORM DEMO</div>
+            <h2>Experience the workflow firsthand.</h2>
+            <p>Switch between the Campaign Composer, Two-Way Inbox, and Knowledge Base to see Kindred in action.</p>
+          </div>
+
+          <!-- Showcase Navigation Tabs -->
+          <div class="demo-tabs-bar fade-in-scroll">
+            <button class="demo-tab-button active" data-showcase="composer">Campaign Composer</button>
+            <button class="demo-tab-button" data-showcase="inbox">Two-Way Inbox</button>
+            <button class="demo-tab-button" data-showcase="rates">Mortgage Benchmarks</button>
+          </div>
+
+          <!-- Slide 1: Campaign Composer -->
+          <div class="demo-preview-card showcase-slide fade-in-scroll" data-slide="composer">
+            <div class="demo-split">
+              <div class="demo-text">
+                <span class="mono-kicker">PRE-SEND ORCHESTRATION</span>
+                <h3>Preview before you send.</h3>
+                <p>
                   Draft messages with real-time GSM-7 SMS segment calculation and pre-approved Meta WhatsApp templates. Run full dry-run sending simulations without broadcasting live messages.
                 </p>
-                <a href="#/dashboard/composer" class="button-dark small" data-route="/dashboard/composer" style="margin-top: 16px;">
-                  Open Interactive Composer <span>↗</span>
+                <a href="#/dashboard/composer" class="button-dark small" data-route="/dashboard/composer">
+                  <span>Open Composer</span> <span>↗</span>
                 </a>
               </div>
-              <div style="background: var(--paper-warm); border: 1px solid var(--line); padding: 24px;">
-                <div class="mono-kicker" style="margin-bottom: 8px;">SAMPLE DIWALI PILOT MESSAGE</div>
-                <div style="font-size: 0.875rem; background: #fff; padding: 14px; border: 1px solid var(--line); margin-bottom: 12px;">
+              <div class="demo-visual-box">
+                <div class="mono-kicker" style="margin-bottom: 10px;">SAMPLE DIWALI PILOT MESSAGE</div>
+                <div style="background: #ffffff; padding: 16px; border: 1px solid var(--border-subtle); border-radius: 6px; font-size: 0.9375rem; margin-bottom: 14px; line-height: 1.55;">
                   Wishing you and your family a very happy Diwali! May the festival bring light, happiness and prosperity. — The Kindred Team (Reply STOP to opt out)
                 </div>
-                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.6875rem; color: var(--muted);">
+                <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted);">
                   <span>154 Chars · 1 GSM Segment</span>
-                  <span style="color: var(--green);">✓ Pre-send Passed</span>
+                  <span style="color: var(--green); font-weight: 600;">✓ Pre-send Checks Passed</span>
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Inbox Slide -->
-        <div class="showcase-slide" data-slide="inbox" style="display: none;">
-          <div class="card" style="padding: 32px; background: #fff;">
-            <div class="grid-2" style="align-items: center;">
-              <div>
-                <span class="mono-kicker" style="color: var(--lime-dark);">02 / CONVERSATIONAL EXCELLENCE</span>
-                <h3 style="font-size: 1.5rem; margin: 10px 0;">Two-way conversations that know their limits.</h3>
-                <p style="color: var(--ink-secondary); font-size: 0.875rem; line-height: 1.7;">
+          <!-- Slide 2: Two-Way Inbox -->
+          <div class="demo-preview-card showcase-slide fade-in-scroll" data-slide="inbox" style="display: none;">
+            <div class="demo-split">
+              <div class="demo-text">
+                <span class="mono-kicker">CONVERSATIONAL EXCELLENCE</span>
+                <h3>Two-way conversations that know their limits.</h3>
+                <p>
                   Inbound customer replies appear instantly in a shared relationship inbox. Our constrained assistant recommends replies citing verified rate sheets while escalating sensitive advice to loan officers.
                 </p>
-                <a href="#/dashboard/inbox" class="button-dark small" data-route="/dashboard/inbox" style="margin-top: 16px;">
-                  Open Two-Way Inbox <span>↗</span>
+                <a href="#/dashboard/inbox" class="button-dark small" data-route="/dashboard/inbox">
+                  <span>Open Two-Way Inbox</span> <span>↗</span>
                 </a>
               </div>
-              <div style="background: var(--paper-warm); border: 1px solid var(--line); padding: 24px;">
-                <div class="mono-kicker" style="margin-bottom: 8px;">AI SMART REPLY RECOMMENDATION</div>
-                <div style="background: #eaf1da; border: 1px solid var(--lime-dark); padding: 12px; margin-bottom: 10px; font-size: 0.8125rem;">
+              <div class="demo-visual-box">
+                <div class="mono-kicker" style="margin-bottom: 10px;">AI SMART REPLY RECOMMENDATION</div>
+                <div style="background: var(--lime-subtle); border: 1px solid #c7d89b; padding: 14px; border-radius: 6px; font-size: 0.875rem; margin-bottom: 12px; line-height: 1.55;">
                   <b>Intent:</b> Rate Inquiry (94% High Confidence)<br>
                   <em>"As of today's verified rate update (effective Nov 6, 2026), our conforming 30-year fixed benchmark is at 6.125%..."</em>
                 </div>
-                <div style="font-family: var(--font-mono); font-size: 0.625rem; color: var(--muted);">
-                  Source: Approved Rate Snapshot #2026-W45 · Human approval required
+                <div style="font-family: var(--font-mono); font-size: 0.75rem; color: var(--ink-muted);">
+                  Source: Approved Rate Snapshot #2026-W45 · Dual officer sign-off
                 </div>
               </div>
             </div>
           </div>
-        </div>
 
-        <!-- Rates Slide -->
-        <div class="showcase-slide" data-slide="rates" style="display: none;">
-          <div class="card" style="padding: 32px; background: #fff;">
-            <div class="grid-2" style="align-items: center;">
-              <div>
-                <span class="mono-kicker" style="color: var(--lime-dark);">03 / COMPLIANCE INTELLIGENCE</span>
-                <h3 style="font-size: 1.5rem; margin: 10px 0;">Never guess a mortgage rate.</h3>
-                <p style="color: var(--ink-secondary); font-size: 0.875rem; line-height: 1.7;">
+          <!-- Slide 3: Mortgage Benchmarks -->
+          <div class="demo-preview-card showcase-slide fade-in-scroll" data-slide="rates" style="display: none;">
+            <div class="demo-split">
+              <div class="demo-text">
+                <span class="mono-kicker">COMPLIANCE INTELLIGENCE</span>
+                <h3>Never guess a mortgage rate.</h3>
+                <p>
                   All mortgage benchmark data is fed from verified secondary market feeds and signed off weekly by compliance. Disclaimers, APR, and points are automatically calculated.
                 </p>
-                <a href="#/dashboard/knowledge" class="button-dark small" data-route="/dashboard/knowledge" style="margin-top: 16px;">
-                  Explore Knowledge Base <span>↗</span>
+                <a href="#/dashboard/knowledge" class="button-dark small" data-route="/dashboard/knowledge">
+                  <span>Explore Knowledge Base</span> <span>↗</span>
                 </a>
               </div>
-              <div style="background: var(--paper-warm); border: 1px solid var(--line); padding: 24px;">
-                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px; font-size: 0.8125rem;">
+              <div class="demo-visual-box">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; margin-bottom: 10px; font-size: 0.875rem;">
                   <span>30-Yr Fixed Conforming</span>
                   <strong>6.125%</strong>
                 </div>
-                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--line); padding-bottom: 8px; margin-bottom: 8px; font-size: 0.8125rem;">
+                <div style="display: flex; justify-content: space-between; border-bottom: 1px solid var(--border-subtle); padding-bottom: 10px; margin-bottom: 10px; font-size: 0.875rem;">
                   <span>15-Yr Fixed Conforming</span>
                   <strong>5.450%</strong>
                 </div>
-                <div style="display: flex; justify-content: space-between; font-size: 0.8125rem;">
+                <div style="display: flex; justify-content: space-between; font-size: 0.875rem;">
                   <span>FHA 30-Year Fixed</span>
                   <strong>5.750%</strong>
                 </div>
@@ -851,90 +354,137 @@
         </div>
       </section>
 
-      <!-- Workflow Steps -->
-      <section class="section-editorial">
-        <div class="section-kicker">05 / THE WORKFLOW</div>
-        <h2>Start focused.<br><em>Scale with precision.</em></h2>
+      <!-- 6. FAQ Section (5 Questions) -->
+      <section class="section-clean" id="faq">
+        <div class="site-container">
+          <div class="section-header fade-in-scroll">
+            <div class="mono-kicker">05 / FREQUENTLY ASKED QUESTIONS</div>
+            <h2>Everything you need to know.</h2>
+            <p>Clear answers on channels, compliance enforcement, and our demonstration pilot environment.</p>
+          </div>
+          <div class="faq-list">
+            <details class="faq-item fade-in-scroll" open>
+              <summary class="faq-summary">
+                <span>What messaging channels does Kindred support?</span>
+                <span class="faq-toggle-icon">＋</span>
+              </summary>
+              <div class="faq-content">
+                Kindred natively supports carrier-grade A2P 10DLC SMS and the official WhatsApp Business Platform (via Meta Cloud API). Each contact profile tracks preferred delivery channels, verified country codes, and consent evidence.
+              </div>
+            </details>
 
-        <div class="steps-grid">
-          <div class="step-card">
-            <span class="step-num">STEP 01</span>
-            <h3>Organize your customers</h3>
-            <p>Import up to 10 pilot recipients. Validate E.164 phone formats and record each contact’s documented channel consent, timezone, and loan preferences.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">STEP 02</span>
-            <h3>Create thoughtful communication</h3>
-            <p>Shape festival greetings, seasonal updates, or weekly mortgage notes. Choose SMS or WhatsApp, preview personalization, and verify pre-send compliance.</p>
-          </div>
-          <div class="step-card">
-            <span class="step-num">STEP 03</span>
-            <h3>Build stronger relationships</h3>
-            <p>Track delivery events and receive inbound questions in one unified inbox. Use AI smart replies with verified citations or escalate to human loan advisors.</p>
+            <details class="faq-item fade-in-scroll">
+              <summary class="faq-summary">
+                <span>How does Kindred enforce TCPA and quiet-hours compliance?</span>
+                <span class="faq-toggle-icon">＋</span>
+              </summary>
+              <div class="faq-content">
+                Every contact's timezone is resolved via E.164 area code and geographical profile. Automated queueing prevents messages from being transmitted outside of 9:00 AM – 8:00 PM recipient local time. If a campaign is scheduled during quiet hours, messages are automatically queued for the next compliant window.
+              </div>
+            </details>
+
+            <details class="faq-item fade-in-scroll">
+              <summary class="faq-summary">
+                <span>Can customers opt out automatically?</span>
+                <span class="faq-toggle-icon">＋</span>
+              </summary>
+              <div class="faq-content">
+                Yes. Any inbound keyword such as STOP, UNSUBSCRIBE, END, or QUIT triggers immediate global suppression across all tenant campaigns. The contact is marked suppressed in the directory and logged to the 7-year audit trail.
+              </div>
+            </details>
+
+            <details class="faq-item fade-in-scroll">
+              <summary class="faq-summary">
+                <span>Does the AI assistant quote custom interest rates or scenarios?</span>
+                <span class="faq-toggle-icon">＋</span>
+              </summary>
+              <div class="faq-content">
+                No. Kindred’s smart suggestions are strictly constrained to cite approved benchmark rate sheets signed off weekly by your compliance officer. The assistant never generates speculative rate promises, APR estimates, or unlicensed credit advice.
+              </div>
+            </details>
+
+            <details class="faq-item fade-in-scroll">
+              <summary class="faq-summary">
+                <span>Is this a live telecom service or a demonstration pilot?</span>
+                <span class="faq-toggle-icon">＋</span>
+              </summary>
+              <div class="faq-content">
+                This environment is a sandbox demonstration prototype. It comes pre-loaded with 10 verified test borrower contacts, simulated carrier delivery webhooks, compliant rate benchmarks, and interactive composer tools. No actual SMS or WhatsApp fees are incurred.
+              </div>
+            </details>
           </div>
         </div>
       </section>
 
-      <!-- Final Call To Action -->
-      <section class="final-cta">
-        <span class="mono-kicker" style="color: var(--lime);">KINDRED CUSTOMER MESSAGING</span>
-        <h2>Every conversation counts.<br><em>Start building lasting connections.</em></h2>
-        <a href="#/dashboard" class="button-light" data-route="/dashboard" style="margin-top: 14px;">
-          Launch the Pilot Workspace <span>↗</span>
-        </a>
+      <!-- 7. Final Call To Action (The Single Dark Chapter) -->
+      <section class="final-cta-dark">
+        <div class="site-container">
+          <div class="mono-kicker" style="color: var(--lime);">
+            <span class="kicker-dot"></span>
+            <span>KINDRED CUSTOMER MESSAGING</span>
+          </div>
+          <h2>Every conversation counts.<br>Start building lasting connections.</h2>
+          <p>
+            Experience how automated, compliance-checked messaging transforms customer relationships. Explore the full pilot workspace with 10 pre-loaded borrower relationships.
+          </p>
+          <div class="cta-buttons">
+            <a href="#/dashboard" class="button-light" data-route="/dashboard">
+              <span>Launch Pilot Workspace</span> <span>↗</span>
+            </a>
+            <a href="#/signup" class="button-outline-light" data-route="/signup">
+              <span>Create Sandbox Account</span> <span>＋</span>
+            </a>
+          </div>
+        </div>
       </section>
     </main>
 
-    <!-- Master Editorial Flagship Footer -->
-    <footer class="flagship-footer" id="site-footer">
-      <div class="footer-meta-top">
-        <div class="footer-col">
-          <span class="footer-mono-label">SYSTEM ARCHITECTURE</span>
-          <p class="footer-desc">Kindred Customer Messaging & Relationship Automation Platform. Designed for high-trust mortgage lenders and wealth advisors.</p>
+    <!-- 8. Clean Site Footer -->
+    <footer class="site-footer-clean">
+      <div class="site-container">
+        <div class="footer-grid">
+          <div class="footer-brand-col">
+            <a class="brand-wrap" href="#/">
+              <span class="brand-circle">k.</span>
+              <span>kindred<span class="brand-slash">/</span></span>
+            </a>
+            <p>Intelligent Customer Messaging and Relationship Automation Platform. Designed for high-trust mortgage lenders and financial advisors.</p>
+          </div>
+          <div class="footer-links-col">
+            <h4>PLATFORM</h4>
+            <ul>
+              <li><a href="#how-it-works">How It Works</a></li>
+              <li><a href="#features">Features</a></li>
+              <li><a href="#security">Security & Trust</a></li>
+              <li><a href="#faq">Frequently Asked</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>CHANNELS</h4>
+            <ul>
+              <li><a href="#features">A2P 10DLC SMS</a></li>
+              <li><a href="#features">WhatsApp Business API</a></li>
+              <li><a href="#security">TCPA Quiet Hours</a></li>
+              <li><a href="#security">Audit Trail Logging</a></li>
+            </ul>
+          </div>
+          <div class="footer-links-col">
+            <h4>WORKSPACE</h4>
+            <ul>
+              <li><a href="#/dashboard" data-route="/dashboard">Launch Workspace ↗</a></li>
+              <li><a href="#/login" data-route="/login">Advisor Sign In</a></li>
+              <li><a href="#/signup" data-route="/signup">Create Account</a></li>
+            </ul>
+          </div>
         </div>
-        <div class="footer-col">
-          <span class="footer-mono-label">CHANNELS & PROTOCOLS</span>
-          <ul class="footer-links-list">
-            <li><span>10DLC A2P SMS Carrier Route</span></li>
-            <li><span>WhatsApp Business Platform (Meta)</span></li>
-            <li><span>TCPA & Quiet Hours Enforcement</span></li>
-            <li><span>RFC-822 Synthetic Message Queue</span></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <span class="footer-mono-label">NAVIGATION</span>
-          <ul class="footer-nav-list">
-            <li><a href="#/" data-route="/">01 / Homepage</a></li>
-            <li><a href="#/features" data-route="/features">02 / Features Index</a></li>
-            <li><a href="#/security" data-route="/security">03 / Security & Compliance</a></li>
-            <li><a href="#/dashboard" data-route="/dashboard">04 / Pilot Workspace ↗</a></li>
-          </ul>
-        </div>
-        <div class="footer-col">
-          <span class="footer-mono-label">SYSTEM STATUS</span>
+
+        <div class="footer-bottom-bar">
+          <div>
+            <span>© 2026 Kindred Messaging Platform Inc. Demonstration Pilot Environment.</span>
+          </div>
           <div class="footer-status-pill">
-            <span class="status-pulse-dot"></span>
             <span>ALL SYSTEMS OPERATIONAL</span>
           </div>
-          <div class="footer-hash-label">VERIFIED BUILD · PILOT v2.4</div>
-        </div>
-      </div>
-
-      <!-- Giant Viewport-Width kindred/ Wordmark -->
-      <div class="footer-wordmark-container">
-        <div class="footer-wordmark-text">
-          kindred<span class="footer-wordmark-slash">/</span>
-        </div>
-      </div>
-
-      <div class="footer-meta-bottom">
-        <div class="footer-legal-left">
-          <span>© 2026 KINDRED MESSAGING PLATFORM INC.</span>
-          <span>DEMO WORKSPACE · NOT CONNECTED TO LIVE TELECOM PROVIDERS</span>
-        </div>
-        <div class="footer-legal-right">
-          <span>SAN FRANCISCO · NEW YORK · LONDON</span>
-          <a href="#section-hero" class="back-to-top-link" id="btn-back-to-top">BACK TO TOP ↑</a>
         </div>
       </div>
     </footer>
