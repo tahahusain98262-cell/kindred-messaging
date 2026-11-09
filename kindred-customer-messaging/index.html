@@ -1233,6 +1233,56 @@
                 </button>
               </div>
 
+              <!-- Real SMS Mode Toggle Bar (Twilio Test Mode) -->
+              <div class="real-sms-toggle-bar" id="real-sms-toggle-bar">
+                <div class="toggle-control-group">
+                  <label class="switch-control" for="toggle-real-sms">
+                    <input type="checkbox" id="toggle-real-sms" class="switch-checkbox" />
+                    <span class="switch-slider"></span>
+                  </label>
+                  <div class="toggle-info">
+                    <span class="toggle-label">Send real test SMS via Twilio</span>
+                    <span class="toggle-sublabel">Dispatch live SMS to pre-approved US recipient numbers</span>
+                  </div>
+                </div>
+                <span class="mode-badge" id="composer-mode-badge">SIMULATION MODE</span>
+              </div>
+
+              <!-- Real SMS Test Dispatch Panel (Active when Real SMS toggle is ON) -->
+              <div class="real-sms-panel" id="real-sms-panel" style="display: none;">
+                <div class="form-group">
+                  <div style="display: flex; justify-content: space-between; align-items: baseline;">
+                    <label class="form-label" for="real-sms-recipient">US TEST RECIPIENT PHONE</label>
+                    <span class="field-hint-mono">TEST_ALLOWED_NUMBERS ONLY</span>
+                  </div>
+                  <input type="tel" id="real-sms-recipient" class="form-input mono" placeholder="+1 (202) 555-0143" value="+12025550143" />
+                  <div class="field-subtext" id="real-sms-recipient-status">
+                    <span>Target Carrier: US E.164 · Recipient Timezone: <b id="real-sms-tz-display">Eastern (America/New_York)</b></span>
+                  </div>
+                </div>
+
+                <!-- Mandatory Consent Checkbox -->
+                <div class="consent-checkbox-card" id="real-sms-consent-box">
+                  <label class="consent-checkbox-label">
+                    <input type="checkbox" id="real-sms-consent" />
+                    <span class="consent-text">
+                      <strong>Documented Consent Verified:</strong> This number has explicitly opted in to receive test messages. (TCPA & carrier verification mandatory).
+                    </span>
+                  </label>
+                </div>
+
+                <!-- Estimated Cost Calculation Box -->
+                <div class="cost-estimate-card" id="real-sms-cost-box">
+                  <div class="cost-card-header">
+                    <span class="mono-kicker">ESTIMATED CARRIER COST</span>
+                    <span class="cost-value-badge" id="real-sms-cost-value">~$0.013 USD</span>
+                  </div>
+                  <div class="cost-breakdown-text" id="real-sms-cost-breakdown">
+                    Segments × $0.0083 (Twilio) + carrier fee ($0.0035–$0.0050) = ~$0.012–$0.013/segment.
+                  </div>
+                </div>
+              </div>
+
               <!-- Template Selector -->
               <div class="template-picker-row">
                 <span class="mono-kicker">CHOOSE PRE-APPROVED TEMPLATE</span>
@@ -1253,27 +1303,31 @@
               </div>
 
               <!-- Pre-send Checklist -->
-              <div class="presend-checklist">
+              <div class="presend-checklist" id="presend-checklist">
                 <div class="checklist-title">PRE-SEND COMPLIANCE CHECKLIST</div>
-                <div class="checklist-item">
-                  <span class="checklist-check">✓</span>
-                  <span>Documented consent verified for 10 recipients</span>
+                <div class="checklist-item" id="chk-item-consent">
+                  <span class="checklist-check" id="chk-icon-consent">✓</span>
+                  <span id="chk-text-consent">Documented consent verified for recipients</span>
                 </div>
-                <div class="checklist-item">
-                  <span class="checklist-check">✓</span>
-                  <span>Global suppression registry checked (1 opted-out contact excluded)</span>
+                <div class="checklist-item" id="chk-item-suppression">
+                  <span class="checklist-check" id="chk-icon-suppression">✓</span>
+                  <span id="chk-text-suppression">Global suppression registry checked (0 opted-out contacts)</span>
                 </div>
-                <div class="checklist-item">
-                  <span class="checklist-check">✓</span>
-                  <span>Recipient timezone quiet hours respected (8:00 PM – 9:00 AM EST)</span>
+                <div class="checklist-item" id="chk-item-quiethours">
+                  <span class="checklist-check" id="chk-icon-quiethours">✓</span>
+                  <span id="chk-text-quiethours">Recipient timezone quiet hours respected (8:00 PM – 9:00 AM)</span>
                 </div>
-                <div class="checklist-item">
-                  <span class="checklist-check">✓</span>
-                  <span>Provider connection verified (Telnyx Sandbox active)</span>
+                <div class="checklist-item" id="chk-item-stop">
+                  <span class="checklist-check" id="chk-icon-stop">✓</span>
+                  <span id="chk-text-stop">Mandatory opt-out instructions included ("Reply STOP to opt out")</span>
+                </div>
+                <div class="checklist-item" id="chk-item-provider">
+                  <span class="checklist-check" id="chk-icon-provider">✓</span>
+                  <span id="chk-text-provider">Provider connection verified (Twilio SMS Gateway)</span>
                 </div>
               </div>
 
-              <!-- Simulation Progress Indicator -->
+              <!-- Simulation Progress Indicator (Default Simulation Mode) -->
               <div class="sim-progress-box" id="sim-progress-box">
                 <div style="display: flex; justify-content: space-between; font-family: var(--font-mono); font-size: 0.6875rem;">
                   <span>SIMULATED DISPATCH</span>
@@ -1284,12 +1338,62 @@
                 </div>
               </div>
 
-              <!-- Actions -->
-              <div style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
+              <!-- Simulation Mode Actions (Default) -->
+              <div id="sim-actions-bar" style="display: flex; justify-content: space-between; align-items: center; margin-top: 20px;">
                 <button class="button-outline" id="btn-save-draft">Save Draft</button>
                 <button class="button-dark" id="btn-simulate-send">
                   Simulate Send (Dry Run) <span>↗</span>
                 </button>
+              </div>
+
+              <!-- Real SMS Actions & Timeline (Active when Real SMS mode is ON) -->
+              <div id="real-sms-actions-bar" style="display: none; margin-top: 20px;">
+                <div style="display: flex; justify-content: space-between; align-items: center;">
+                  <button type="button" class="button-outline" id="btn-real-save-draft">Save Draft</button>
+                  <button type="button" class="button-dark" id="btn-real-send-sms">
+                    Send Test SMS <span>↗</span>
+                  </button>
+                </div>
+
+                <!-- Error Banner -->
+                <div class="real-sms-error-banner" id="real-sms-error-banner" style="display: none;">
+                  <div class="error-banner-icon">⚠️</div>
+                  <div class="error-banner-content">
+                    <strong id="real-sms-error-title">Sending Blocked</strong>
+                    <p id="real-sms-error-desc">Error details</p>
+                  </div>
+                </div>
+
+                <!-- Status Timeline Widget -->
+                <div class="real-sms-timeline-card" id="real-sms-timeline" style="display: none;">
+                  <div class="timeline-header">
+                    <span class="mono-kicker">CARRIER DISPATCH TIMELINE</span>
+                    <span class="timeline-sid" id="timeline-msg-sid">SID: --</span>
+                  </div>
+                  <div class="timeline-steps">
+                    <div class="timeline-step" id="step-queued">
+                      <div class="step-indicator">1</div>
+                      <div class="step-label">Queued</div>
+                      <div class="step-time" id="time-queued">--</div>
+                    </div>
+                    <div class="timeline-line" id="line-queued-sent"></div>
+                    <div class="timeline-step" id="step-sent">
+                      <div class="step-indicator">2</div>
+                      <div class="step-label">Sent to Carrier</div>
+                      <div class="step-time" id="time-sent">--</div>
+                    </div>
+                    <div class="timeline-line" id="line-sent-delivered"></div>
+                    <div class="timeline-step" id="step-delivered">
+                      <div class="step-indicator">3</div>
+                      <div class="step-label" id="label-step-delivered">Delivered</div>
+                      <div class="step-time" id="time-delivered">--</div>
+                    </div>
+                  </div>
+                  <div class="timeline-footer">
+                    <span id="timeline-status-message">Awaiting carrier dispatch...</span>
+                    <span id="timeline-cost-tag" class="badge">Cost: ~$0.013</span>
+                  </div>
+                </div>
               </div>
             </div>
 
@@ -1352,9 +1456,10 @@
             
             <!-- Left Thread Selector -->
             <div class="inbox-thread-list">
-              <div class="inbox-thread-header">
+              <div class="inbox-thread-header" style="flex-wrap: wrap; gap: 8px;">
                 <span class="mono-kicker">CONVERSATIONS</span>
                 <span class="tag-pill">3 ACTIVE</span>
+                <span class="badge-test-mode" id="inbox-test-mode-badge" style="margin-left: auto;">TEST MODE: only allowlisted numbers</span>
               </div>
               <div class="inbox-threads-container" id="inbox-threads-container">
                 <!-- Populated dynamically by inbox.js -->

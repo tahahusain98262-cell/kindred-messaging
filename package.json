@@ -1,0 +1,15 @@
+{
+  "name": "kindred-messaging",
+  "version": "1.0.0",
+  "description": "Kindred Customer Messaging Pilot with Twilio SMS integration",
+  "private": true,
+  "scripts": {
+    "test": "node kindred-customer-messaging/tests/verify-prototype.js"
+  },
+  "dependencies": {
+    "twilio": "^5.4.0"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}

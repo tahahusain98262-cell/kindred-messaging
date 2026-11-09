@@ -21,7 +21,7 @@ async function waitForTabs(port, retries = 10) {
     try {
       const tabs = await getJson(`http://127.0.0.1:${port}/json/list`);
       if (tabs && tabs.length > 0) return tabs;
-    } catch (e) {}
+    } catch (e) { }
     await sleep(500);
   }
   throw new Error('Failed to connect to Chrome on port ' + port);
@@ -166,3 +166,4 @@ runTests().catch(err => {
   console.error("Test failed:", err);
   process.exit(1);
 });
+

@@ -5,3 +5,14 @@ reference_study/
 # OS metadata
 .DS_Store
 Thumbs.db
+
+# Environment variables & secrets (NEVER commit secrets)
+.env
+.env*.local
+.env.development
+.env.production
+
+# Dependencies & build
+node_modules/
+.vercel
+

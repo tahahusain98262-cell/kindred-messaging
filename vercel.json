@@ -1,13 +1,8 @@
 {
   "version": 2,
-  "rewrites": [
-    {
-      "source": "/",
-      "destination": "/kindred-customer-messaging/index.html"
-    },
-    {
-      "source": "/(.*)",
-      "destination": "/kindred-customer-messaging/$1"
-    }
+  "routes": [
+    { "handle": "filesystem" },
+    { "src": "/", "dest": "/kindred-customer-messaging/index.html" },
+    { "src": "/(.*)", "dest": "/kindred-customer-messaging/$1" }
   ]
 }

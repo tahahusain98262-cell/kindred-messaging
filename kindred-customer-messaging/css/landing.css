@@ -560,7 +560,8 @@
   transition: border-color var(--transition-fast);
 }
 
-.faq-item[open], .faq-item:hover {
+.faq-item[open],
+.faq-item:hover {
   border-color: var(--border-medium);
 }
 
@@ -744,10 +745,12 @@
     grid-template-columns: 1fr;
     gap: 48px;
   }
+
   .demo-split {
     grid-template-columns: 1fr;
     gap: 28px;
   }
+
   .footer-grid {
     grid-template-columns: repeat(2, 1fr);
     gap: 32px;
@@ -756,7 +759,8 @@
 
 @media (max-width: 768px) {
   :root {
-    --font-size-body: 1rem; /* 16px base for mobile input zoom prevention */
+    --font-size-body: 1rem;
+    /* 16px base for mobile input zoom prevention */
   }
 
   .site-header {

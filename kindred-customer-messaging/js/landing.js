@@ -95,7 +95,7 @@ window.KINDRED_LANDING = (() => {
    */
   function initSmoothAnchorScroll() {
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-      anchor.addEventListener("click", function(e) {
+      anchor.addEventListener("click", function (e) {
         const href = this.getAttribute("href");
         if (!href || href.startsWith("#/")) return; // Let client router handle routing
         if (href === "#") return;

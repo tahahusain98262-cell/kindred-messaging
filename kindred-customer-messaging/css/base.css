@@ -6,13 +6,20 @@
 
 :root {
   /* Clean Kindred Palette */
-  --ivory: #F8F7F2;              /* Primary background: warm, calm, premium */
-  --paper: #F8F7F2;              /* Alias */
-  --paper-card: #FFFFFF;         /* Crisp white card surface */
-  --paper-panel: #F1EFE6;        /* Subtle warm panel fill */
-  --paper-panel-dark: #1E231F;   /* Single dark section / footer / primary button */
-  --paper-dark: #1A1F1B;         /* Workspace sidebar / dark tone */
-  --paper-dark-hover: #262D27;   /* Hover state for dark elements */
+  --ivory: #F8F7F2;
+  /* Primary background: warm, calm, premium */
+  --paper: #F8F7F2;
+  /* Alias */
+  --paper-card: #FFFFFF;
+  /* Crisp white card surface */
+  --paper-panel: #F1EFE6;
+  /* Subtle warm panel fill */
+  --paper-panel-dark: #1E231F;
+  /* Single dark section / footer / primary button */
+  --paper-dark: #1A1F1B;
+  /* Workspace sidebar / dark tone */
+  --paper-dark-hover: #262D27;
+  /* Hover state for dark elements */
 
   /* Neutral Borders & Dividers */
   --border-subtle: rgba(28, 31, 29, 0.08);
@@ -22,20 +29,27 @@
   --line: var(--border-subtle);
 
   /* Typography Colors (AA Contrast Compliant) */
-  --ink: #1C1F1D;                /* Primary charcoal text (contrast > 14:1 on ivory) */
+  --ink: #1C1F1D;
+  /* Primary charcoal text (contrast > 14:1 on ivory) */
   --ink-primary: #1C1F1D;
-  --ink-secondary: #4A524D;      /* Readable secondary body text (contrast > 6.5:1) */
-  --ink-muted: #6B746E;          /* Muted metadata / technical labels */
-  --ink-inverted: #F8F7F2;       /* Text on dark backgrounds */
+  --ink-secondary: #4A524D;
+  /* Readable secondary body text (contrast > 6.5:1) */
+  --ink-muted: #6B746E;
+  /* Muted metadata / technical labels */
+  --ink-inverted: #F8F7F2;
+  /* Text on dark backgrounds */
   --ink-inverted-secondary: #B7BEB7;
 
   /* Accents & Signals */
-  --lime: #D9EE6F;               /* Signal lime: primary CTA, active status dots */
+  --lime: #D9EE6F;
+  /* Signal lime: primary CTA, active status dots */
   --lime-hover: #CBE358;
-  --lime-dark: #384218;          /* High contrast lime text */
+  --lime-dark: #384218;
+  /* High contrast lime text */
   --lime-subtle: #EDF5CE;
   --muted-olive: #626F3D;
-  --green: #2E6B3E;              /* Verified / checkmark */
+  --green: #2E6B3E;
+  /* Verified / checkmark */
   --green-subtle: #E8F2EA;
   --red: #C33D2D;
   --red-subtle: #FBECE9;
@@ -50,9 +64,12 @@
   --font-size-h1: clamp(2.4rem, 5.5vw, 4.25rem);
   --font-size-h2: clamp(1.8rem, 3.8vw, 2.75rem);
   --font-size-h3: clamp(1.25rem, 2.2vw, 1.625rem);
-  --font-size-body: 1.0625rem; /* 17px */
-  --font-size-sm: 0.875rem;    /* 14px */
-  --font-size-xs: 0.75rem;     /* 12px */
+  --font-size-body: 1.0625rem;
+  /* 17px */
+  --font-size-sm: 0.875rem;
+  /* 14px */
+  --font-size-xs: 0.75rem;
+  /* 12px */
 
   /* Spacing Rhythm (80-120px desktop section vertical rhythm) */
   --section-pad-desktop: 104px;
@@ -76,7 +93,9 @@
    CSS Reset & Base Rules
    ========================================================================== */
 
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
 }
 
@@ -109,13 +128,17 @@ a {
   text-decoration: none;
 }
 
-button, input, textarea, select {
+button,
+input,
+textarea,
+select {
   font-family: inherit;
   font-size: inherit;
   color: inherit;
 }
 
-img, svg {
+img,
+svg {
   display: block;
   max-width: 100%;
 }
@@ -124,7 +147,12 @@ img, svg {
    Typography Primitives
    ========================================================================== */
 
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-sans);
   font-weight: 600;
   letter-spacing: -0.03em;
@@ -160,7 +188,8 @@ p {
   align-items: center;
   gap: 8px;
   font-family: var(--font-mono);
-  font-size: 0.75rem; /* 12px */
+  font-size: 0.75rem;
+  /* 12px */
   font-weight: 600;
   letter-spacing: 0.08em;
   text-transform: uppercase;
@@ -199,7 +228,8 @@ p {
   background-color: var(--paper-panel-dark);
   color: #ffffff;
   font-family: var(--font-sans);
-  font-size: 0.9375rem; /* 15px */
+  font-size: 0.9375rem;
+  /* 15px */
   font-weight: 600;
   border-radius: var(--radius-md);
   border: 1px solid var(--paper-panel-dark);
@@ -217,10 +247,12 @@ p {
   transform: scale(0.98);
 }
 
-.button-dark.small, .button-sm {
+.button-dark.small,
+.button-sm {
   height: 36px;
   padding: 0 14px;
-  font-size: 0.8125rem; /* 13px */
+  font-size: 0.8125rem;
+  /* 13px */
   border-radius: var(--radius-sm);
 }
 
@@ -301,7 +333,8 @@ textarea {
   border-radius: var(--radius-sm);
   color: var(--ink);
   font-family: var(--font-sans);
-  font-size: 1rem; /* 16px prevents iOS zoom */
+  font-size: 1rem;
+  /* 16px prevents iOS zoom */
   line-height: 1.5;
   transition: border-color var(--transition-fast), box-shadow var(--transition-fast);
   outline: none;
@@ -356,12 +389,16 @@ textarea {
   html {
     scroll-behavior: auto !important;
   }
+
   .fade-in-scroll {
     opacity: 1 !important;
     transform: none !important;
     transition: none !important;
   }
-  *, *::before, *::after {
+
+  *,
+  *::before,
+  *::after {
     animation-duration: 0.01ms !important;
     transition-duration: 0.01ms !important;
   }
