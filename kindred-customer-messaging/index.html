@@ -1809,21 +1809,23 @@
   <div class="modal-backdrop" id="modal-add-contact" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close dialog">×</button>
-      <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Add Pilot Recipient</h3>
-      <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 20px;">
-        Every imported contact requires documented consent before communication can occur.
-      </p>
+      <div class="modal-header">
+        <h3 class="modal-title">Add Pilot Recipient</h3>
+        <p class="modal-subtitle">
+          Every imported contact requires documented consent before communication can occur.
+        </p>
+      </div>
 
-      <form id="form-add-contact">
+      <form id="form-add-contact" class="modal-form">
         <div class="form-group">
-          <label class="form-label" for="new-contact-name">FULL NAME *</label>
+          <label class="form-label" for="new-contact-name">FULL NAME <span class="required-star">*</span></label>
           <input type="text" id="new-contact-name" class="form-input" placeholder="e.g. Maya Lin" required />
         </div>
 
         <div class="grid-2">
           <div class="form-group">
-            <label class="form-label" for="new-contact-phone">PHONE NUMBER (E.164) *</label>
-            <input type="tel" id="new-contact-phone" class="form-input" placeholder="+1 (555) 000-0000" required />
+            <label class="form-label" for="new-contact-phone">PHONE NUMBER (E.164) <span class="required-star">*</span></label>
+            <input type="tel" id="new-contact-phone" class="form-input mono" placeholder="+1 (555) 000-0000" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="new-contact-email">EMAIL ADDRESS</label>
@@ -1857,14 +1859,14 @@
           <input type="text" id="new-contact-source" class="form-input" placeholder="e.g. Loan Application Consent Doc #892" />
         </div>
 
-        <div style="background: var(--paper-warm); border: 1px solid var(--line); padding: 12px; margin-bottom: 20px;">
-          <label style="display: flex; align-items: flex-start; gap: 10px; font-size: 0.75rem; cursor: pointer;">
-            <input type="checkbox" id="new-contact-consent" checked style="margin-top: 3px;" />
+        <div class="modal-consent-block">
+          <label class="modal-consent-label">
+            <input type="checkbox" id="new-contact-consent" checked />
             <span>I certify that this contact has provided verified channel opt-in permission for relationship communication.</span>
           </label>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px;">
+        <div class="modal-footer">
           <button type="button" class="button-outline modal-close">Cancel</button>
           <button type="submit" class="button-dark">Save Pilot Contact <span>＋</span></button>
         </div>
@@ -1876,22 +1878,24 @@
   <div class="modal-backdrop" id="modal-edit-contact" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close dialog">×</button>
-      <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Edit Contact Profile</h3>
-      <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 20px;">
-        Update borrower details, channel preferences and consent status.
-      </p>
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Contact Profile</h3>
+        <p class="modal-subtitle">
+          Update borrower details, channel preferences and consent status.
+        </p>
+      </div>
 
-      <form id="form-edit-contact">
+      <form id="form-edit-contact" class="modal-form">
         <input type="hidden" id="edit-contact-id" />
         <div class="form-group">
-          <label class="form-label" for="edit-contact-name">FULL NAME *</label>
+          <label class="form-label" for="edit-contact-name">FULL NAME <span class="required-star">*</span></label>
           <input type="text" id="edit-contact-name" class="form-input" required />
         </div>
 
         <div class="grid-2">
           <div class="form-group">
-            <label class="form-label" for="edit-contact-phone">PHONE NUMBER *</label>
-            <input type="tel" id="edit-contact-phone" class="form-input" required />
+            <label class="form-label" for="edit-contact-phone">PHONE NUMBER <span class="required-star">*</span></label>
+            <input type="tel" id="edit-contact-phone" class="form-input mono" required />
           </div>
           <div class="form-group">
             <label class="form-label" for="edit-contact-email">EMAIL ADDRESS</label>
@@ -1930,7 +1934,7 @@
           </select>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <div class="modal-footer">
           <button type="button" class="button-outline modal-close">Cancel</button>
           <button type="submit" class="button-dark">Save Changes <span>✓</span></button>
         </div>
@@ -1942,48 +1946,52 @@
   <div class="modal-backdrop" id="modal-csv-import" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close dialog">×</button>
-      <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Import Contacts (CSV Simulation)</h3>
-      <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 20px;">
-        Upload a structured CSV file. The system will normalize E.164 phone numbers and audit consent evidence.
-      </p>
-
-      <div class="csv-dropzone" id="btn-load-sample-csv">
-        <div class="csv-dropzone-icon">⌁</div>
-        <strong>Click to load sample contacts.csv (2 rows)</strong>
-        <div style="font-size: 0.75rem; color: var(--muted); margin-top: 4px;">Supports standard CSV columns: Name, Phone, Email, Consent Source</div>
+      <div class="modal-header">
+        <h3 class="modal-title">Import Contacts (CSV Simulation)</h3>
+        <p class="modal-subtitle">
+          Upload a structured CSV file. The system will normalize E.164 phone numbers and audit consent evidence.
+        </p>
       </div>
 
-      <div class="csv-preview-table-wrap">
-        <div class="mono-kicker" style="margin-bottom: 6px;">PARSER VALIDATION PREVIEW</div>
-        <table class="csv-preview-table">
-          <thead>
-            <tr>
-              <th>NAME</th>
-              <th>NORMALIZED PHONE</th>
-              <th>CHANNEL</th>
-              <th>CONSENT AUDIT</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr>
-              <td>Devon Scott</td>
-              <td>+1 (555) 301-4455</td>
-              <td>SMS & WhatsApp</td>
-              <td><span class="badge badge-verified">✓ Signed Agreement</span></td>
-            </tr>
-            <tr>
-              <td>Mei-Ling Zhou</td>
-              <td>+1 (555) 402-8899</td>
-              <td>SMS & WhatsApp</td>
-              <td><span class="badge badge-verified">✓ Web Opt-In</span></td>
-            </tr>
-          </tbody>
-        </table>
-      </div>
+      <div class="modal-form">
+        <div class="csv-dropzone" id="btn-load-sample-csv">
+          <div class="csv-dropzone-icon">⌁</div>
+          <strong>Click to load sample contacts.csv (2 rows)</strong>
+          <div class="csv-dropzone-hint">Supports standard CSV columns: Name, Phone, Email, Consent Source</div>
+        </div>
 
-      <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 24px;">
-        <button type="button" class="button-outline modal-close">Cancel</button>
-        <button type="button" class="button-dark" id="btn-confirm-csv-import">Import Validated Rows <span>↗</span></button>
+        <div class="csv-preview-table-wrap">
+          <div class="mono-kicker" style="padding: 10px 12px; background: var(--paper-warm); border-bottom: 1px solid var(--line);">PARSER VALIDATION PREVIEW</div>
+          <table class="csv-preview-table">
+            <thead>
+              <tr>
+                <th>NAME</th>
+                <th>NORMALIZED PHONE</th>
+                <th>CHANNEL</th>
+                <th>CONSENT AUDIT</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td>Devon Scott</td>
+                <td style="font-family: var(--font-mono);">+1 (555) 301-4455</td>
+                <td>SMS &amp; WhatsApp</td>
+                <td><span class="badge badge-verified">✓ Signed Agreement</span></td>
+              </tr>
+              <tr>
+                <td>Mei-Ling Zhou</td>
+                <td style="font-family: var(--font-mono);">+1 (555) 402-8899</td>
+                <td>SMS &amp; WhatsApp</td>
+                <td><span class="badge badge-verified">✓ Web Opt-In</span></td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+
+        <div class="modal-footer">
+          <button type="button" class="button-outline modal-close">Cancel</button>
+          <button type="button" class="button-dark" id="btn-confirm-csv-import">Import Validated Rows <span>↗</span></button>
+        </div>
       </div>
     </div>
   </div>
@@ -1992,14 +2000,16 @@
   <div class="modal-backdrop" id="modal-create-campaign" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close dialog">×</button>
-      <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Create New Campaign</h3>
-      <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 20px;">
-        Draft a new message broadcast. Campaigns require approval before dispatch.
-      </p>
+      <div class="modal-header">
+        <h3 class="modal-title">Create New Campaign</h3>
+        <p class="modal-subtitle">
+          Draft a new message broadcast. Campaigns require approval before dispatch.
+        </p>
+      </div>
 
-      <form id="form-create-campaign">
+      <form id="form-create-campaign" class="modal-form">
         <div class="form-group">
-          <label class="form-label" for="new-campaign-name">CAMPAIGN TITLE *</label>
+          <label class="form-label" for="new-campaign-name">CAMPAIGN TITLE <span class="required-star">*</span></label>
           <input type="text" id="new-campaign-name" class="form-input" placeholder="e.g. End of Year Loan Review" required />
         </div>
 
@@ -2019,11 +2029,11 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="new-campaign-text">MESSAGE COPY *</label>
+          <label class="form-label" for="new-campaign-text">MESSAGE COPY <span class="required-star">*</span></label>
           <textarea id="new-campaign-text" class="form-textarea" rows="3" placeholder="Enter message text... Include STOP opt-out instruction for SMS." required></textarea>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <div class="modal-footer">
           <button type="button" class="button-outline modal-close">Cancel</button>
           <button type="submit" class="button-dark">Save Draft Campaign <span>＋</span></button>
         </div>
@@ -2035,15 +2045,17 @@
   <div class="modal-backdrop" id="modal-edit-campaign" aria-hidden="true">
     <div class="modal-content">
       <button class="modal-close" aria-label="Close dialog">×</button>
-      <h3 style="font-size: 1.25rem; margin-bottom: 6px;">Edit Campaign Draft</h3>
-      <p style="font-size: 0.8125rem; color: var(--muted); margin-bottom: 20px;">
-        Modify parameters for this draft campaign. Edits will reset prior approvals.
-      </p>
+      <div class="modal-header">
+        <h3 class="modal-title">Edit Campaign Draft</h3>
+        <p class="modal-subtitle">
+          Modify parameters for this draft campaign. Edits will reset prior approvals.
+        </p>
+      </div>
 
-      <form id="form-edit-campaign">
+      <form id="form-edit-campaign" class="modal-form">
         <input type="hidden" id="edit-campaign-id" />
         <div class="form-group">
-          <label class="form-label" for="edit-campaign-name">CAMPAIGN TITLE *</label>
+          <label class="form-label" for="edit-campaign-name">CAMPAIGN TITLE <span class="required-star">*</span></label>
           <input type="text" id="edit-campaign-name" class="form-input" required />
         </div>
 
@@ -2063,11 +2075,11 @@
         </div>
 
         <div class="form-group">
-          <label class="form-label" for="edit-campaign-text">MESSAGE COPY *</label>
+          <label class="form-label" for="edit-campaign-text">MESSAGE COPY <span class="required-star">*</span></label>
           <textarea id="edit-campaign-text" class="form-textarea" rows="3" required></textarea>
         </div>
 
-        <div style="display: flex; justify-content: flex-end; gap: 10px; margin-top: 20px;">
+        <div class="modal-footer">
           <button type="button" class="button-outline modal-close">Cancel</button>
           <button type="submit" class="button-dark">Update Campaign <span>✓</span></button>
         </div>

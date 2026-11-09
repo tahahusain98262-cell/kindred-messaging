@@ -283,8 +283,125 @@ window.KINDRED_WORKSPACE = (() => {
     // Initialize interactive tour hotspots
     initTourHotspots();
 
+    // Initialize universal modal manager (dialog focus, scroll-lock, escape & backdrop close)
+    initModalManager();
+
     // Initialize with overview tab
     switchTab("overview");
+  }
+
+  /**
+   * Universal Modal Manager
+   * Handles backdrop clicks, Escape key, Close button bindings,
+   * focus trapping, and body scroll locking.
+   */
+  function initModalManager() {
+    let lastActiveElement = null;
+
+    function getOpenModal() {
+      return document.querySelector(".modal-backdrop.open, .modal-backdrop[aria-hidden='false']");
+    }
+
+    function closeModal(modal) {
+      if (!modal) return;
+      modal.classList.remove("open");
+      modal.setAttribute("aria-hidden", "true");
+      document.body.classList.remove("modal-open");
+      if (lastActiveElement && typeof lastActiveElement.focus === "function") {
+        try {
+          lastActiveElement.focus();
+        } catch (e) {}
+      }
+    }
+
+    // Global click listener for closing modals
+    document.addEventListener("click", (e) => {
+      // 1. Close on clicking .modal-close or Cancel button with .modal-close
+      const closeBtn = e.target.closest(".modal-close, .modal-close-btn");
+      if (closeBtn) {
+        e.preventDefault();
+        const modal = closeBtn.closest(".modal-backdrop");
+        if (modal) {
+          closeModal(modal);
+        } else {
+          closeModal(getOpenModal());
+        }
+        return;
+      }
+
+      // 2. Close on clicking the backdrop/overlay (outside .modal-content)
+      const backdrop = e.target.classList.contains("modal-backdrop") ? e.target : null;
+      if (backdrop && (backdrop.classList.contains("open") || backdrop.getAttribute("aria-hidden") === "false")) {
+        closeModal(backdrop);
+      }
+    });
+
+    // Global Escape key & Focus Trap
+    document.addEventListener("keydown", (e) => {
+      const openModalEl = getOpenModal();
+      if (!openModalEl) return;
+
+      if (e.key === "Escape" || e.key === "Esc") {
+        e.preventDefault();
+        closeModal(openModalEl);
+        return;
+      }
+
+      // Trap focus inside open dialog
+      if (e.key === "Tab") {
+        const focusables = Array.from(openModalEl.querySelectorAll(
+          'a[href], button:not([disabled]), textarea:not([disabled]), input:not([type="hidden"]):not([disabled]), select:not([disabled]), [tabindex]:not([tabindex="-1"])'
+        )).filter(el => el.offsetParent !== null);
+
+        if (focusables.length === 0) return;
+
+        const first = focusables[0];
+        const last = focusables[focusables.length - 1];
+
+        if (e.shiftKey && document.activeElement === first) {
+          e.preventDefault();
+          last.focus();
+        } else if (!e.shiftKey && document.activeElement === last) {
+          e.preventDefault();
+          first.focus();
+        }
+      }
+    });
+
+    // Observer to automatically sync body.modal-open and focus on open
+    const observer = new MutationObserver((mutations) => {
+      mutations.forEach((mutation) => {
+        const target = mutation.target;
+        if (target && target.classList && target.classList.contains("modal-backdrop")) {
+          const isOpen = target.classList.contains("open") || target.getAttribute("aria-hidden") === "false";
+          if (isOpen) {
+            document.body.classList.add("modal-open");
+            // If focus is not already inside, move focus inside
+            if (!target.contains(document.activeElement)) {
+              lastActiveElement = document.activeElement;
+              setTimeout(() => {
+                const focusable = target.querySelector("input:not([type='hidden']), select, textarea, button:not(.modal-close)");
+                if (focusable) focusable.focus();
+                else {
+                  const closeBtn = target.querySelector(".modal-close");
+                  if (closeBtn) closeBtn.focus();
+                }
+              }, 50);
+            }
+          } else {
+            // Check if any other modal is still open
+            const anyOpen = Boolean(getOpenModal());
+            if (!anyOpen) {
+              document.body.classList.remove("modal-open");
+            }
+          }
+        }
+      });
+    });
+
+    document.querySelectorAll(".modal-backdrop").forEach(m => {
+      observer.observe(m, { attributes: true, attributeFilter: ["class", "aria-hidden"] });
+    });
   }
 
   /**
