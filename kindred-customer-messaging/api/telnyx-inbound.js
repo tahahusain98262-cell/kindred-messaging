@@ -8,14 +8,13 @@
 
 const storage = require('./lib/storage');
 const { normalizeUsPhone } = require('./lib/sms-utils');
+const { applySecurityHeaders, parseJsonBody, sanitizeError } = require('./lib/security');
 
 const STOP_COMMANDS = new Set(['STOP', 'STOPALL', 'UNSUBSCRIBE', 'CANCEL', 'END', 'QUIT']);
 const START_COMMANDS = new Set(['START', 'UNSTOP']);
 
 module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type, telnyx-signature-ed25519, telnyx-timestamp');
+  applySecurityHeaders(req, res, { allowAnyOrigin: true, methods: 'POST, OPTIONS' });
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -26,16 +25,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    let body = req.body;
-    if (typeof body === 'string') {
-      try {
-        body = JSON.parse(body);
-      } catch (e) {
-        body = {};
-      }
-    } else if (!body) {
-      body = {};
-    }
+    const body = parseJsonBody(req, 65536);
 
     const event = body.data || {};
     const eventType = event.event_type;

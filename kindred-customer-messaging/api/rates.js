@@ -4,10 +4,11 @@
  * Supports FRED API (Federal Reserve Economic Data - 100% Free) or verified Freddie Mac PMMS benchmark.
  */
 
+const { applySecurityHeaders, sanitizeError } = require('./lib/security');
+
 module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Public benchmark rates can be accessed safely with public CORS
+  applySecurityHeaders(req, res, { allowAnyOrigin: true, methods: 'GET, OPTIONS' });
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -105,7 +106,7 @@ module.exports = async function handler(req, res) {
       rates
     });
   } catch (err) {
-    console.error('[Kindred Rates API Error]', err);
-    return res.status(500).json({ error: 'RATES_FETCH_FAILED', message: err.message });
+    const safe = sanitizeError(err, 'Failed to fetch mortgage benchmark rates.');
+    return res.status(safe.statusCode).json({ error: safe.error, message: safe.message });
   }
 };

@@ -23,10 +23,11 @@ COMPLIANCE & TCPA RULES:
 - Fannie Mae Selling Guide reference: B3-3.1 for documentation, B2-1.3 for loan-to-value eligibility.
 `;
 
+const { applySecurityHeaders, parseJsonBody, sanitizeError } = require('./lib/security');
+
 module.exports = async function handler(req, res) {
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Origin-verified CORS and OWASP security headers
+  applySecurityHeaders(req, res, { allowAnyOrigin: false, methods: 'POST, OPTIONS' });
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -37,7 +38,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const body = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const body = parseJsonBody(req, 16384);
     const {
       messageText = '',
       contactName = 'Borrower',
@@ -164,10 +165,10 @@ Respond ONLY with valid JSON with these exact keys:
     });
 
   } catch (err) {
-    console.error('[Kindred AI Assistant Error]', err);
-    return res.status(500).json({
-      error: 'AI_ASSISTANT_ERROR',
-      message: err.message || 'Internal AI assistant processing error.'
+    const safe = sanitizeError(err, 'Internal AI assistant processing error.');
+    return res.status(safe.statusCode).json({
+      error: safe.error,
+      message: safe.message
     });
   }
 };

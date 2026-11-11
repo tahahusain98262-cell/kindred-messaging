@@ -6,12 +6,11 @@
 
 const storage = require('./lib/storage');
 const { normalizeUsPhone, checkRecipientQuietHours } = require('./lib/sms-utils');
+const { applySecurityHeaders, sanitizeError } = require('./lib/security');
 
 module.exports = async function handler(req, res) {
-  // CORS & Options
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'GET, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Apply Origin-verified CORS and Defense-in-depth Security Headers
+  applySecurityHeaders(req, res, { allowAnyOrigin: false, methods: 'GET, OPTIONS' });
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -49,7 +48,7 @@ module.exports = async function handler(req, res) {
       quietHours
     });
   } catch (err) {
-    console.error('[Kindred Messages API Error]', err);
-    return res.status(500).json({ error: 'MESSAGES_FETCH_FAILED', message: err.message });
+    const safe = sanitizeError(err, 'Failed to retrieve message logs.');
+    return res.status(safe.statusCode).json({ error: safe.error, message: safe.message });
   }
 };

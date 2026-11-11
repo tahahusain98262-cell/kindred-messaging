@@ -31,18 +31,20 @@ memoryStore.suppressions.set('+15550198', {
 });
 
 /**
- * Execute an Upstash Redis REST command
+ * Execute an Upstash Redis REST command via POST (safe against URL length limits and URL logging)
  */
 async function redisCommand(command, ...args) {
   if (!isRemoteAvailable) return null;
   try {
-    const url = `${UPSTASH_URL.replace(/\/$/, '')}/${[command, ...args].map(encodeURIComponent).join('/')}`;
+    const url = UPSTASH_URL.replace(/\/$/, '');
     const res = await fetch(url, {
-      method: 'GET',
+      method: 'POST',
       headers: {
         Authorization: `Bearer ${UPSTASH_TOKEN}`,
+        'Content-Type': 'application/json',
         Accept: 'application/json'
-      }
+      },
+      body: JSON.stringify([command, ...args])
     });
     if (!res.ok) {
       console.error(`[Kindred Redis Error] Status ${res.status}: ${res.statusText}`);

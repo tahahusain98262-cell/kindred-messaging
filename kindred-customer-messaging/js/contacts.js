@@ -441,6 +441,14 @@ window.KINDRED_CONTACTS = (() => {
       });
     }
 
+    // Handle CSV confirmation button
+    const btnConfirmCsv = $("#btn-confirm-csv-import");
+    if (btnConfirmCsv) {
+      on(btnConfirmCsv, "click", () => {
+        importSampleCsv();
+      });
+    }
+
     render();
   }
 

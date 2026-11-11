@@ -16,12 +16,11 @@ const {
 
 const storage = require('./lib/storage');
 const { dispatchMessage } = require('./lib/messaging-provider');
+const { applySecurityHeaders, parseJsonBody, sanitizeError } = require('./lib/security');
 
 module.exports = async function handler(req, res) {
-  // CORS & Options
-  res.setHeader('Access-Control-Allow-Origin', '*');
-  res.setHeader('Access-Control-Allow-Methods', 'POST, OPTIONS');
-  res.setHeader('Access-Control-Allow-Headers', 'Content-Type');
+  // Apply Origin-verified CORS and Defense-in-depth Security Headers
+  applySecurityHeaders(req, res, { allowAnyOrigin: false, methods: 'POST, OPTIONS' });
 
   if (req.method === 'OPTIONS') {
     return res.status(200).end();
@@ -35,7 +34,7 @@ module.exports = async function handler(req, res) {
   }
 
   try {
-    const bodyData = typeof req.body === 'string' ? JSON.parse(req.body || '{}') : (req.body || {});
+    const bodyData = parseJsonBody(req, 32768);
     const { to: rawTo, body: rawBody, channel = 'sms', consent } = bodyData;
 
     // 1. Channel Check (SMS only for real sending; WhatsApp remains simulation)
