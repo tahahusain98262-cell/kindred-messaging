@@ -1,19 +1,19 @@
 {
   "version": 2,
-  "headers": [
+  "routes": [
     {
-      "source": "/(.*)",
-      "headers": [
-        { "key": "X-Content-Type-Options", "value": "nosniff" },
-        { "key": "X-Frame-Options", "value": "DENY" },
-        { "key": "Referrer-Policy", "value": "strict-origin-when-cross-origin" },
-        { "key": "Permissions-Policy", "value": "camera=(), microphone=(), geolocation=()" },
-        { "key": "Strict-Transport-Security", "value": "max-age=31536000; includeSubDomains" }
-      ]
-    }
-  ],
-  "rewrites": [
-    { "source": "/", "destination": "/kindred-customer-messaging/index.html" },
-    { "source": "/((?!api/).*)", "destination": "/kindred-customer-messaging/$1" }
+      "src": "/(.*)",
+      "headers": {
+        "X-Content-Type-Options": "nosniff",
+        "X-Frame-Options": "DENY",
+        "Referrer-Policy": "strict-origin-when-cross-origin",
+        "Permissions-Policy": "camera=(), microphone=(), geolocation=()",
+        "Strict-Transport-Security": "max-age=31536000; includeSubDomains"
+      },
+      "continue": true
+    },
+    { "handle": "filesystem" },
+    { "src": "/", "dest": "/kindred-customer-messaging/index.html" },
+    { "src": "/(.*)", "dest": "/kindred-customer-messaging/$1" }
   ]
 }
