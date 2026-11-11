@@ -89,6 +89,7 @@ window.KINDRED_INBOX = (() => {
             if (m.direction === "inbound") {
               conv.status = "Needs Reply";
               conv.unread = true;
+              refreshAiSuggestion(conv, m.body);
             }
             stateChanged = true;
           } else if (existing && m.status && existing.status !== m.status) {
@@ -343,6 +344,36 @@ window.KINDRED_INBOX = (() => {
   }
 
   /**
+   * Dynamically query Kindred AI Assistant for smart reply recommendation
+   */
+  async function refreshAiSuggestion(conv, incomingText) {
+    if (!conv || conv.status === "Suppressed") return;
+    try {
+      const res = await fetch("/api/ai-assistant", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          messageText: incomingText || (conv.messages.slice(-1)[0]?.text || "Hello"),
+          contactName: conv.contactName,
+          channel: (conv.channel || "sms").toLowerCase()
+        })
+      });
+      if (!res.ok) return;
+      const data = await res.json();
+      if (data && data.success) {
+        conv.intent = data.intent;
+        conv.confidence = data.confidence;
+        conv.suggestedReply = data.suggestedReply;
+        conv.citation = data.citation;
+        window.KINDRED_DATA.saveState();
+        renderDetail();
+      }
+    } catch (err) {
+      console.warn("[Kindred AI Suggestion Fetch]", err);
+    }
+  }
+
+  /**
    * Simulate inbound customer reply
    */
   function simulateCustomerReply() {
@@ -352,7 +383,9 @@ window.KINDRED_INBOX = (() => {
     const simulatedPrompts = [
       "Thanks! Could you also let me know what closing costs typically run on that product?",
       "Understood. Does that rate require points at closing?",
-      "Thank you for the quick note. I will review this with my co-borrower tonight."
+      "Thank you for the quick note. I will review this with my co-borrower tonight.",
+      "What are your current 30-year conforming mortgage rates today?",
+      "Can we get pre-approved for an offer we want to submit this weekend?"
     ];
     const randomReply = simulatedPrompts[Math.floor(Math.random() * simulatedPrompts.length)];
 
@@ -376,6 +409,9 @@ window.KINDRED_INBOX = (() => {
 
     render();
     showToast(`New inbound reply from ${conv.contactName}`, "info");
+
+    // Fetch live AI smart reply recommendation
+    refreshAiSuggestion(conv, randomReply);
   }
 
   /**

@@ -15,6 +15,7 @@ const {
 } = require('./lib/sms-utils');
 
 const storage = require('./lib/storage');
+const { dispatchMessage } = require('./lib/messaging-provider');
 
 module.exports = async function handler(req, res) {
   // CORS & Options
@@ -144,57 +145,14 @@ module.exports = async function handler(req, res) {
       });
     }
 
-    // 13. Twilio API Dispatch
-    const accountSid = process.env.TWILIO_ACCOUNT_SID;
-    const authToken = process.env.TWILIO_AUTH_TOKEN;
-    const fromNumber = process.env.TWILIO_FROM_NUMBER;
-    const messagingServiceSid = process.env.TWILIO_MESSAGING_SERVICE_SID;
-    const appBaseUrl = process.env.APP_BASE_URL;
-
-    const hasTwilioCredentials = Boolean(accountSid && authToken && (fromNumber || messagingServiceSid));
-
-    let dispatchResult = null;
-
-    if (hasTwilioCredentials) {
-      // Real Twilio Client
-      const twilio = require('twilio');
-      const client = twilio(accountSid, authToken);
-
-      const twilioPayload = {
-        to,
-        body: finalBody
-      };
-
-      if (messagingServiceSid) {
-        twilioPayload.messagingServiceSid = messagingServiceSid;
-      } else if (fromNumber) {
-        twilioPayload.from = fromNumber;
-      }
-
-      if (appBaseUrl) {
-        const statusCallbackUrl = `${appBaseUrl.replace(/\/$/, '')}/api/twilio-status`;
-        twilioPayload.statusCallback = statusCallbackUrl;
-      }
-
-      const message = await client.messages.create(twilioPayload);
-
-      dispatchResult = {
-        sid: message.sid,
-        status: message.status || 'queued',
-        from: message.from || fromNumber || messagingServiceSid,
-        mock: false
-      };
-    } else {
-      // Safe Mock Fallback (when env vars are not yet populated in local or preview)
-      const mockSid = `SM_MOCK_${Date.now()}_${Math.random().toString(36).substring(2, 8)}`;
-      dispatchResult = {
-        sid: mockSid,
-        status: 'queued',
-        from: fromNumber || '+18005550199',
-        mock: true,
-        notice: 'Twilio credentials not configured in Vercel environment. Simulated test message recorded successfully.'
-      };
-    }
+    // 13. Multi-Provider API Dispatch (Telnyx primary for ~45% savings, Twilio fallback, or mock simulation)
+    const appBaseUrl = process.env.APP_BASE_URL || '';
+    const dispatchResult = await dispatchMessage({
+      to,
+      body: finalBody,
+      channel: 'sms',
+      appBaseUrl
+    });
 
     // 14. Save message record to storage
     const messageRecord = await storage.saveMessage({
@@ -228,6 +186,8 @@ module.exports = async function handler(req, res) {
       quietHours,
       rateLimitRemaining: rateLimit.remaining,
       dailyRemaining: dailyCap.remaining,
+      provider: dispatchResult.provider || 'unknown',
+      costSavingsNotice: dispatchResult.costSavingsNotice || null,
       mock: dispatchResult.mock,
       notice: dispatchResult.notice || null
     });
