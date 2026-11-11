@@ -12,8 +12,7 @@
       },
       "continue": true
     },
-    { "src": "/api/(.*)", "dest": "/api/$1.js" },
-    { "handle": "filesystem" },
+    { "src": "/api/(.*)", "dest": "/api/$1" },
     { "src": "/", "dest": "/kindred-customer-messaging/index.html" },
     { "src": "/(.*)", "dest": "/kindred-customer-messaging/$1" }
   ]
